@@ -1,0 +1,2269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ff8fab" />
+  <meta name="description" content="Lookbook trang điểm — từng tone makeup, chạm để mua trên Shopee" />
+  <title>Lookbook Makeup · Sản phẩm trong video</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pink: #ff8fab;
+      --peach: #ffb4a2;
+      --rose: #ff6b9d;
+      --coral: #ff7a59;
+      --cream: #fff5f7;
+      --ink: #3d2c3a;
+      --muted: #7a6674;
+      --glass: rgba(255, 255, 255, 0.55);
+      --glass-border: rgba(255, 255, 255, 0.75);
+      --shadow: 0 12px 40px rgba(255, 107, 157, 0.18);
+      --sheet: #fff0f5;
+      --sheet-active: #ffffff;
+      --danger: #c9184a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Be Vietnam Pro", system-ui, sans-serif;
+      color: var(--ink);
+      min-height: 100dvh;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #ffd6e7 0%, transparent 55%),
+        radial-gradient(900px 500px at 110% 20%, #ffe0c8 0%, transparent 50%),
+        radial-gradient(700px 400px at 50% 110%, #ffc2d4 0%, transparent 55%),
+        linear-gradient(165deg, #fff0f5 0%, #ffe8dc 45%, #ffd6e8 100%);
+      background-attachment: fixed;
+      padding: 16px 14px 150px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 440px; margin: 0 auto; }
+    /* —— Top sheet tabs —— */
+    .sheet-bar {
+      display: flex; align-items: stretch; gap: 4px;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 4px 2px 10px;
+      margin: 0 -4px 8px;
+    }
+    .sheet-bar::-webkit-scrollbar { display: none; }
+    .sheet-tab {
+      flex: 0 0 auto;
+      appearance: none; border: 1px solid rgba(255,143,171,0.45);
+      background: rgba(255,255,255,0.45);
+      color: var(--muted);
+      font-family: inherit; font-size: 0.72rem; font-weight: 700;
+      padding: 8px 11px 9px;
+      border-radius: 12px 12px 8px 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .sheet-tab.active {
+      background: linear-gradient(180deg, #fff 0%, #ffe8f0 100%);
+      color: var(--danger);
+      border-color: rgba(255,107,157,0.55);
+      box-shadow: 0 6px 18px rgba(255,107,157,0.22);
+      transform: translateY(-1px);
+    }
+    .sheet-tab .tab-emoji { margin-right: 4px; }
+    .sheet-add {
+      flex: 0 0 auto;
+      width: 36px; height: 36px; align-self: center;
+      border-radius: 10px;
+      border: 1px dashed rgba(255,107,157,0.5);
+      background: rgba(255,255,255,0.4);
+      color: var(--rose);
+      font-size: 1.2rem; font-weight: 700;
+      cursor: pointer; display: none;
+      place-items: center;
+    }
+    body.editing .sheet-add { display: grid; }
+    /* —— Header —— */
+    .header { text-align: center; margin-bottom: 20px; animation: rise 0.7s ease both; }
+    .avatar {
+      width: 84px; height: 84px; margin: 0 auto 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fff 0%, #ffe4ec 40%, #ffc8d9 100%);
+      border: 3px solid rgba(255,255,255,0.9);
+      box-shadow: 0 10px 30px rgba(255,107,157,0.28), inset 0 0 20px rgba(255,255,255,0.6);
+      display: grid; place-items: center; font-size: 38px; position: relative;
+    }
+    .avatar::after {
+      content: ""; position: absolute; inset: -5px; border-radius: 50%;
+      background: conic-gradient(from 180deg, #ff8fab, #ffd6a5, #ffb4a2, #ff8fab);
+      z-index: -1; opacity: 0.85; animation: spin 8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .badge-live {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      color: var(--rose); font-size: 12px; font-weight: 600;
+      padding: 6px 12px; border-radius: 999px; margin-bottom: 12px;
+    }
+    .badge-live .dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--rose);
+      box-shadow: 0 0 0 0 rgba(255,107,157,0.6); animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,107,157,0.55); }
+      70% { box-shadow: 0 0 0 8px rgba(255,107,157,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,107,157,0); }
+    }
+    h1 {
+      font-size: clamp(1.3rem, 5vw, 1.6rem); font-weight: 800; line-height: 1.3;
+      letter-spacing: -0.02em;
+      background: linear-gradient(120deg, #c9184a 0%, #ff6b9d 40%, #ff8e53 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin-bottom: 8px;
+    }
+    .tagline {
+      color: var(--muted); font-size: 0.9rem; font-weight: 500; line-height: 1.5;
+      max-width: 36ch; margin: 0 auto;
+    }
+    /* —— Cards —— */
+    .steps { display: flex; flex-direction: column; gap: 14px; min-height: 120px; }
+    .card {
+      position: relative;
+      background: var(--glass);
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px) saturate(1.2);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px; padding: 18px 16px 16px;
+      box-shadow: var(--shadow);
+      animation: rise 0.5s ease both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card-top { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; }
+    .step {
+      flex-shrink: 0; width: 42px; height: 42px; border-radius: 14px;
+      display: grid; place-items: center; font-weight: 800; font-size: 0.95rem; color: #fff;
+      background: linear-gradient(145deg, #ff6b9d, #ff8e53);
+      box-shadow: 0 6px 16px rgba(255,107,157,0.35);
+    }
+    .emoji { font-size: 1.3rem; line-height: 1; margin-top: 2px; }
+    .card h2 { font-size: 1.02rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; color: var(--ink); }
+    .note { font-size: 0.86rem; color: var(--muted); line-height: 1.5; font-weight: 450; }
+    .sub {
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px dashed rgba(255,143,171,0.35);
+    }
+    .sub-title {
+      font-size: 0.8rem; font-weight: 700; color: #c9184a;
+      margin-bottom: 4px; display: flex; align-items: center; gap: 6px;
+    }
+    .cta {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; margin-top: 12px; padding: 13px 16px; border: none; border-radius: 14px;
+      font-family: inherit; font-size: 0.95rem; font-weight: 700; color: #fff;
+      text-decoration: none; cursor: pointer;
+      background: linear-gradient(105deg, #ff5d8f 0%, #ff7a59 50%, #ff9f1c 100%);
+      background-size: 200% 100%;
+      box-shadow: 0 8px 22px rgba(255,93,143,0.4), inset 0 1px 0 rgba(255,255,255,0.35);
+      transition: transform 0.2s, box-shadow 0.2s, background-position 0.35s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cta:hover, .cta:focus-visible {
+      background-position: 100% 0; transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(255,93,143,0.5); outline: none;
+    }
+    .cta:active { transform: scale(0.97); }
+    .cta.secondary {
+      background: linear-gradient(105deg, #e85d9a 0%, #f48c6b 100%);
+      font-size: 0.88rem; padding: 11px 14px; margin-top: 8px;
+    }
+    .nolink {
+      margin-top: 10px; display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; font-weight: 600; color: #a07888;
+      background: rgba(255,255,255,0.55);
+      border: 1px dashed rgba(160,120,136,0.35);
+      padding: 7px 11px; border-radius: 999px;
+    }
+    .empty-look {
+      text-align: center; padding: 48px 20px;
+      background: var(--glass); border: 1px dashed rgba(255,143,171,0.5);
+      border-radius: 22px; color: var(--muted);
+    }
+    .empty-look .big { font-size: 2.4rem; margin-bottom: 10px; }
+    .empty-look h3 { color: var(--ink); font-size: 1.05rem; margin-bottom: 6px; }
+    footer {
+      text-align: center; margin-top: 24px; color: var(--muted);
+      font-size: 0.78rem; animation: rise 0.7s ease 0.35s both;
+    }
+    footer .heart { color: var(--rose); }
+
+    /* —— Bottom sheet dock —— */
+    .sheet-dock {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+      background: linear-gradient(180deg, rgba(255,240,245,0.5) 0%, rgba(255,232,220,0.97) 30%);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(255,143,171,0.35);
+      padding: 8px 10px calc(56px + env(safe-area-inset-bottom));
+      box-shadow: 0 -8px 28px rgba(255,107,157,0.12);
+    }
+    .sheet-dock .sheet-bar { margin: 0; padding: 2px 2px 0; }
+    .sheet-dock .sheet-tab {
+      border-radius: 8px 8px 0 0; padding: 10px 14px 12px;
+      border-bottom: none;
+    }
+    .sheet-dock .sheet-tab.active {
+      background: #fff; box-shadow: 0 -2px 12px rgba(255,107,157,0.15);
+    }
+
+    /* —— Edit chrome —— */
+    .edit-fab {
+      position: fixed; right: 14px; bottom: calc(108px + env(safe-area-inset-bottom));
+      z-index: 50; width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 22px rgba(61,44,58,0.14);
+      cursor: pointer; display: grid; place-items: center;
+      font-size: 1.05rem; color: var(--muted);
+      opacity: 0.55; transition: opacity 0.2s, transform 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .edit-fab:hover, .edit-fab:focus-visible { opacity: 1; outline: none; }
+    body.editing .edit-fab { display: none; }
+
+    .edit-banner {
+      display: none;
+      background: linear-gradient(105deg, #c9184a, #ff6b9d);
+      color: #fff; border-radius: 16px; padding: 12px 14px;
+      margin-bottom: 14px; font-size: 0.8rem; line-height: 1.45;
+      box-shadow: 0 10px 28px rgba(201,24,74,0.28);
+    }
+    body.editing .edit-banner { display: block; }
+    .edit-banner strong { font-weight: 800; }
+    .edit-actions {
+      display: none; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+    }
+    body.editing .edit-actions { display: flex; }
+    .edit-actions button {
+      flex: 1 1 auto; min-width: 110px;
+      border: none; border-radius: 12px; padding: 10px 12px;
+      font-family: inherit; font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; -webkit-tap-highlight-color: transparent;
+    }
+    .btn-export { background: #fff; color: var(--danger); }
+    .btn-exit { background: rgba(255,255,255,0.22); color: #fff; border: 1px solid rgba(255,255,255,0.45) !important; }
+    .btn-reset { background: rgba(0,0,0,0.18); color: #fff; }
+
+    body.editing .card { border-style: solid; border-color: rgba(255,107,157,0.45); }
+    .edit-field {
+      display: none; width: 100%; margin: 4px 0 6px;
+      font-family: inherit; font-size: 0.88rem; color: var(--ink);
+      background: rgba(255,255,255,0.92); border: 1px solid rgba(255,143,171,0.55);
+      border-radius: 10px; padding: 8px 10px; outline: none;
+    }
+    .edit-field:focus { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(255,107,157,0.18); }
+    textarea.edit-field { min-height: 64px; resize: vertical; line-height: 1.45; }
+    body.editing .edit-field { display: block; }
+    body.editing .view-only { display: none !important; }
+    .edit-row { display: none; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+    body.editing .edit-row { display: flex; }
+    .edit-row button, .card-tools button, .look-edit-bar button {
+      border: none; border-radius: 10px; padding: 8px 12px;
+      font-family: inherit; font-size: 0.75rem; font-weight: 700;
+      cursor: pointer; background: rgba(255,255,255,0.85); color: var(--danger);
+      border: 1px solid rgba(255,143,171,0.45);
+    }
+    .card-tools {
+      display: none; position: absolute; top: 10px; right: 10px; gap: 4px;
+    }
+    body.editing .card-tools { display: flex; }
+    .card-tools button { padding: 4px 8px; font-size: 0.7rem; }
+    .look-edit-bar {
+      display: none; flex-direction: column; gap: 6px;
+      background: rgba(255,255,255,0.55); border: 1px dashed rgba(255,143,171,0.5);
+      border-radius: 16px; padding: 12px; margin-bottom: 14px;
+    }
+    body.editing .look-edit-bar { display: flex; }
+    .look-edit-bar label {
+      font-size: 0.7rem; font-weight: 700; color: var(--muted);
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .add-product-btn {
+      display: none; width: 100%; margin-top: 4px; padding: 14px;
+      border-radius: 18px; border: 2px dashed rgba(255,107,157,0.45);
+      background: rgba(255,255,255,0.4); color: var(--rose);
+      font-family: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    }
+    body.editing .add-product-btn { display: block; }
+    .tab-edit-hint {
+      display: none; font-size: 0.7rem; color: var(--muted);
+      text-align: center; margin: -4px 0 10px;
+    }
+    body.editing .tab-edit-hint { display: block; }
+
+    /* Modal */
+    .modal-backdrop {
+      display: none; position: fixed; inset: 0; z-index: 100;
+      background: rgba(40, 20, 30, 0.45); backdrop-filter: blur(6px);
+      place-items: center; padding: 20px;
+    }
+    .modal-backdrop.open { display: grid; }
+    .modal {
+      width: min(340px, 100%); background: #fff; border-radius: 20px;
+      padding: 22px 18px; box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+      text-align: center;
+    }
+    .modal h3 { font-size: 1.1rem; margin-bottom: 6px; color: var(--ink); }
+    .modal p { font-size: 0.85rem; color: var(--muted); margin-bottom: 14px; line-height: 1.45; }
+    .modal input {
+      width: 100%; padding: 12px; border-radius: 12px;
+      border: 1px solid rgba(255,143,171,0.55); font-family: inherit;
+      font-size: 1.1rem; text-align: center; letter-spacing: 0.2em;
+      margin-bottom: 12px; outline: none;
+    }
+    .modal input:focus { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(255,107,157,0.18); }
+    .modal .row { display: flex; gap: 8px; }
+    .modal .row button {
+      flex: 1; padding: 12px; border: none; border-radius: 12px;
+      font-family: inherit; font-weight: 700; cursor: pointer;
+    }
+    .modal .ok { background: linear-gradient(105deg, #ff5d8f, #ff7a59); color: #fff; }
+    .modal .cancel { background: #f3e6eb; color: var(--muted); }
+    .modal .err { color: var(--danger); font-size: 0.78rem; min-height: 1.2em; margin-bottom: 8px; }
+
+    .toast {
+      position: fixed; left: 50%; bottom: calc(130px + env(safe-area-inset-bottom));
+      transform: translateX(-50%) translateY(20px); z-index: 90;
+      background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 999px;
+      font-size: 0.8rem; font-weight: 600; opacity: 0; pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s; white-space: nowrap;
+      max-width: 90vw; overflow: hidden; text-overflow: ellipsis;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="sheet-bar" id="tabsTop" role="tablist" aria-label="Tone makeup"></div>
+    <p class="tab-edit-hint">Giữ tab để đổi tên · nút + thêm tone · ✕ xoá tone đang mở</p>
+
+    <div class="edit-banner" id="editBanner">
+      <strong>Chế độ chỉnh sửa</strong> — sửa trên máy anh được lưu tạm (localStorage). Khách vào link công khai <strong>không</strong> thấy bản sửa này cho đến khi anh bấm <strong>Xuất file</strong> rồi gửi file cho em deploy lại.
+      <div class="edit-actions">
+        <button type="button" class="btn-export" id="btnExport">Xuất file HTML</button>
+        <button type="button" class="btn-reset" id="btnReset">Reset mặc định</button>
+        <button type="button" class="btn-exit" id="btnExitEdit">Thoát sửa</button>
+      </div>
+    </div>
+
+    <div class="look-edit-bar" id="lookEditBar">
+      <label>Tên tab (sheet)</label>
+      <input class="edit-field" id="editTabName" placeholder="VD: Mỏng nhẹ" />
+      <label>Emoji avatar</label>
+      <input class="edit-field" id="editEmoji" placeholder="💄" maxlength="4" />
+      <label>Tiêu đề look</label>
+      <input class="edit-field" id="editTitle" placeholder="Tone trang điểm…" />
+      <label>Mô tả phụ</label>
+      <textarea class="edit-field" id="editSubtitle" placeholder="Mô tả ngắn…"></textarea>
+      <label>Dòng chân trang</label>
+      <input class="edit-field" id="editFooter" placeholder="Làm theo đúng thứ tự…" />
+      <div class="edit-row" style="display:flex">
+        <button type="button" id="btnRenameTab">Đổi tên tab</button>
+        <button type="button" id="btnDeleteTab">Xoá tone này</button>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="avatar" id="lookAvatar" aria-hidden="true">💄</div>
+      <div class="badge-live"><span class="dot"></span> <span id="badgeText">Sản phẩm trong video</span></div>
+      <h1 id="lookTitle">Tone trang điểm mỏng nhẹ</h1>
+      <p class="tagline" id="lookSubtitle">Danh sách đầy đủ theo thứ tự make-up — chạm nút để mua trên Shopee ✨</p>
+    </header>
+
+    <main class="steps" id="steps"></main>
+    <button type="button" class="add-product-btn" id="btnAddProduct">＋ Thêm sản phẩm</button>
+
+    <footer>
+      <p id="lookFooter">Làm theo đúng thứ tự trong video nha 💕</p>
+      <p style="margin-top:6px">Lookbook makeup · từng tone một sheet <span class="heart">♥</span></p>
+    </footer>
+  </div>
+
+  <div class="sheet-dock" aria-hidden="false">
+    <div class="sheet-bar" id="tabsBottom" role="tablist" aria-label="Tone makeup (dưới)"></div>
+  </div>
+
+  <button type="button" class="edit-fab" id="editFab" title="Chỉnh sửa" aria-label="Chỉnh sửa">✎</button>
+
+  <div class="modal-backdrop" id="pinModal" role="dialog" aria-modal="true" aria-labelledby="pinTitle">
+    <div class="modal">
+      <h3 id="pinTitle">Chế độ chủ sở hữu</h3>
+      <p>Nhập mã PIN để chỉnh sửa lookbook. Khách xem trang sẽ không thấy nút này hoạt động nếu sai mã.</p>
+      <input type="password" id="pinInput" inputmode="numeric" maxlength="8" placeholder="••••" autocomplete="off" />
+      <div class="err" id="pinErr"></div>
+      <div class="row">
+        <button type="button" class="cancel" id="pinCancel">Huỷ</button>
+        <button type="button" class="ok" id="pinOk">Vào sửa</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+/*__DEFAULT_DATA__*/
+const DEFAULT_DATA = {
+  "pin": "0804",
+  "activeId": "look-mongnhe",
+  "looks": [
+    {
+      "id": "look-mongnhe",
+      "tabName": "Mỏng nhẹ",
+      "emoji": "💄",
+      "title": "Tone mỏng nhẹ — da trong, makeup thấu",
+      "subtitle": "Xịt ẩm → lót → cushion → bắt sáng → má → mày → mắt → môi. Đúng thứ tự trong video ✨",
+      "footer": "Mỏng nhẹ · trong da · tiểu thư 💕",
+      "badge": "Look mỏng nhẹ",
+      "products": [
+        {
+          "id": "t1-p1",
+          "emoji": "💦",
+          "name": "Serum xịt khoáng căng bóng",
+          "note": "Xịt đầu tiên để cấp ẩm nhanh — da căng và bóng nhẹ trước khi làm các bước tiếp theo.",
+          "link": "https://s.shopee.vn/8KqfHNGKJJ",
+          "cta": "🛒 Mua serum xịt",
+          "subs": []
+        },
+        {
+          "id": "t1-p2",
+          "emoji": "🧴",
+          "name": "Kem lót",
+          "note": "Dùng sau bước xịt để tạo lớp nền mịn, giúp makeup bám tốt và thẩm thấu hơn.",
+          "link": "https://s.shopee.vn/2Vt1BhfYB6",
+          "cta": "🛒 Mua kem lót",
+          "subs": []
+        },
+        {
+          "id": "t1-p3",
+          "emoji": "🪞",
+          "name": "Cushion CLIO [Bản nâng cấp]",
+          "note": "Kem nền dạng cushion CLIO bản nâng cấp — pat từ giữa mặt ra ngoài để nền thấu, đều màu mà vẫn giữ texture da.",
+          "link": "https://s.shopee.vn/70LHgzWqez",
+          "cta": "🛒 Mua Cushion CLIO",
+          "subs": []
+        },
+        {
+          "id": "t1-p4",
+          "emoji": "🧽",
+          "name": "Bông mút Momo’s Workshop",
+          "note": "Bông mút trang điểm Momo’s Workshop — pat nền sát da, finish mịn và trong.",
+          "link": "https://s.shopee.vn/5q9KJTvLtu",
+          "cta": "🛒 Mua bông mút Momo’s",
+          "subs": []
+        },
+        {
+          "id": "t1-p5",
+          "emoji": "✨",
+          "name": "Bắt sáng kem Momo’s Workshop",
+          "note": "Màu 001 & 003 highlight dạng kem. Làm sáng mặt, tạo độ phẳng và chỉnh contour mũi sơ bộ.",
+          "link": "https://s.shopee.vn/80Dok8DeXz",
+          "cta": "🛒 Mua bắt sáng Momo’s",
+          "subs": []
+        },
+        {
+          "id": "t1-p6",
+          "emoji": "🌸",
+          "name": "Má hồng Momo’s Workshop CB03",
+          "note": "Pat theo hình chữ W trên má để có sức sống nhẹ — hồng dịu, tiểu thư.",
+          "link": "https://s.shopee.vn/3B8aG2d7jN",
+          "cta": "🛒 Mua má hồng CB03",
+          "subs": []
+        },
+        {
+          "id": "t1-p7",
+          "emoji": "🖊️",
+          "name": "Lông mày — Lunasol #01 Natural Brown",
+          "note": "Bảng phấn vùng mắt Lunasol tông #01 Natural Brown dựng khung mày tự nhiên. Chuốt cố định bằng mascara lông mày.",
+          "link": "",
+          "cta": "🛒 Mua trên Shopee",
+          "subs": [
+            {
+              "title": "👁️ Mascara lông mày",
+              "note": "Chuốt nhẹ để giữ form mày cả ngày.",
+              "link": "https://s.shopee.vn/gREBNjjB0",
+              "cta": "🛒 Mua mascara lông mày"
+            }
+          ]
+        },
+        {
+          "id": "t1-p8",
+          "emoji": "👁️",
+          "name": "Makeup mắt — Clio #03",
+          "note": "Màu chân mi & bọng mắt bằng Clio #03. Bấm mi WOSADO, gắn mi giả rồi phủ bắt sáng Flower Knows.",
+          "link": "https://s.shopee.vn/8Kqo99Dg3a",
+          "cta": "🛒 Mua Clio #03",
+          "subs": [
+            {
+              "title": "💫 Kẹp mi cong lâu WOSADO",
+              "note": "Bấm mi cong lâu trước khi gắn mi giả.",
+              "link": "https://s.shopee.vn/3VlPYwLnBX",
+              "cta": "🛒 Mua WOSADO"
+            },
+            {
+              "title": "🪶 Mi giả",
+              "note": "Mi mỏng mở mắt, vẫn giữ vibe mỏng nhẹ.",
+              "link": "https://s.shopee.vn/W7nhJxnZG",
+              "cta": "🛒 Mua mi giả"
+            },
+            {
+              "title": "🌟 Phấn bắt sáng tạo khối Flower Knows",
+              "note": "Phủ điểm sáng mí và xương gò má.",
+              "link": "https://s.shopee.vn/1BNUmty9p1",
+              "cta": "🛒 Mua Flower Knows"
+            }
+          ]
+        },
+        {
+          "id": "t1-p9",
+          "emoji": "💋",
+          "name": "Chì kẻ môi Kaleidos #03",
+          "note": "Định hình viền môi bằng Kaleidos #03 — môi đầy, sắc rõ trước khi thoa son bóng.",
+          "link": "https://s.shopee.vn/6VP18nEoSY",
+          "cta": "🛒 Mua Kaleidos #03",
+          "subs": []
+        },
+        {
+          "id": "t1-p10",
+          "emoji": "🐚",
+          "name": "Son bóng Flower Knows #04",
+          "note": "Son bóng khoá màu lâu trôi Flower Knows màu #04 — bóng ướt, khoá sắc môi cả ngày.",
+          "link": "https://s.shopee.vn/3g4r0zsPsf",
+          "cta": "🛒 Mua son bóng #04",
+          "subs": []
+        }
+      ]
+    },
+    {
+      "id": "look-dilam",
+      "tabName": "Đi làm",
+      "emoji": "👜",
+      "title": "Tone đi làm — gọn, bền, chỉn chu",
+      "subtitle": "Makeup văn phòng nhẹ nhàng: da dịu, nền mịn, điểm nhấn thanh — chạm để mua từng món ✨",
+      "footer": "Tone đi làm · sạch sẽ · bền đẹp cả ngày 💕",
+      "badge": "Look đi làm",
+      "products": [
+        {
+          "id": "t2-p1",
+          "emoji": "🥛",
+          "name": "Sữa dưỡng ONGREDIENTS",
+          "note": "Sữa dưỡng da làm dịu, dưỡng ẩm tăng cường, chuẩn bị trang điểm hoàn hảo — công thức thuần chay.",
+          "link": "https://s.shopee.vn/3qOHEPYEBb",
+          "cta": "🛒 Mua ONGREDIENTS",
+          "subs": []
+        },
+        {
+          "id": "t2-p2",
+          "emoji": "🪞",
+          "name": "Nền Clé de Peau mini",
+          "note": "Lớp nền Clé de Peau bản mini — mỏng, đều, giữ da sáng tự nhiên cả ngày làm việc.",
+          "link": "https://s.shopee.vn/3g4r2N8x7o",
+          "cta": "🛒 Mua nền Clé de Peau",
+          "subs": [
+            {
+              "title": "🖌️ Cọ dàn nền",
+              "note": "Cọ dàn nền để tán mỏng, không để lại vệt.",
+              "link": "https://s.shopee.vn/4qGoWAwi8K",
+              "cta": "🛒 Mua cọ dàn nền"
+            },
+            {
+              "title": "🧽 Bông mút tán",
+              "note": "Bông mút tán nền sát da, finish mịn.",
+              "link": "https://s.shopee.vn/8pmxBxvah7",
+              "cta": "🛒 Mua bông mút tán"
+            }
+          ]
+        },
+        {
+          "id": "t2-p3",
+          "emoji": "🔒",
+          "name": "Phấn nén NARS",
+          "note": "Phấn nén NARS khoá nền — da vẫn thoáng nhưng makeup bền suốt giờ làm.",
+          "link": "https://s.shopee.vn/BUyy3boVl",
+          "cta": "🛒 Mua phấn nén NARS",
+          "subs": []
+        },
+        {
+          "id": "t2-p4",
+          "emoji": "🖊️",
+          "name": "Lông mày & mắt",
+          "note": "Khung mày nhẹ bằng bảng mắt, rồi nhấn mắt tông văn phòng dễ nhìn.",
+          "link": "",
+          "cta": "🛒 Mua trên Shopee",
+          "subs": [
+            {
+              "title": "🎨 Bảng phấn mắt 12 ô Joocyee",
+              "note": "Dùng tông nâu tự nhiên để tô khung lông mày.",
+              "link": "https://s.shopee.vn/2gCJrMkBz7",
+              "cta": "🛒 Mua Joocyee 12 ô"
+            },
+            {
+              "title": "👁️ Bảng mắt Clio màu 04",
+              "note": "Nhấn mí và chân mi với Clio #04.",
+              "link": "https://s.shopee.vn/AUvBBxpjxJ",
+              "cta": "🛒 Mua Clio #04"
+            }
+          ]
+        },
+        {
+          "id": "t2-p5",
+          "emoji": "🪶",
+          "name": "Mi giả",
+          "note": "Gắn mi giả mỏng để mắt mở hơn — vẫn tự nhiên, hợp look đi làm.",
+          "link": "https://s.shopee.vn/906NPY8YOn",
+          "cta": "🛒 Mua mi giả",
+          "subs": []
+        },
+        {
+          "id": "t2-p6",
+          "emoji": "🌸",
+          "name": "Má hồng NARS tone Behave",
+          "note": "Má hồng NARS tông Behave — hồng đất nhẹ, sức sống vừa đủ cho môi trường văn phòng.",
+          "link": "https://s.shopee.vn/5LD537f69u",
+          "cta": "🛒 Mua NARS Behave",
+          "subs": []
+        },
+        {
+          "id": "t2-p7",
+          "emoji": "💋",
+          "name": "Son Dinto #219",
+          "note": "Son Dinto màu #219 — sắc môi dịu, không quá nổi, dễ phối cả ngày.",
+          "link": "https://s.shopee.vn/4qGoSAOpun",
+          "cta": "🛒 Mua Dinto #219",
+          "subs": []
+        }
+      ]
+    },
+    {
+      "id": "look-dakho",
+      "tabName": "Da khô",
+      "emoji": "💧",
+      "title": "Tone makeup cho da khô",
+      "subtitle": "Ướt da trước — nền căng — bắt sáng kem — phấn mỏng. Giữ độ ẩm, tránh bột khô nẻ ✨",
+      "footer": "Da khô · căng bóng · không bột 💕",
+      "badge": "Look da khô",
+      "products": [
+        {
+          "id": "t3-p1",
+          "emoji": "💧",
+          "name": "Cấp ẩm trước makeup",
+          "note": "Đắp ướt rồi khoá bằng nước thần — da đủ ẩm trước khi lên nền, hạn chế khô nẻ.",
+          "link": "",
+          "cta": "🛒 Mua trên Shopee",
+          "subs": [
+            {
+              "title": "🫧 Bông đắp ướt co giãn",
+              "note": "Đắp ướt co giãn để da uống nước đều.",
+              "link": "https://s.shopee.vn/3LS0g0K042",
+              "cta": "🛒 Mua bông đắp ướt"
+            },
+            {
+              "title": "✨ Nước thần HFP",
+              "note": "Xịt/thoa nước thần HFP để khóa ẩm trước nền.",
+              "link": "https://s.shopee.vn/7AejFHRneZ",
+              "cta": "🛒 Mua nước thần HFP"
+            }
+          ]
+        },
+        {
+          "id": "t3-p2",
+          "emoji": "🪞",
+          "name": "Nền Clé de Peau mini",
+          "note": "Nền Clé de Peau mini trên da đã ẩm — căng, đều, không làm khô thêm.",
+          "link": "https://s.shopee.vn/3g4r2N8x7o",
+          "cta": "🛒 Mua nền Clé de Peau",
+          "subs": [
+            {
+              "title": "🖌️ Cọ dàn nền",
+              "note": "Cọ dàn nền tán mỏng trên da ẩm.",
+              "link": "https://s.shopee.vn/4qGoWAwi8K",
+              "cta": "🛒 Mua cọ dàn nền"
+            },
+            {
+              "title": "🧽 Bông mút tán",
+              "note": "Bông mút tán sát da, giữ độ bóng nhẹ.",
+              "link": "https://s.shopee.vn/8pmxBxvah7",
+              "cta": "🛒 Mua bông mút tán"
+            }
+          ]
+        },
+        {
+          "id": "t3-p3",
+          "emoji": "🏔️",
+          "name": "Tạo khối Fenty Beauty",
+          "note": "Tạo khối Fenty Beauty — đường nét rõ nhưng vẫn mềm trên nền ẩm.",
+          "link": "https://s.shopee.vn/4B17fvvFSW",
+          "cta": "🛒 Mua Fenty Beauty",
+          "subs": []
+        },
+        {
+          "id": "t3-p4",
+          "emoji": "✨",
+          "name": "Kem bắt sáng Momo’s Workshop",
+          "note": "Highlight dạng kem Momo’s Workshop — ánh sáng ướt, hợp hợp da khô hơn phấn.",
+          "link": "https://s.shopee.vn/80Dok8DeXz",
+          "cta": "🛒 Mua bắt sáng kem",
+          "subs": []
+        },
+        {
+          "id": "t3-p5",
+          "emoji": "🌸",
+          "name": "Phấn má hồng Daisy Doll PK-01",
+          "note": "Phấn má hồng Daisy Doll màu PK-01 — hồng nhẹ, tán mỏng trên gò má.",
+          "link": "https://s.shopee.vn/5LD57bYX2L",
+          "cta": "🛒 Mua Daisy Doll PK-01",
+          "subs": []
+        },
+        {
+          "id": "t3-p6",
+          "emoji": "🔒",
+          "name": "Phấn phủ Bobbi Brown",
+          "note": "Phấn phủ Bobbi Brown — chỉ phủ vùng cần thiết, giữ vùng bắt sáng vẫn căng.",
+          "link": "https://s.shopee.vn/7AejFvY3L7",
+          "cta": "🛒 Mua Bobbi Brown",
+          "subs": []
+        },
+        {
+          "id": "t3-p7",
+          "emoji": "👁️",
+          "name": "Bảng phấn mắt",
+          "note": "Phối bảng Flower Knows với Clio — mắt có chiều sâu mà không khô cứng.",
+          "link": "",
+          "cta": "🛒 Mua trên Shopee",
+          "subs": [
+            {
+              "title": "🌟 Bảng mắt FLOWER KNOWS",
+              "note": "",
+              "link": "https://s.shopee.vn/8pmxFDPu1A",
+              "cta": "🛒 Mua Flower Knows"
+            },
+            {
+              "title": "🎨 Bảng mắt Clio",
+              "note": "",
+              "link": "https://s.shopee.vn/AUvBBxpjxJ",
+              "cta": "🛒 Mua Clio"
+            }
+          ]
+        },
+        {
+          "id": "t3-p8",
+          "emoji": "🐚",
+          "name": "Son bóng vỏ sò Shell Jewel",
+          "note": "Son bóng vỏ sò BST Shell Jewel của Flower Knows — bóng ướt, làm môi mềm trên da khô.",
+          "link": "https://s.shopee.vn/9fM4EeEuX2",
+          "cta": "🛒 Mua Shell Jewel",
+          "subs": []
+        },
+        {
+          "id": "t3-p9",
+          "emoji": "🪶",
+          "name": "Mi giả",
+          "note": "Mi giả mỏng để mắt mở — hoàn thiện look da khô căng bóng.",
+          "link": "https://s.shopee.vn/906NPY8YOn",
+          "cta": "🛒 Mua mi giả",
+          "subs": []
+        }
+      ]
+    },
+    {
+      "id": "look-tonkhung",
+      "tabName": "Tôn khung mặt",
+      "emoji": "✨",
+      "title": "Tone tôn khung mặt — đường nét rõ, da sáng",
+      "subtitle": "Chuẩn bị da → nền → khối → mắt → má → môi. Từng bước một, chạm để mua trên Shopee ✨",
+      "footer": "Tôn khung mặt · rõ nét · sang nhẹ 💕",
+      "badge": "Look tôn khung mặt",
+      "products": [
+        {
+          "id": "t4-p1",
+          "emoji": "🥛",
+          "name": "Sữa dưỡng ONGREDIENTS",
+          "note": "Sữa dưỡng thuần chay làm dịu da, cấp ẩm tăng cường — chuẩn bị lớp nền êm trước khi trang điểm.",
+          "link": "https://s.shopee.vn/3qOHEPYEBb",
+          "cta": "🛒 Mua ONGREDIENTS",
+          "subs": []
+        },
+        {
+          "id": "t4-p2",
+          "emoji": "☀️",
+          "name": "Kem chống nắng Lancôme",
+          "note": "Lớp chống nắng Lancôme bảo vệ da và tạo nền mịn nhẹ trước khi lên che khuyết điểm.",
+          "link": "https://s.shopee.vn/5LD7shzjLa",
+          "cta": "🛒 Mua Lancôme SPF",
+          "subs": []
+        },
+        {
+          "id": "t4-p3",
+          "emoji": "🫥",
+          "name": "Kem che khuyết điểm dạng lỏng",
+          "note": "Che quầng thâm và điểm tối quanh mắt — tán mỏng để da vẫn tự nhiên.",
+          "link": "https://s.shopee.vn/9APqSE3sQV",
+          "cta": "🛒 Mua kem che khuyết điểm",
+          "subs": [
+            {
+              "title": "🖌️ Cọ che khuyết điểm dạng dẹt",
+              "note": "Cọ dẹt giúp phủ sát vùng dưới mắt, không để lại vệt dày.",
+              "link": "https://s.shopee.vn/6L5f5ZraWe",
+              "cta": "🛒 Mua cọ che khuyết điểm"
+            }
+          ]
+        },
+        {
+          "id": "t4-p4",
+          "emoji": "🪞",
+          "name": "Nền Clé de Peau mini",
+          "note": "Nền Clé de Peau bản mini — mỏng, đều, giữ độ sáng tự nhiên để khung mặt nổi rõ.",
+          "link": "https://s.shopee.vn/3g4r2N8x7o",
+          "cta": "🛒 Mua nền Clé de Peau",
+          "subs": [
+            {
+              "title": "🖌️ Cọ dàn nền",
+              "note": "Cọ dàn nền tán mỏng, không để lại vệt.",
+              "link": "https://s.shopee.vn/4qGoWAwi8K",
+              "cta": "🛒 Mua cọ dàn nền"
+            },
+            {
+              "title": "🧽 Bông mút tán",
+              "note": "Bông mút tán sát da, finish mịn và ôm khung mặt.",
+              "link": "https://s.shopee.vn/8pmxBxvah7",
+              "cta": "🛒 Mua bông mút tán"
+            }
+          ]
+        },
+        {
+          "id": "t4-p5",
+          "emoji": "🏔️",
+          "name": "Tạo khối Fenty Beauty",
+          "note": "Tạo khối Fenty Beauty — đường nét xương gò má và hàm rõ mà vẫn mềm mại.",
+          "link": "https://s.shopee.vn/4B17fvvFSW",
+          "cta": "🛒 Mua Fenty Beauty",
+          "subs": []
+        },
+        {
+          "id": "t4-p6",
+          "emoji": "🔒",
+          "name": "Phấn phủ nén Bobbi Brown",
+          "note": "Phấn nén Bobbi Brown khoá nền và khối — da vẫn thoáng, makeup bền.",
+          "link": "https://s.shopee.vn/40hkKJExoc",
+          "cta": "🛒 Mua Bobbi Brown",
+          "subs": []
+        },
+        {
+          "id": "t4-p7",
+          "emoji": "🖊️",
+          "name": "Tô khung lông mày",
+          "note": "Dùng bảng phấn bắt sáng tạo khối Flower Knows để vẽ chân mày tự nhiên, rõ khung.",
+          "link": "https://s.shopee.vn/4B1AWsAPRJ",
+          "cta": "🛒 Mua Flower Knows",
+          "subs": [
+            {
+              "title": "👁️ Mascara chải đổi màu lông mày Kissme màu 08",
+              "note": "Kissme màu 08 chống lem — cố định sợi lông mày và chỉnh tone nhẹ.",
+              "link": "https://s.shopee.vn/3g4twMczco",
+              "cta": "🛒 Mua Kissme 08"
+            }
+          ]
+        },
+        {
+          "id": "t4-p8",
+          "emoji": "👁️",
+          "name": "Makeup mắt",
+          "note": "Phối bảng SPLASHEEN tông Head Space với Clio #03 — mắt có chiều sâu, vẫn thanh.",
+          "link": "https://s.shopee.vn/7KyCJTtGw3",
+          "cta": "🛒 Mua SPLASHEEN Head Space",
+          "subs": [
+            {
+              "title": "🎨 Bảng mắt Clio #03",
+              "note": "Clio #03 nhấn mí và chân mi, làm mắt sâu hơn.",
+              "link": "https://s.shopee.vn/AUvBBxpjxJ",
+              "cta": "🛒 Mua Clio #03"
+            },
+            {
+              "title": "💫 Bấm mi cong lâu WOSADO",
+              "note": "Bấm mi cong lâu trước khi gắn mi giả.",
+              "link": "https://s.shopee.vn/3VlPYwLnBX",
+              "cta": "🛒 Mua WOSADO"
+            },
+            {
+              "title": "✨ Nhũ mắt RED CHAMBER màu FE900",
+              "note": "Nhũ mắt RED CHAMBER tông FE900 — điểm sáng mí trên, làm mắt long lanh.",
+              "link": "https://s.shopee.vn/AUvE5oSi4S",
+              "cta": "🛒 Mua RED CHAMBER FE900"
+            },
+            {
+              "title": "🪶 Mi giả Glimmer",
+              "note": "Mi giả Glimmer mở mắt, hoàn thiện look tôn khung.",
+              "link": "https://s.shopee.vn/BV1nCRcj1",
+              "cta": "🛒 Mua mi Glimmer"
+            }
+          ]
+        },
+        {
+          "id": "t4-p9",
+          "emoji": "🌸",
+          "name": "Má hồng NARS tone Behave",
+          "note": "Má hồng NARS tông Behave — hồng đất dịu, làm gò má sống động sau khi tạo khối.",
+          "link": "https://s.shopee.vn/5LD537f69u",
+          "cta": "🛒 Mua NARS Behave",
+          "subs": []
+        },
+        {
+          "id": "t4-p10",
+          "emoji": "💋",
+          "name": "Môi",
+          "note": "Chì kẻ môi Kaleidos #03 định hình viền môi trước khi thoa son.",
+          "link": "https://s.shopee.vn/6VP18nEoSY",
+          "cta": "🛒 Mua Kaleidos #03",
+          "subs": [
+            {
+              "title": "💄 Son YSL màu 440",
+              "note": "Son YSL màu 440 — sắc môi sang, chốt look tôn khung mặt.",
+              "link": "https://s.shopee.vn/9V2gundcU6",
+              "cta": "🛒 Mua YSL 440"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "look-chutrongmat",
+      "tabName": "Chú trọng mắt",
+      "emoji": "👁️",
+      "title": "Tone chú trọng mắt — mí sâu, mi cong, điểm nhấn",
+      "subtitle": "Nền sạch → khung mày → bảng mắt → kích mí → kẻ mắt → mi giả → má → môi. Nhìn vào mắt là nhớ ✨",
+      "footer": "Chú trọng mắt · sâu · long lanh 💕",
+      "badge": "Look chú trọng mắt",
+      "products": [
+        {
+          "id": "t6-p1",
+          "emoji": "💦",
+          "name": "Xịt dưỡng ẩm / xịt lót",
+          "note": "Xịt dưỡng ẩm và xịt lót trước khi trang điểm — da đủ ẩm, makeup bám êm.",
+          "link": "https://s.shopee.vn/2VsyFsAXQA",
+          "cta": "🛒 Mua xịt dưỡng/lót",
+          "subs": []
+        },
+        {
+          "id": "t6-p2",
+          "emoji": "☀️",
+          "name": "Kem chống nắng Lancôme",
+          "note": "Lớp chống nắng Lancôme bảo vệ da và tạo nền mịn nhẹ.",
+          "link": "https://s.shopee.vn/5LD7shzjLa",
+          "cta": "🛒 Mua Lancôme SPF",
+          "subs": []
+        },
+        {
+          "id": "t6-p3",
+          "emoji": "🪞",
+          "name": "Nền Clé de Peau mini",
+          "note": "Nền Clé de Peau bản mini — mỏng, đều, để mắt trở thành điểm nhấn chính.",
+          "link": "https://s.shopee.vn/3g4r2N8x7o",
+          "cta": "🛒 Mua nền Clé de Peau",
+          "subs": []
+        },
+        {
+          "id": "t6-p4",
+          "emoji": "🖌️",
+          "name": "Cọ dàn nền cho người mới",
+          "note": "Cọ dàn nền dễ dùng cho người mới — tán mỏng, không để lại vệt.",
+          "link": "https://s.shopee.vn/50aJEnUxTY",
+          "cta": "🛒 Mua cọ dàn nền",
+          "subs": []
+        },
+        {
+          "id": "t6-p5",
+          "emoji": "🧽",
+          "name": "Bông mút tán",
+          "note": "Bông mút tán sát da, finish mịn trước khi lên bắt sáng.",
+          "link": "https://s.shopee.vn/8pmxBxvah7",
+          "cta": "🛒 Mua bông mút tán",
+          "subs": []
+        },
+        {
+          "id": "t6-p6",
+          "emoji": "🖌️",
+          "name": "Cọ tán kem bắt sáng",
+          "note": "Cọ chuyên tán kem bắt sáng — điểm sáng xương gò má và sống mũi.",
+          "link": "https://s.shopee.vn/1gJrGtvebt",
+          "cta": "🛒 Mua cọ bắt sáng",
+          "subs": []
+        },
+        {
+          "id": "t6-p7",
+          "emoji": "✨",
+          "name": "Kem bắt sáng",
+          "note": "Kem bắt sáng tạo điểm sáng ướt, làm mắt và khung mặt nổi.",
+          "link": "https://s.shopee.vn/114ATqK06M",
+          "cta": "🛒 Mua kem bắt sáng",
+          "subs": []
+        },
+        {
+          "id": "t6-p8",
+          "emoji": "🌸",
+          "name": "Má hồng NARS tone Behave",
+          "note": "Má hồng NARS tông Behave — hồng đất dịu, cân bằng điểm nhấn mắt.",
+          "link": "https://s.shopee.vn/5LD537f69u",
+          "cta": "🛒 Mua NARS Behave",
+          "subs": []
+        },
+        {
+          "id": "t6-p9",
+          "emoji": "🔒",
+          "name": "Phấn phủ nén Bobbi Brown",
+          "note": "Phấn nén Bobbi Brown khoá nền — da thoáng, makeup bền trước khi makeup mắt.",
+          "link": "https://s.shopee.vn/40hkKJExoc",
+          "cta": "🛒 Mua Bobbi Brown",
+          "subs": []
+        },
+        {
+          "id": "t6-p10",
+          "emoji": "🖊️",
+          "name": "Chì kẻ mày hai đầu Flower Knows màu 01",
+          "note": "Chì kẻ mày hai đầu (đầu chì + đầu chuốt) Flower Knows màu 01 — khung mày rõ, gọn.",
+          "link": "https://s.shopee.vn/gRK5SX91M",
+          "cta": "🛒 Mua chì mày FK 01",
+          "subs": []
+        },
+        {
+          "id": "t6-p11",
+          "emoji": "👁️",
+          "name": "Mascara lông mày Kissme màu 08",
+          "note": "Mascara chải lông mày chống lem Kissme màu 08 — cố định sợi mày.",
+          "link": "https://s.shopee.vn/3g4twMczco",
+          "cta": "🛒 Mua Kissme 08",
+          "subs": []
+        },
+        {
+          "id": "t6-p12",
+          "emoji": "🎨",
+          "name": "Bảng mắt LADYBIZ màu 01",
+          "note": "Bảng phấn mắt 9 ô nhũ mịn LADYBIZ màu 01 — dễ blend, tạo chiều sâu mí.",
+          "link": "https://s.shopee.vn/9KjIQJk9An",
+          "cta": "🛒 Mua LADYBIZ 01",
+          "subs": []
+        },
+        {
+          "id": "t6-p13",
+          "emoji": "📎",
+          "name": "Miếng dán kích đuôi mắt MLEN DIARY",
+          "note": "Miếng dán kích đuôi mắt không lộ viền — giữ nếp cả ngày, mắt dài hơn.",
+          "link": "https://s.shopee.vn/1LgzyXkVPP",
+          "cta": "🛒 Mua MLEN DIARY",
+          "subs": []
+        },
+        {
+          "id": "t6-p14",
+          "emoji": "💫",
+          "name": "Bấm mi cong lâu WOSADO",
+          "note": "Bấm mi cong lâu WOSADO trước khi kẻ mắt và gắn mi giả.",
+          "link": "https://s.shopee.vn/3VlPYwLnBX",
+          "cta": "🛒 Mua WOSADO",
+          "subs": []
+        },
+        {
+          "id": "t6-p15",
+          "emoji": "✏️",
+          "name": "Bút kẻ mắt gel Canmake",
+          "note": "Bút kẻ mắt gel Canmake chống nước, không lem — đường kẻ sắc, bền.",
+          "link": "https://s.shopee.vn/3qOLsbaqMi",
+          "cta": "🛒 Mua Canmake gel",
+          "subs": []
+        },
+        {
+          "id": "t6-p16",
+          "emoji": "🪶",
+          "name": "Mi giả MR.WISH",
+          "note": "Mi giả MR.WISH có thể tái sử dụng — mở mắt, hoàn thiện look chú trọng mắt.",
+          "link": "https://s.shopee.vn/9pfYo1c9cN",
+          "cta": "🛒 Mua mi MR.WISH",
+          "subs": []
+        },
+        {
+          "id": "t6-p17",
+          "emoji": "🌸",
+          "name": "Má hồng Momo’s Workshop CB03",
+          "note": "Dặm thêm má hồng Momo’s CB03 — hồng nhẹ cân điểm nhấn mắt.",
+          "link": "https://s.shopee.vn/3B8aG2d7jN",
+          "cta": "🛒 Mua má hồng CB03",
+          "subs": []
+        },
+        {
+          "id": "t6-p18",
+          "emoji": "🖌️",
+          "name": "Cọ đa năng má hồng & highlight",
+          "note": "Cọ đa năng đánh má hồng kem/phấn, nhấn tâm mặt và highlight.",
+          "link": "https://s.shopee.vn/7KyE3d3lFo",
+          "cta": "🛒 Mua cọ đa năng",
+          "subs": []
+        },
+        {
+          "id": "t6-p19",
+          "emoji": "💋",
+          "name": "Bút kẻ viền môi 2 đầu Out Of Office",
+          "note": "Bút kẻ viền môi 2 đầu OOO — tạo khối môi, hack môi đầy.",
+          "link": "https://s.shopee.vn/9V2ie1cD86",
+          "cta": "🛒 Mua OOO lip liner",
+          "subs": []
+        },
+        {
+          "id": "t6-p20",
+          "emoji": "🧴",
+          "name": "Kem dưỡng môi Judydoll N26",
+          "note": "Kem dưỡng môi Judydoll màu N26 — ủ mềm môi trước son bóng.",
+          "link": "https://s.shopee.vn/AUvFq5bkpB",
+          "cta": "🛒 Mua Judydoll N26",
+          "subs": []
+        },
+        {
+          "id": "t6-p21",
+          "emoji": "🐚",
+          "name": "Son bóng vỏ sò Shell Jewel",
+          "note": "Son bóng vỏ sò BST Shell Jewel của Flower Knows — bóng ướt chốt look.",
+          "link": "https://s.shopee.vn/9fM4EeEuX2",
+          "cta": "🛒 Mua Shell Jewel",
+          "subs": []
+        }
+      ]
+    },
+    {
+      "id": "look-chekhuyetdiem",
+      "tabName": "Che khuyết điểm",
+      "emoji": "🫥",
+      "title": "Tone che khuyết điểm — da đều, sạch điểm tối",
+      "subtitle": "Cấp ẩm → chống nắng → che điểm → khối → mắt → má → son. Da đều màu mà vẫn tự nhiên ✨",
+      "footer": "Che khuyết điểm · đều · sạch sẽ 💕",
+      "badge": "Look che khuyết điểm",
+      "products": [
+        {
+          "id": "t7-p1",
+          "emoji": "💦",
+          "name": "Serum xịt khoáng căng bóng",
+          "note": "Xịt đầu tiên để cấp ẩm nhanh — da căng và bóng nhẹ trước các bước tiếp theo.",
+          "link": "https://s.shopee.vn/8KqfHNGKJJ",
+          "cta": "🛒 Mua serum xịt",
+          "subs": []
+        },
+        {
+          "id": "t7-p2",
+          "emoji": "💧",
+          "name": "Tinh chất Peterson’s Lab",
+          "note": "Tinh chất dưỡng ẩm làm dịu da Peterson’s Lab — chuẩn bị da trước chống nắng và che khuyết điểm.",
+          "link": "https://s.shopee.vn/8fTbn22w5t",
+          "cta": "🛒 Mua Peterson’s Lab",
+          "subs": []
+        },
+        {
+          "id": "t7-p3",
+          "emoji": "☀️",
+          "name": "Kem chống nắng Lancôme",
+          "note": "Kem chống nắng Lancôme — lớp bảo vệ + nền mịn trước khi che điểm.",
+          "link": "https://s.shopee.vn/5LD7shzjLa",
+          "cta": "🛒 Mua Lancôme SPF",
+          "subs": []
+        },
+        {
+          "id": "t7-p4",
+          "emoji": "🫥",
+          "name": "Kem che khuyết điểm Foreverkey",
+          "note": "Kem che khuyết điểm Foreverkey màu 01, 02 và 06 — xử lý quầng thâm và điểm tối.",
+          "link": "https://s.shopee.vn/5fpy2jaONZ",
+          "cta": "🛒 Mua Foreverkey",
+          "subs": []
+        },
+        {
+          "id": "t7-p5",
+          "emoji": "🧽",
+          "name": "Bông mút tán",
+          "note": "Bông mút tán đều lớp che khuyết điểm, không để lại vệt dày.",
+          "link": "https://s.shopee.vn/8pmxBxvah7",
+          "cta": "🛒 Mua bông mút tán",
+          "subs": []
+        },
+        {
+          "id": "t7-p6",
+          "emoji": "🌸",
+          "name": "Má hồng dạng thỏi NARS",
+          "note": "Má hồng dạng thỏi NARS — makeup nhanh, tone tự nhiên trên nền đã đều.",
+          "link": "https://s.shopee.vn/7VHePDptAZ",
+          "cta": "🛒 Mua NARS thỏi",
+          "subs": []
+        },
+        {
+          "id": "t7-p7",
+          "emoji": "🏔️",
+          "name": "Tạo khối Fenty Beauty",
+          "note": "Tạo khối Fenty Beauty — đường nét rõ sau khi da đã đều màu.",
+          "link": "https://s.shopee.vn/4B17fvvFSW",
+          "cta": "🛒 Mua Fenty Beauty",
+          "subs": []
+        },
+        {
+          "id": "t7-p8",
+          "emoji": "🔒",
+          "name": "Phấn nén NARS",
+          "note": "Phấn nén NARS khoá nền và lớp che — da thoáng, makeup bền.",
+          "link": "https://s.shopee.vn/BUyy3boVl",
+          "cta": "🛒 Mua phấn nén NARS",
+          "subs": []
+        },
+        {
+          "id": "t7-p9",
+          "emoji": "🎨",
+          "name": "Bảng mắt Chanel 4 ô màu 308",
+          "note": "Bảng mắt Chanel 4 ô màu 308 — nhấn mí thanh, sang trên nền sạch.",
+          "link": "https://s.shopee.vn/1LgxRjW17d",
+          "cta": "🛒 Mua Chanel 308",
+          "subs": []
+        },
+        {
+          "id": "t7-p10",
+          "emoji": "👁️",
+          "name": "Mascara lông mày Kissme màu 08",
+          "note": "Mascara chải lông mày chống lem Kissme màu 08.",
+          "link": "https://s.shopee.vn/3g4twMczco",
+          "cta": "🛒 Mua Kissme 08",
+          "subs": []
+        },
+        {
+          "id": "t7-p11",
+          "emoji": "💫",
+          "name": "Bấm mi cong lâu WOSADO",
+          "note": "Bấm mi cong lâu WOSADO trước khi gắn mi.",
+          "link": "https://s.shopee.vn/3VlPYwLnBX",
+          "cta": "🛒 Mua WOSADO",
+          "subs": []
+        },
+        {
+          "id": "t7-p12",
+          "emoji": "🪶",
+          "name": "Bộ mi giả",
+          "note": "Bộ mi giả hoàn thiện mắt sau khi da đã đều và sạch điểm tối.",
+          "link": "https://s.shopee.vn/8fTYRfnA94",
+          "cta": "🛒 Mua bộ mi giả",
+          "subs": []
+        },
+        {
+          "id": "t7-p13",
+          "emoji": "🍑",
+          "name": "Phấn má hồng Clinique Melon Pop",
+          "note": "Dặm thêm phấn má hồng Clinique màu Melon Pop — tươi tắn, trẻ trung.",
+          "link": "https://s.shopee.vn/5q9QQYKuak",
+          "cta": "🛒 Mua Melon Pop",
+          "subs": []
+        },
+        {
+          "id": "t7-p14",
+          "emoji": "🖌️",
+          "name": "Cọ đa năng má hồng & highlight",
+          "note": "Cọ đa năng đánh má hồng kem/phấn, nhấn tâm mặt và highlight.",
+          "link": "https://s.shopee.vn/7KyE3d3lFo",
+          "cta": "🛒 Mua cọ đa năng",
+          "subs": []
+        },
+        {
+          "id": "t7-p15",
+          "emoji": "💄",
+          "name": "Son thỏi KATE #05",
+          "note": "Son thỏi KATE bền màu lâu trôi màu #05 — chốt look che khuyết điểm.",
+          "link": "https://s.shopee.vn/4LKce5Jcsg",
+          "cta": "🛒 Mua KATE #05",
+          "subs": []
+        }
+      ]
+    },
+    {
+      "id": "look-nudehanhnhan",
+      "tabName": "Nude hạnh nhân",
+      "emoji": "🌰",
+      "title": "Tone nude hạnh nhân — ấm, mềm, thanh lịch",
+      "subtitle": "Da dịu → nền YSL → má Rare Beauty → khối → mắt nude → môi bóng. Tone ấm phủ nhẹ ✨",
+      "footer": "Nude hạnh nhân · ấm · thanh 💕",
+      "badge": "Look nude hạnh nhân",
+      "products": [
+        {
+          "id": "t8-p1",
+          "emoji": "💦",
+          "name": "Serum xịt khoáng căng bóng",
+          "note": "Xịt đầu tiên để cấp ẩm nhanh — da căng và bóng nhẹ trước makeup.",
+          "link": "https://s.shopee.vn/8KqfHNGKJJ",
+          "cta": "🛒 Mua serum xịt",
+          "subs": []
+        },
+        {
+          "id": "t8-p2",
+          "emoji": "🥛",
+          "name": "Sữa dưỡng ONGREDIENTS",
+          "note": "Sữa dưỡng thuần chay làm dịu da, dưỡng ẩm tăng cường — chuẩn bị trang điểm hoàn hảo.",
+          "link": "https://s.shopee.vn/3qOHEPYEBb",
+          "cta": "🛒 Mua ONGREDIENTS",
+          "subs": []
+        },
+        {
+          "id": "t8-p3",
+          "emoji": "☀️",
+          "name": "Kem chống nắng Lancôme",
+          "note": "Kem chống nắng Lancôme — lớp nền mịn trước kem nền YSL.",
+          "link": "https://s.shopee.vn/5LD7shzjLa",
+          "cta": "🛒 Mua Lancôme SPF",
+          "subs": []
+        },
+        {
+          "id": "t8-p4",
+          "emoji": "🪞",
+          "name": "Kem nền YSL",
+          "note": "Kem nền YSL — lớp nền mỏng, tông nude hạnh nhân ấm nhẹ.",
+          "link": "https://s.shopee.vn/BV3hJeMCD",
+          "cta": "🛒 Mua nền YSL",
+          "subs": []
+        },
+        {
+          "id": "t8-p5",
+          "emoji": "🧽",
+          "name": "Bông mút tán",
+          "note": "Bông mút tán nền sát da, finish mềm.",
+          "link": "https://s.shopee.vn/8pmxBxvah7",
+          "cta": "🛒 Mua bông mút tán",
+          "subs": []
+        },
+        {
+          "id": "t8-p6",
+          "emoji": "🌸",
+          "name": "Má hồng kem Rare Beauty",
+          "note": "Má hồng kem Rare Beauty — hồng đất mềm, đúng vibe nude hạnh nhân.",
+          "link": "https://s.shopee.vn/1Lh15sgsGZ",
+          "cta": "🛒 Mua Rare Beauty",
+          "subs": []
+        },
+        {
+          "id": "t8-p7",
+          "emoji": "🖌️",
+          "name": "Cọ tán kem bắt sáng",
+          "note": "Cọ tán kem bắt sáng — điểm sáng xương gò má ấm.",
+          "link": "https://s.shopee.vn/1gJrGtvebt",
+          "cta": "🛒 Mua cọ bắt sáng",
+          "subs": []
+        },
+        {
+          "id": "t8-p8",
+          "emoji": "✨",
+          "name": "Kem bắt sáng",
+          "note": "Kem bắt sáng tạo ánh sáng ướt trên tông nude.",
+          "link": "https://s.shopee.vn/114ATqK06M",
+          "cta": "🛒 Mua kem bắt sáng",
+          "subs": []
+        },
+        {
+          "id": "t8-p9",
+          "emoji": "🏔️",
+          "name": "Tạo khối Fenty Beauty",
+          "note": "Tạo khối Fenty Beauty — đường nét mềm, không quá lạnh.",
+          "link": "https://s.shopee.vn/4B17fvvFSW",
+          "cta": "🛒 Mua Fenty Beauty",
+          "subs": []
+        },
+        {
+          "id": "t8-p10",
+          "emoji": "🔒",
+          "name": "Phấn phủ Albion Elégance",
+          "note": "Phấn phủ trang điểm Albion Elégance La Poudre — khoá nền nude mịn.",
+          "link": "https://s.shopee.vn/6fiTnFsFcn",
+          "cta": "🛒 Mua Albion Elégance",
+          "subs": []
+        },
+        {
+          "id": "t8-p11",
+          "emoji": "🖊️",
+          "name": "Chì kẻ mày hai đầu Flower Knows màu 01",
+          "note": "Chì kẻ mày hai đầu Flower Knows màu 01 — khung mày ấm, gọn.",
+          "link": "https://s.shopee.vn/gRK5SX91M",
+          "cta": "🛒 Mua chì mày FK 01",
+          "subs": []
+        },
+        {
+          "id": "t8-p12",
+          "emoji": "👁️",
+          "name": "Mascara lông mày",
+          "note": "Mascara lông mày cố định sợi mày, giữ form nude thanh.",
+          "link": "https://s.shopee.vn/gREBNjjB0",
+          "cta": "🛒 Mua mascara lông mày",
+          "subs": []
+        },
+        {
+          "id": "t8-p13",
+          "emoji": "🎨",
+          "name": "Bảng mắt Clio màu số 03",
+          "note": "Bảng mắt Clio #03 — mí nude ấm, dễ blend hàng ngày.",
+          "link": "https://s.shopee.vn/8Kqo99Dg3a",
+          "cta": "🛒 Mua Clio #03",
+          "subs": []
+        },
+        {
+          "id": "t8-p14",
+          "emoji": "🌸",
+          "name": "Phấn má hồng Flower Knows",
+          "note": "Phấn má hồng Flower Knows — lớp má phủ nhẹ tông hạnh nhân.",
+          "link": "https://s.shopee.vn/5VWa4i9y0h",
+          "cta": "🛒 Mua má hồng Flower Knows",
+          "subs": []
+        },
+        {
+          "id": "t8-p15",
+          "emoji": "💋",
+          "name": "Bút kẻ viền môi 2 đầu Out Of Office",
+          "note": "Bút kẻ viền môi 2 đầu OOO — tạo khối môi, hack môi đầy.",
+          "link": "https://s.shopee.vn/9V2ie1cD86",
+          "cta": "🛒 Mua OOO lip liner",
+          "subs": []
+        },
+        {
+          "id": "t8-p16",
+          "emoji": "🐚",
+          "name": "Son bóng vỏ sò Shell Jewel",
+          "note": "Son bóng vỏ sò BST Shell Jewel Flower Knows — bóng ướt chốt tone nude.",
+          "link": "https://s.shopee.vn/9fM4EeEuX2",
+          "cta": "🛒 Mua Shell Jewel",
+          "subs": []
+        }
+      ]
+    },
+    {
+      "id": "look-giamatmoc",
+      "tabName": "Giả mặt mộc",
+      "emoji": "🌿",
+      "title": "Tone giả mặt mộc — sạch, mỏng, như không makeup",
+      "subtitle": "Làm sạch → đắp ẩm → nâng tông → má kem → khối nhẹ → mắt mỏng → son dịu ✨",
+      "footer": "Giả mặt mộc · sạch · tự nhiên 💕",
+      "badge": "Look giả mặt mộc",
+      "products": [
+        {
+          "id": "t9-p1",
+          "emoji": "🫧",
+          "name": "Làm sạch & đắp ẩm",
+          "note": "Khăn lau trang điểm dưỡng ẩm kết hợp bông đắp ướt — da sạch, mềm trước makeup mỏng.",
+          "link": "https://s.shopee.vn/7KyFXi743E",
+          "cta": "🛒 Mua khăn lau makeup",
+          "subs": [
+            {
+              "title": "🫧 Bông đắp ướt co giãn",
+              "note": "Đắp ướt co giãn để da uống nước đều.",
+              "link": "https://s.shopee.vn/3LS0g0K042",
+              "cta": "🛒 Mua bông đắp ướt"
+            }
+          ]
+        },
+        {
+          "id": "t9-p2",
+          "emoji": "✨",
+          "name": "Nước thần HFP tiền makeup",
+          "note": "Đắp nước thần HFP trước makeup — da mềm mịn, căng mọng như mặt mộc.",
+          "link": "https://s.shopee.vn/7AejFHRneZ",
+          "cta": "🛒 Mua nước thần HFP",
+          "subs": []
+        },
+        {
+          "id": "t9-p3",
+          "emoji": "☀️",
+          "name": "Kem chống nắng Lancôme",
+          "note": "Kem chống nắng Lancôme thay lớp bảo vệ mỏng trước nâng tông.",
+          "link": "https://s.shopee.vn/5LD7shzjLa",
+          "cta": "🛒 Mua Lancôme SPF",
+          "subs": []
+        },
+        {
+          "id": "t9-p4",
+          "emoji": "🪞",
+          "name": "Kem nâng tông Carslan",
+          "note": "Kem nâng tông da Carslan thay nền — da sáng nhẹ, vẫn thấy texture tự nhiên.",
+          "link": "https://s.shopee.vn/8AXMTA0I7B",
+          "cta": "🛒 Mua Carslan nâng tông",
+          "subs": []
+        },
+        {
+          "id": "t9-p5",
+          "emoji": "🌸",
+          "name": "Má hồng RED CHAMBER Haruki #Jenchun",
+          "note": "Má hồng RED CHAMBER Haruki tông #Jenchun — hồng sống động kiểu mặt mộc.",
+          "link": "https://s.shopee.vn/2VszmIyaSu",
+          "cta": "🛒 Mua RED CHAMBER má hồng",
+          "subs": []
+        },
+        {
+          "id": "t9-p6",
+          "emoji": "👆",
+          "name": "Mút mini ngón tay",
+          "note": "Mút trang điểm mini ngón tay — tán kem má hồng sát da, không dày.",
+          "link": "https://s.shopee.vn/9pfaW5l3uE",
+          "cta": "🛒 Mua mút mini",
+          "subs": []
+        },
+        {
+          "id": "t9-p7",
+          "emoji": "✨",
+          "name": "Kem bắt sáng Momo’s Workshop 002",
+          "note": "Kem bắt sáng Momo’s Workshop màu 002 — ánh sáng mỏng như da thật.",
+          "link": "https://s.shopee.vn/80Dok8DeXz",
+          "cta": "🛒 Mua bắt sáng Momo’s",
+          "subs": []
+        },
+        {
+          "id": "t9-p8",
+          "emoji": "🏔️",
+          "name": "Tạo khối Fenty Beauty",
+          "note": "Tạo khối Fenty Beauty rất nhẹ — chỉ đủ để khung mặt rõ hơn mặt mộc.",
+          "link": "https://s.shopee.vn/4B17fvvFSW",
+          "cta": "🛒 Mua Fenty Beauty",
+          "subs": []
+        },
+        {
+          "id": "t9-p9",
+          "emoji": "🔒",
+          "name": "Phấn phủ Bobbi Brown",
+          "note": "Phấn phủ Bobbi Brown — chỉ phủ vùng cần, giữ vùng bắt sáng vẫn căng.",
+          "link": "https://s.shopee.vn/7AejFvY3L7",
+          "cta": "🛒 Mua Bobbi Brown",
+          "subs": []
+        },
+        {
+          "id": "t9-p10",
+          "emoji": "🖊️",
+          "name": "Vẽ chân mày Flower Knows",
+          "note": "Bảng phấn bắt sáng tạo khối Flower Knows — vẽ chân mày tự nhiên.",
+          "link": "https://s.shopee.vn/4B1AWsAPRJ",
+          "cta": "🛒 Mua Flower Knows",
+          "subs": []
+        },
+        {
+          "id": "t9-p11",
+          "emoji": "👁️",
+          "name": "Mascara lông mày #S01",
+          "note": "Chuốt mày mascara không lem chống nước #S01 — form mày sạch.",
+          "link": "https://s.shopee.vn/3qONNuuXOP",
+          "cta": "🛒 Mua mascara mày #S01",
+          "subs": []
+        },
+        {
+          "id": "t9-p12",
+          "emoji": "🎨",
+          "name": "Bảng mắt Clio màu số 03",
+          "note": "Chỉnh đường nét mắt bằng Clio #03 — mỏng, gần như không makeup.",
+          "link": "https://s.shopee.vn/8Kqo99Dg3a",
+          "cta": "🛒 Mua Clio #03",
+          "subs": []
+        },
+        {
+          "id": "t9-p13",
+          "emoji": "📎",
+          "name": "Miếng dán kích đuôi mắt MLEN DIARY",
+          "note": "Miếng dán kích đuôi mắt không lộ viền — mắt mở nhẹ tự nhiên.",
+          "link": "https://s.shopee.vn/1LgzyXkVPP",
+          "cta": "🛒 Mua MLEN DIARY",
+          "subs": []
+        },
+        {
+          "id": "t9-p14",
+          "emoji": "💫",
+          "name": "Bấm mi cong lâu WOSADO",
+          "note": "Bấm mi cong lâu WOSADO — mi cong tự nhiên trước mascara mỏng.",
+          "link": "https://s.shopee.vn/3VlPYwLnBX",
+          "cta": "🛒 Mua WOSADO",
+          "subs": []
+        },
+        {
+          "id": "t9-p15",
+          "emoji": "🖤",
+          "name": "Mascara mỏng nhẹ tự nhiên",
+          "note": "Mascara mỏng nhẹ chống nước, chống mồ hôi — dài mi cong vút, không lem không vón.",
+          "link": "https://s.shopee.vn/6q1yxyW8ff",
+          "cta": "🛒 Mua mascara mỏng nhẹ",
+          "subs": []
+        },
+        {
+          "id": "t9-p16",
+          "emoji": "✏️",
+          "name": "Bút kẻ mắt giữ lâu trôi",
+          "note": "Bút kẻ mắt giữ lâu trôi — đường kẻ siêu mỏng gần chân mi.",
+          "link": "https://s.shopee.vn/9APtkakFZ8",
+          "cta": "🛒 Mua bút kẻ mắt",
+          "subs": []
+        },
+        {
+          "id": "t9-p17",
+          "emoji": "💋",
+          "name": "Son Dinto #219",
+          "note": "Son Dinto màu #219 — sắc môi dịu, đúng vibe giả mặt mộc.",
+          "link": "https://s.shopee.vn/4qGoSAOpun",
+          "cta": "🛒 Mua Dinto #219",
+          "subs": []
+        }
+      ]
+    },
+    {
+      "id": "look-hongmamxoi",
+      "tabName": "Hồng mâm xôi",
+      "emoji": "🍓",
+      "title": "Tone hồng mâm xôi — ngọt, nổi, tiểu thư",
+      "subtitle": "Nền sáng → khối → má Pixi → mắt nhũ RED CHAMBER → mũi Flower Knows → son YSL ✨",
+      "footer": "Hồng mâm xôi · ngọt · nổi bật 💕",
+      "badge": "Look hồng mâm xôi",
+      "products": [
+        {
+          "id": "t10-p1",
+          "emoji": "☀️",
+          "name": "Kem chống nắng Lancôme",
+          "note": "Kem chống nắng Lancôme — lớp nền mịn trước nền Clé de Peau.",
+          "link": "https://s.shopee.vn/5LD7shzjLa",
+          "cta": "🛒 Mua Lancôme SPF",
+          "subs": []
+        },
+        {
+          "id": "t10-p2",
+          "emoji": "🪞",
+          "name": "Nền Clé de Peau mini",
+          "note": "Nền Clé de Peau mini — da sáng đều để tông hồng mâm xôi nổi.",
+          "link": "https://s.shopee.vn/3g4r2N8x7o",
+          "cta": "🛒 Mua nền Clé de Peau",
+          "subs": []
+        },
+        {
+          "id": "t10-p3",
+          "emoji": "🖌️",
+          "name": "Cọ dàn nền cho người mới",
+          "note": "Cọ dàn nền dễ dùng — tán mỏng lớp nền sáng.",
+          "link": "https://s.shopee.vn/50aJEnUxTY",
+          "cta": "🛒 Mua cọ dàn nền",
+          "subs": []
+        },
+        {
+          "id": "t10-p4",
+          "emoji": "🧽",
+          "name": "Bông mút tán",
+          "note": "Bông mút tán sát da trước khi lên cọ đầu dẹt.",
+          "link": "https://s.shopee.vn/8pmxBxvah7",
+          "cta": "🛒 Mua bông mút tán",
+          "subs": []
+        },
+        {
+          "id": "t10-p5",
+          "emoji": "🖌️",
+          "name": "Cọ dàn kem nền đầu dẹt",
+          "note": "Cọ dàn kem nền đầu dẹt cực mỏng — lớp nền mềm mịn.",
+          "link": "https://s.shopee.vn/8KqmqLZNOo",
+          "cta": "🛒 Mua cọ đầu dẹt",
+          "subs": []
+        },
+        {
+          "id": "t10-p6",
+          "emoji": "🫧",
+          "name": "Bông mút tán nền siêu mềm",
+          "note": "Bông mút tán nền siêu mềm — pat lại cho finish ôm da.",
+          "link": "https://s.shopee.vn/8pmxBxvah7",
+          "cta": "🛒 Mua bông mút siêu mềm",
+          "subs": []
+        },
+        {
+          "id": "t10-p7",
+          "emoji": "✨",
+          "name": "Kem bắt sáng Momo’s Workshop 002",
+          "note": "Kem bắt sáng Momo’s Workshop màu 002 — điểm sáng trước khối và má hồng.",
+          "link": "https://s.shopee.vn/80Dok8DeXz",
+          "cta": "🛒 Mua bắt sáng Momo’s",
+          "subs": []
+        },
+        {
+          "id": "t10-p8",
+          "emoji": "🏔️",
+          "name": "Tạo khối Fenty Beauty",
+          "note": "Tạo khối Fenty Beauty — khung mặt rõ để má hồng mâm xôi nổi.",
+          "link": "https://s.shopee.vn/4B17fvvFSW",
+          "cta": "🛒 Mua Fenty Beauty",
+          "subs": []
+        },
+        {
+          "id": "t10-p9",
+          "emoji": "🍓",
+          "name": "Má hồng Pixi dạng thỏi",
+          "note": "Má hồng Pixi dạng thỏi — tông hồng mâm xôi ngọt, dễ blend.",
+          "link": "https://s.shopee.vn/3B8ghBxpY2",
+          "cta": "🛒 Mua Pixi thỏi",
+          "subs": []
+        },
+        {
+          "id": "t10-p10",
+          "emoji": "🔒",
+          "name": "Phấn phủ Albion Elégance màu số 1",
+          "note": "Phấn phủ Albion Elégance La Poudre màu số 1 — khoá nền hồng mịn.",
+          "link": "https://s.shopee.vn/6fiTnFsFcn",
+          "cta": "🛒 Mua Albion màu 1",
+          "subs": []
+        },
+        {
+          "id": "t10-p11",
+          "emoji": "🖊️",
+          "name": "Bảng mắt Joocyee #04 (lông mày)",
+          "note": "Bảng phấn mắt 12 ô Joocyee #04 — dùng tông phù hợp để tô màu lông mày.",
+          "link": "https://s.shopee.vn/W7vX4IqC7",
+          "cta": "🛒 Mua Joocyee #04",
+          "subs": []
+        },
+        {
+          "id": "t10-p12",
+          "emoji": "👁️",
+          "name": "Mascara lông mày #S01",
+          "note": "Chuốt mày mascara không lem chống nước #S01.",
+          "link": "https://s.shopee.vn/3qONNuuXOP",
+          "cta": "🛒 Mua mascara mày #S01",
+          "subs": []
+        },
+        {
+          "id": "t10-p13",
+          "emoji": "🖌️",
+          "name": "Cọ nhấn bầu mắt",
+          "note": "Cọ nhấn bầu mắt, vẽ đường nét mắt trước khi lên nhũ.",
+          "link": "https://s.shopee.vn/6L5iU6fTrH",
+          "cta": "🛒 Mua cọ bầu mắt",
+          "subs": []
+        },
+        {
+          "id": "t10-p14",
+          "emoji": "✨",
+          "name": "Bảng mắt / nhũ RED CHAMBER #FE900",
+          "note": "Bảng mắt tạo điểm nhấn, bắt sáng RED CHAMBER #FE900 — nhũ mâm xôi long lanh.",
+          "link": "https://s.shopee.vn/AUvE5oSi4S",
+          "cta": "🛒 Mua RED CHAMBER FE900",
+          "subs": []
+        },
+        {
+          "id": "t10-p15",
+          "emoji": "🪭",
+          "name": "Cọ highlight hình quạt",
+          "note": "Cọ trang điểm highlight hình quạt — quét sáng xương gò má và mí.",
+          "link": "https://s.shopee.vn/5Atl6SQJow",
+          "cta": "🛒 Mua cọ quạt",
+          "subs": []
+        },
+        {
+          "id": "t10-p16",
+          "emoji": "💫",
+          "name": "Bấm mi cong lâu WOSADO",
+          "note": "Bấm mi cong lâu WOSADO trước khi hoàn thiện mắt.",
+          "link": "https://s.shopee.vn/3VlPYwLnBX",
+          "cta": "🛒 Mua WOSADO",
+          "subs": []
+        },
+        {
+          "id": "t10-p17",
+          "emoji": "👃",
+          "name": "Vẽ sống mũi Flower Knows",
+          "note": "Bảng phấn bắt sáng tạo khối Flower Knows — vẽ sống mũi thẳng, sáng.",
+          "link": "https://s.shopee.vn/4B1AWsAPRJ",
+          "cta": "🛒 Mua Flower Knows",
+          "subs": []
+        },
+        {
+          "id": "t10-p18",
+          "emoji": "💄",
+          "name": "Son YSL #622",
+          "note": "Son YSL màu #622 — sắc môi hồng mâm xôi chốt look.",
+          "link": "https://s.shopee.vn/9V2gundcU6",
+          "cta": "🛒 Mua YSL #622",
+          "subs": []
+        }
+      ]
+    }
+  ]
+};
+/*__END_DEFAULT_DATA__*/
+
+const STORAGE_KEY = "win-lookbook-v2";
+const PIN_SESSION = "win-lookbook-authed";
+
+const state = {
+  data: null,
+  editing: false,
+  longPressTimer: null
+};
+
+function uid(prefix) {
+  return prefix + "-" + Math.random().toString(36).slice(2, 9);
+}
+
+function clone(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+function loadData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && Array.isArray(parsed.looks) && parsed.looks.length) {
+        return parsed;
+      }
+    }
+  } catch (e) {}
+  return clone(DEFAULT_DATA);
+}
+
+function saveData() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.data));
+  } catch (e) {
+    toast("Không lưu được localStorage trên thiết bị này");
+  }
+}
+
+function activeLook() {
+  const d = state.data;
+  let look = d.looks.find(l => l.id === d.activeId);
+  if (!look) {
+    look = d.looks[0];
+    d.activeId = look.id;
+  }
+  return look;
+}
+
+function toast(msg) {
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => el.classList.remove("show"), 2400);
+}
+
+function escapeHtml(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function renderTabs() {
+  const looks = state.data.looks;
+  const activeId = state.data.activeId;
+  const html = looks.map(l => {
+    const active = l.id === activeId ? " active" : "";
+    return `<button type="button" class="sheet-tab${active}" data-id="${escapeHtml(l.id)}" role="tab" aria-selected="${l.id === activeId}">` +
+      `<span class="tab-emoji">${escapeHtml(l.emoji || "💄")}</span>${escapeHtml(l.tabName || "Tone")}</button>`;
+  }).join("") + `<button type="button" class="sheet-add" id="btnAddTab" title="Thêm tone">+</button>`;
+
+  ["tabsTop", "tabsBottom"].forEach(id => {
+    const bar = document.getElementById(id);
+    bar.innerHTML = html;
+    bar.querySelectorAll(".sheet-tab").forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.data.activeId = btn.dataset.id;
+        saveData();
+        render();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+      let pressTimer;
+      btn.addEventListener("pointerdown", () => {
+        if (!state.editing) return;
+        pressTimer = setTimeout(() => {
+          const name = prompt("Đổi tên tab:", activeLook().tabName);
+          if (name != null && name.trim()) {
+            const look = state.data.looks.find(l => l.id === btn.dataset.id);
+            if (look) {
+              look.tabName = name.trim();
+              saveData();
+              render();
+              toast("Đã đổi tên tab");
+            }
+          }
+        }, 550);
+      });
+      btn.addEventListener("pointerup", () => clearTimeout(pressTimer));
+      btn.addEventListener("pointerleave", () => clearTimeout(pressTimer));
+      btn.addEventListener("pointercancel", () => clearTimeout(pressTimer));
+    });
+    const add = bar.querySelector(".sheet-add");
+    if (add) add.addEventListener("click", addTab);
+  });
+}
+
+function renderProducts() {
+  const look = activeLook();
+  const root = document.getElementById("steps");
+  if (!look.products || !look.products.length) {
+    root.innerHTML = `<div class="empty-look">
+      <div class="big">${escapeHtml(look.emoji || "✨")}</div>
+      <h3>Sheet trống</h3>
+      <p>Tone này chưa có sản phẩm.${state.editing ? " Bấm “Thêm sản phẩm” bên dưới để điền." : " Sắp cập nhật — quay lại sau nhé."}</p>
+    </div>`;
+    return;
+  }
+
+  root.innerHTML = look.products.map((p, i) => {
+    const linkBtn = p.link
+      ? `<a class="cta view-only" href="${escapeHtml(p.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(p.cta || "🛒 Mua trên Shopee")}</a>`
+      : `<span class="nolink view-only">⏳ Chưa có link Shopee</span>`;
+
+    const subs = (p.subs || []).map((s, si) => {
+      const subLink = s.link
+        ? `<a class="cta secondary view-only" href="${escapeHtml(s.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.cta || "🛒 Mua trên Shopee")}</a>`
+        : `<span class="nolink view-only">⏳ Chưa có link Shopee</span>`;
+      return `<div class="sub" data-sub="${si}">
+        <div class="sub-title view-only">${escapeHtml(s.title || "")}</div>
+        ${s.note ? `<p class="note view-only">${escapeHtml(s.note)}</p>` : ""}
+        ${subLink}
+        <input class="edit-field" data-field="sub-title" data-pi="${i}" data-si="${si}" value="${escapeHtml(s.title || "")}" placeholder="Tiêu đề phụ" />
+        <textarea class="edit-field" data-field="sub-note" data-pi="${i}" data-si="${si}" placeholder="Mô tả phụ (tuỳ chọn)">${escapeHtml(s.note || "")}</textarea>
+        <input class="edit-field" data-field="sub-link" data-pi="${i}" data-si="${si}" value="${escapeHtml(s.link || "")}" placeholder="Link Shopee phụ" />
+        <input class="edit-field" data-field="sub-cta" data-pi="${i}" data-si="${si}" value="${escapeHtml(s.cta || "")}" placeholder="Chữ nút phụ" />
+        <div class="edit-row"><button type="button" data-action="del-sub" data-pi="${i}" data-si="${si}">Xoá mục phụ</button></div>
+      </div>`;
+    }).join("");
+
+    return `<article class="card" data-pi="${i}" style="animation-delay:${Math.min(i, 10) * 0.04}s">
+      <div class="card-tools">
+        <button type="button" data-action="up" data-pi="${i}" title="Lên">↑</button>
+        <button type="button" data-action="down" data-pi="${i}" title="Xuống">↓</button>
+        <button type="button" data-action="del" data-pi="${i}" title="Xoá">✕</button>
+      </div>
+      <div class="card-top">
+        <div class="step">${i + 1}</div>
+        <div style="flex:1;min-width:0">
+          <div class="emoji view-only">${escapeHtml(p.emoji || "")}</div>
+          <h2 class="view-only">${escapeHtml(p.name || "")}</h2>
+          <p class="note view-only">${escapeHtml(p.note || "")}</p>
+          <input class="edit-field" data-field="emoji" data-pi="${i}" value="${escapeHtml(p.emoji || "")}" placeholder="Emoji" maxlength="4" />
+          <input class="edit-field" data-field="name" data-pi="${i}" value="${escapeHtml(p.name || "")}" placeholder="Tên sản phẩm / bước" />
+          <textarea class="edit-field" data-field="note" data-pi="${i}" placeholder="Mô tả">${escapeHtml(p.note || "")}</textarea>
+          <input class="edit-field" data-field="link" data-pi="${i}" value="${escapeHtml(p.link || "")}" placeholder="Link Shopee (để trống = chưa có)" />
+          <input class="edit-field" data-field="cta" data-pi="${i}" value="${escapeHtml(p.cta || "")}" placeholder="Chữ trên nút" />
+        </div>
+      </div>
+      ${linkBtn}
+      ${subs}
+      <div class="edit-row"><button type="button" data-action="add-sub" data-pi="${i}">＋ Thêm mục phụ (sub)</button></div>
+    </article>`;
+  }).join("");
+
+  root.querySelectorAll(".edit-field").forEach(inp => {
+    inp.addEventListener("change", onFieldChange);
+    inp.addEventListener("blur", onFieldChange);
+  });
+  root.querySelectorAll("[data-action]").forEach(btn => {
+    btn.addEventListener("click", onCardAction);
+  });
+}
+
+function onFieldChange(e) {
+  const el = e.target;
+  const pi = +el.dataset.pi;
+  const look = activeLook();
+  const p = look.products[pi];
+  if (!p) return;
+  const field = el.dataset.field;
+  if (field.startsWith("sub-")) {
+    const si = +el.dataset.si;
+    if (!p.subs[si]) return;
+    const key = field.slice(4);
+    p.subs[si][key] = el.value;
+  } else {
+    p[field] = el.value;
+  }
+  saveData();
+}
+
+function onCardAction(e) {
+  const btn = e.currentTarget;
+  const action = btn.dataset.action;
+  const pi = +btn.dataset.pi;
+  const look = activeLook();
+  if (!look.products) look.products = [];
+
+  if (action === "del") {
+    if (!confirm("Xoá sản phẩm này?")) return;
+    look.products.splice(pi, 1);
+  } else if (action === "up" && pi > 0) {
+    const t = look.products[pi - 1];
+    look.products[pi - 1] = look.products[pi];
+    look.products[pi] = t;
+  } else if (action === "down" && pi < look.products.length - 1) {
+    const t = look.products[pi + 1];
+    look.products[pi + 1] = look.products[pi];
+    look.products[pi] = t;
+  } else if (action === "add-sub") {
+    if (!look.products[pi].subs) look.products[pi].subs = [];
+    look.products[pi].subs.push({ title: "➕ Mục phụ mới", note: "", link: "", cta: "🛒 Mua trên Shopee" });
+  } else if (action === "del-sub") {
+    const si = +btn.dataset.si;
+    look.products[pi].subs.splice(si, 1);
+  }
+  saveData();
+  render();
+}
+
+function syncLookEditBar() {
+  const look = activeLook();
+  document.getElementById("editTabName").value = look.tabName || "";
+  document.getElementById("editEmoji").value = look.emoji || "";
+  document.getElementById("editTitle").value = look.title || "";
+  document.getElementById("editSubtitle").value = look.subtitle || "";
+  document.getElementById("editFooter").value = look.footer || "";
+}
+
+function applyLookEditBar() {
+  const look = activeLook();
+  look.tabName = document.getElementById("editTabName").value.trim() || look.tabName;
+  look.emoji = document.getElementById("editEmoji").value.trim() || look.emoji;
+  look.title = document.getElementById("editTitle").value.trim() || look.title;
+  look.subtitle = document.getElementById("editSubtitle").value;
+  look.footer = document.getElementById("editFooter").value;
+  saveData();
+  render();
+  toast("Đã cập nhật look");
+}
+
+function renderHeader() {
+  const look = activeLook();
+  document.getElementById("lookAvatar").textContent = look.emoji || "💄";
+  document.getElementById("lookTitle").textContent = look.title || "";
+  document.getElementById("lookSubtitle").textContent = look.subtitle || "";
+  document.getElementById("lookFooter").textContent = look.footer || "";
+  document.getElementById("badgeText").textContent = look.badge || "Sản phẩm trong video";
+  document.title = (look.title || "Lookbook") + " · Sản phẩm trong video";
+}
+
+function render() {
+  renderTabs();
+  renderHeader();
+  renderProducts();
+  if (state.editing) syncLookEditBar();
+  document.body.classList.toggle("editing", state.editing);
+}
+
+function addTab() {
+  const n = state.data.looks.length + 1;
+  const look = {
+    id: uid("look"),
+    tabName: "Tone " + n,
+    emoji: "💖",
+    title: "Tone mới — đặt tên tại đây",
+    subtitle: "Điền sản phẩm cho look này.",
+    footer: "Sắp ra mắt 💕",
+    badge: "Sheet mới",
+    products: []
+  };
+  state.data.looks.push(look);
+  state.data.activeId = look.id;
+  saveData();
+  render();
+  toast("Đã thêm tone mới");
+}
+
+function addProduct() {
+  const look = activeLook();
+  if (!look.products) look.products = [];
+  look.products.push({
+    id: uid("p"),
+    emoji: "✨",
+    name: "Sản phẩm mới",
+    note: "Mô tả ngắn cho bước này.",
+    link: "",
+    cta: "🛒 Mua trên Shopee",
+    subs: []
+  });
+  saveData();
+  render();
+  toast("Đã thêm sản phẩm");
+}
+
+function openPinModal() {
+  document.getElementById("pinModal").classList.add("open");
+  document.getElementById("pinErr").textContent = "";
+  const inp = document.getElementById("pinInput");
+  inp.value = "";
+  setTimeout(() => inp.focus(), 50);
+}
+
+function closePinModal() {
+  document.getElementById("pinModal").classList.remove("open");
+}
+
+function tryEnterEdit() {
+  if (sessionStorage.getItem(PIN_SESSION) === "1") {
+    state.editing = true;
+    render();
+    toast("Đã vào chế độ chỉnh sửa");
+    return;
+  }
+  openPinModal();
+}
+
+function checkPin() {
+  const val = document.getElementById("pinInput").value.trim();
+  const expected = (state.data.pin || DEFAULT_DATA.pin || "0804");
+  if (val === expected) {
+    sessionStorage.setItem(PIN_SESSION, "1");
+    closePinModal();
+    state.editing = true;
+    render();
+    toast("Đã vào chế độ chỉnh sửa");
+  } else {
+    document.getElementById("pinErr").textContent = "Sai PIN — thử lại nhé";
+  }
+}
+
+function exitEdit() {
+  applyLookEditBarQuiet();
+  state.editing = false;
+  render();
+  toast("Đã thoát chỉnh sửa");
+}
+
+function applyLookEditBarQuiet() {
+  if (!state.editing) return;
+  const look = activeLook();
+  const tab = document.getElementById("editTabName").value.trim();
+  const emoji = document.getElementById("editEmoji").value.trim();
+  const title = document.getElementById("editTitle").value.trim();
+  const subtitle = document.getElementById("editSubtitle").value;
+  const footer = document.getElementById("editFooter").value;
+  if (tab) look.tabName = tab;
+  if (emoji) look.emoji = emoji;
+  if (title) look.title = title;
+  look.subtitle = subtitle;
+  look.footer = footer;
+  saveData();
+}
+
+function resetData() {
+  if (!confirm("Xoá toàn bộ chỉnh sửa trên máy này và về bản gốc?")) return;
+  localStorage.removeItem(STORAGE_KEY);
+  state.data = clone(DEFAULT_DATA);
+  render();
+  toast("Đã reset về mặc định");
+}
+
+function deleteActiveTab() {
+  if (state.data.looks.length <= 1) {
+    toast("Phải giữ ít nhất 1 tone");
+    return;
+  }
+  const look = activeLook();
+  if (!confirm('Xoá tone "' + look.tabName + '"?')) return;
+  state.data.looks = state.data.looks.filter(l => l.id !== look.id);
+  state.data.activeId = state.data.looks[0].id;
+  saveData();
+  render();
+  toast("Đã xoá tone");
+}
+
+async function exportHtml() {
+  applyLookEditBarQuiet();
+  // Flush current field values from open inputs
+  document.querySelectorAll("#steps .edit-field").forEach(el => {
+    el.dispatchEvent(new Event("change"));
+  });
+
+  let src = null;
+  if (window.__EMBEDDED_SOURCE__) {
+    try {
+      src = decodeURIComponent(escape(atob(window.__EMBEDDED_SOURCE__)));
+    } catch (e) {
+      try { src = atob(window.__EMBEDDED_SOURCE__); } catch (e2) { src = null; }
+    }
+  }
+  if (!src) {
+    try {
+      const res = await fetch(location.href, { cache: "no-store" });
+      if (res.ok) src = await res.text();
+    } catch (e) {}
+  }
+  if (!src) {
+    toast("Không lấy được mã nguồn — mở qua link ship.page rồi xuất");
+    alert("Không xuất được từ chế độ file://.\n\nCách làm: mở đúng link ship.page trên điện thoại/máy tính → vào Chỉnh sửa → Xuất file HTML.\nHoặc bấm OK để sao chép JSON data (gửi em deploy).");
+    try {
+      await navigator.clipboard.writeText(JSON.stringify(state.data, null, 2));
+      toast("Đã copy JSON vào clipboard");
+    } catch (e) {
+      prompt("Copy JSON này gửi em:", JSON.stringify(state.data));
+    }
+    return;
+  }
+
+  const dataBlock = "/*__DEFAULT_DATA__*/\nconst DEFAULT_DATA = " +
+    JSON.stringify(state.data, null, 2) + ";\n/*__END_DEFAULT_DATA__*/";
+  const replaced = src.replace(
+    /\/\*__DEFAULT_DATA__\*\/[\s\S]*?\/\*__END_DEFAULT_DATA__\*\//,
+    dataBlock
+  );
+  // Refresh embedded source so next export from downloaded file also works
+  let out = replaced;
+  try {
+    const b64 = btoa(unescape(encodeURIComponent(replaced.replace(
+      /window\.__EMBEDDED_SOURCE__\s*=\s*"[^"]*";/,
+      "window.__EMBEDDED_SOURCE__=\"\";"
+    ))));
+    // Avoid circular huge embed on every export — keep previous embed or skip
+    // Re-embed the version WITHOUT updating embed recursively: strip embed first
+    const stripped = replaced.replace(/window\.__EMBEDDED_SOURCE__\s*=\s*"[^"]*";/, "window.__EMBEDDED_SOURCE__=\"\";");
+    const b64final = btoa(unescape(encodeURIComponent(stripped)));
+    out = stripped.replace(
+      /window\.__EMBEDDED_SOURCE__\s*=\s*"[^"]*";/,
+      "window.__EMBEDDED_SOURCE__=\"" + b64final + "\";"
+    );
+  } catch (e) {
+    out = replaced;
+  }
+
+  const blob = new Blob([out], { type: "text/html;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "index.html";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  a.remove();
+  toast("Đã tải index.html — gửi em để lên link mới");
+}
+
+// Wire UI
+document.getElementById("editFab").addEventListener("click", tryEnterEdit);
+document.getElementById("pinOk").addEventListener("click", checkPin);
+document.getElementById("pinCancel").addEventListener("click", closePinModal);
+document.getElementById("pinInput").addEventListener("keydown", e => {
+  if (e.key === "Enter") checkPin();
+});
+document.getElementById("btnExitEdit").addEventListener("click", exitEdit);
+document.getElementById("btnExport").addEventListener("click", exportHtml);
+document.getElementById("btnReset").addEventListener("click", resetData);
+document.getElementById("btnAddProduct").addEventListener("click", addProduct);
+document.getElementById("btnRenameTab").addEventListener("click", applyLookEditBar);
+document.getElementById("btnDeleteTab").addEventListener("click", deleteActiveTab);
+
+["editTabName","editEmoji","editTitle","editSubtitle","editFooter"].forEach(id => {
+  document.getElementById(id).addEventListener("change", () => {
+    applyLookEditBarQuiet();
+    renderHeader();
+    renderTabs();
+  });
+});
+
+state.data = loadData();
+render();
+
+window.__EMBEDDED_SOURCE__="PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InZpIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLCB2aWV3cG9ydC1maXQ9Y292ZXIiIC8+CiAgPG1ldGEgbmFtZT0idGhlbWUtY29sb3IiIGNvbnRlbnQ9IiNmZjhmYWIiIC8+CiAgPG1ldGEgbmFtZT0iZGVzY3JpcHRpb24iIGNvbnRlbnQ9Ikxvb2tib29rIHRyYW5nIMSRaeG7g20g4oCUIHThu6tuZyB0b25lIG1ha2V1cCwgY2jhuqFtIMSR4buDIG11YSB0csOqbiBTaG9wZWUiIC8+CiAgPHRpdGxlPkxvb2tib29rIE1ha2V1cCDCtyBT4bqjbiBwaOG6qW0gdHJvbmcgdmlkZW88L3RpdGxlPgogIDxsaW5rIHJlbD0icHJlY29ubmVjdCIgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbSIgLz4KICA8bGluayByZWw9InByZWNvbm5lY3QiIGhyZWY9Imh0dHBzOi8vZm9udHMuZ3N0YXRpYy5jb20iIGNyb3Nzb3JpZ2luIC8+CiAgPGxpbmsgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1CZStWaWV0bmFtK1Bybzp3Z2h0QDQwMDs1MDA7NjAwOzcwMDs4MDAmZGlzcGxheT1zd2FwIiByZWw9InN0eWxlc2hlZXQiIC8+CiAgPHN0eWxlPgogICAgOnJvb3QgewogICAgICAtLXBpbms6ICNmZjhmYWI7CiAgICAgIC0tcGVhY2g6ICNmZmI0YTI7CiAgICAgIC0tcm9zZTogI2ZmNmI5ZDsKICAgICAgLS1jb3JhbDogI2ZmN2E1OTsKICAgICAgLS1jcmVhbTogI2ZmZjVmNzsKICAgICAgLS1pbms6ICMzZDJjM2E7CiAgICAgIC0tbXV0ZWQ6ICM3YTY2NzQ7CiAgICAgIC0tZ2xhc3M6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC41NSk7CiAgICAgIC0tZ2xhc3MtYm9yZGVyOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuNzUpOwogICAgICAtLXNoYWRvdzogMCAxMnB4IDQwcHggcmdiYSgyNTUsIDEwNywgMTU3LCAwLjE4KTsKICAgICAgLS1zaGVldDogI2ZmZjBmNTsKICAgICAgLS1zaGVldC1hY3RpdmU6ICNmZmZmZmY7CiAgICAgIC0tZGFuZ2VyOiAjYzkxODRhOwogICAgfQogICAgKiB7IGJveC1zaXppbmc6IGJvcmRlci1ib3g7IG1hcmdpbjogMDsgcGFkZGluZzogMDsgfQogICAgaHRtbCB7IHNjcm9sbC1iZWhhdmlvcjogc21vb3RoOyB9CiAgICBib2R5IHsKICAgICAgZm9udC1mYW1pbHk6ICJCZSBWaWV0bmFtIFBybyIsIHN5c3RlbS11aSwgc2Fucy1zZXJpZjsKICAgICAgY29sb3I6IHZhcigtLWluayk7CiAgICAgIG1pbi1oZWlnaHQ6IDEwMGR2aDsKICAgICAgYmFja2dyb3VuZDoKICAgICAgICByYWRpYWwtZ3JhZGllbnQoMTIwMHB4IDYwMHB4IGF0IDEwJSAtMTAlLCAjZmZkNmU3IDAlLCB0cmFuc3BhcmVudCA1NSUpLAogICAgICAgIHJhZGlhbC1ncmFkaWVudCg5MDBweCA1MDBweCBhdCAxMTAlIDIwJSwgI2ZmZTBjOCAwJSwgdHJhbnNwYXJlbnQgNTAlKSwKICAgICAgICByYWRpYWwtZ3JhZGllbnQoNzAwcHggNDAwcHggYXQgNTAlIDExMCUsICNmZmMyZDQgMCUsIHRyYW5zcGFyZW50IDU1JSksCiAgICAgICAgbGluZWFyLWdyYWRpZW50KDE2NWRlZywgI2ZmZjBmNSAwJSwgI2ZmZThkYyA0NSUsICNmZmQ2ZTggMTAwJSk7CiAgICAgIGJhY2tncm91bmQtYXR0YWNobWVudDogZml4ZWQ7CiAgICAgIHBhZGRpbmc6IDE2cHggMTRweCAxNTBweDsKICAgICAgLXdlYmtpdC1mb250LXNtb290aGluZzogYW50aWFsaWFzZWQ7CiAgICB9CiAgICAud3JhcCB7IG1heC13aWR0aDogNDQwcHg7IG1hcmdpbjogMCBhdXRvOyB9CiAgICAvKiDigJTigJQgVG9wIHNoZWV0IHRhYnMg4oCU4oCUICovCiAgICAuc2hlZXQtYmFyIHsKICAgICAgZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IHN0cmV0Y2g7IGdhcDogNHB4OwogICAgICBvdmVyZmxvdy14OiBhdXRvOyAtd2Via2l0LW92ZXJmbG93LXNjcm9sbGluZzogdG91Y2g7CiAgICAgIHNjcm9sbGJhci13aWR0aDogbm9uZTsKICAgICAgcGFkZGluZzogNHB4IDJweCAxMHB4OwogICAgICBtYXJnaW46IDAgLTRweCA4cHg7CiAgICB9CiAgICAuc2hlZXQtYmFyOjotd2Via2l0LXNjcm9sbGJhciB7IGRpc3BsYXk6IG5vbmU7IH0KICAgIC5zaGVldC10YWIgewogICAgICBmbGV4OiAwIDAgYXV0bzsKICAgICAgYXBwZWFyYW5jZTogbm9uZTsgYm9yZGVyOiAxcHggc29saWQgcmdiYSgyNTUsMTQzLDE3MSwwLjQ1KTsKICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTUsMjU1LDI1NSwwLjQ1KTsKICAgICAgY29sb3I6IHZhcigtLW11dGVkKTsKICAgICAgZm9udC1mYW1pbHk6IGluaGVyaXQ7IGZvbnQtc2l6ZTogMC43OHJlbTsgZm9udC13ZWlnaHQ6IDcwMDsKICAgICAgcGFkZGluZzogOXB4IDE0cHggMTBweDsKICAgICAgYm9yZGVyLXJhZGl1czogMTJweCAxMnB4IDhweCA4cHg7CiAgICAgIGN1cnNvcjogcG9pbnRlcjsKICAgICAgd2hpdGUtc3BhY2U6IG5vd3JhcDsKICAgICAgdHJhbnNpdGlvbjogYmFja2dyb3VuZCAwLjJzLCBjb2xvciAwLjJzLCBib3gtc2hhZG93IDAuMnMsIHRyYW5zZm9ybSAwLjE1czsKICAgICAgLXdlYmtpdC10YXAtaGlnaGxpZ2h0LWNvbG9yOiB0cmFuc3BhcmVudDsKICAgIH0KICAgIC5zaGVldC10YWIuYWN0aXZlIHsKICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDE4MGRlZywgI2ZmZiAwJSwgI2ZmZThmMCAxMDAlKTsKICAgICAgY29sb3I6IHZhcigtLWRhbmdlcik7CiAgICAgIGJvcmRlci1jb2xvcjogcmdiYSgyNTUsMTA3LDE1NywwLjU1KTsKICAgICAgYm94LXNoYWRvdzogMCA2cHggMThweCByZ2JhKDI1NSwxMDcsMTU3LDAuMjIpOwogICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoLTFweCk7CiAgICB9CiAgICAuc2hlZXQtdGFiIC50YWItZW1vamkgeyBtYXJnaW4tcmlnaHQ6IDRweDsgfQogICAgLnNoZWV0LWFkZCB7CiAgICAgIGZsZXg6IDAgMCBhdXRvOwogICAgICB3aWR0aDogMzZweDsgaGVpZ2h0OiAzNnB4OyBhbGlnbi1zZWxmOiBjZW50ZXI7CiAgICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7CiAgICAgIGJvcmRlcjogMXB4IGRhc2hlZCByZ2JhKDI1NSwxMDcsMTU3LDAuNSk7CiAgICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LDI1NSwyNTUsMC40KTsKICAgICAgY29sb3I6IHZhcigtLXJvc2UpOwogICAgICBmb250LXNpemU6IDEuMnJlbTsgZm9udC13ZWlnaHQ6IDcwMDsKICAgICAgY3Vyc29yOiBwb2ludGVyOyBkaXNwbGF5OiBub25lOwogICAgICBwbGFjZS1pdGVtczogY2VudGVyOwogICAgfQogICAgYm9keS5lZGl0aW5nIC5zaGVldC1hZGQgeyBkaXNwbGF5OiBncmlkOyB9CiAgICAvKiDigJTigJQgSGVhZGVyIOKAlOKAlCAqLwogICAgLmhlYWRlciB7IHRleHQtYWxpZ246IGNlbnRlcjsgbWFyZ2luLWJvdHRvbTogMjBweDsgYW5pbWF0aW9uOiByaXNlIDAuN3MgZWFzZSBib3RoOyB9CiAgICAuYXZhdGFyIHsKICAgICAgd2lkdGg6IDg0cHg7IGhlaWdodDogODRweDsgbWFyZ2luOiAwIGF1dG8gMTRweDsKICAgICAgYm9yZGVyLXJhZGl1czogNTAlOwogICAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoMTM1ZGVnLCAjZmZmIDAlLCAjZmZlNGVjIDQwJSwgI2ZmYzhkOSAxMDAlKTsKICAgICAgYm9yZGVyOiAzcHggc29saWQgcmdiYSgyNTUsMjU1LDI1NSwwLjkpOwogICAgICBib3gtc2hhZG93OiAwIDEwcHggMzBweCByZ2JhKDI1NSwxMDcsMTU3LDAuMjgpLCBpbnNldCAwIDAgMjBweCByZ2JhKDI1NSwyNTUsMjU1LDAuNik7CiAgICAgIGRpc3BsYXk6IGdyaWQ7IHBsYWNlLWl0ZW1zOiBjZW50ZXI7IGZvbnQtc2l6ZTogMzhweDsgcG9zaXRpb246IHJlbGF0aXZlOwogICAgfQogICAgLmF2YXRhcjo6YWZ0ZXIgewogICAgICBjb250ZW50OiAiIjsgcG9zaXRpb246IGFic29sdXRlOyBpbnNldDogLTVweDsgYm9yZGVyLXJhZGl1czogNTAlOwogICAgICBiYWNrZ3JvdW5kOiBjb25pYy1ncmFkaWVudChmcm9tIDE4MGRlZywgI2ZmOGZhYiwgI2ZmZDZhNSwgI2ZmYjRhMiwgI2ZmOGZhYik7CiAgICAgIHotaW5kZXg6IC0xOyBvcGFjaXR5OiAwLjg1OyBhbmltYXRpb246IHNwaW4gOHMgbGluZWFyIGluZmluaXRlOwogICAgfQogICAgQGtleWZyYW1lcyBzcGluIHsgdG8geyB0cmFuc2Zvcm06IHJvdGF0ZSgzNjBkZWcpOyB9IH0KICAgIC5iYWRnZS1saXZlIHsKICAgICAgZGlzcGxheTogaW5saW5lLWZsZXg7IGFsaWduLWl0ZW1zOiBjZW50ZXI7IGdhcDogNnB4OwogICAgICBiYWNrZ3JvdW5kOiByZ2JhKDI1NSwyNTUsMjU1LDAuNyk7CiAgICAgIGJhY2tkcm9wLWZpbHRlcjogYmx1cigxMHB4KTsgLXdlYmtpdC1iYWNrZHJvcC1maWx0ZXI6IGJsdXIoMTBweCk7CiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWdsYXNzLWJvcmRlcik7CiAgICAgIGNvbG9yOiB2YXIoLS1yb3NlKTsgZm9udC1zaXplOiAxMnB4OyBmb250LXdlaWdodDogNjAwOwogICAgICBwYWRkaW5nOiA2cHggMTJweDsgYm9yZGVyLXJhZGl1czogOTk5cHg7IG1hcmdpbi1ib3R0b206IDEycHg7CiAgICB9CiAgICAuYmFkZ2UtbGl2ZSAuZG90IHsKICAgICAgd2lkdGg6IDdweDsgaGVpZ2h0OiA3cHg7IGJvcmRlci1yYWRpdXM6IDUwJTsgYmFja2dyb3VuZDogdmFyKC0tcm9zZSk7CiAgICAgIGJveC1zaGFkb3c6IDAgMCAwIDAgcmdiYSgyNTUsMTA3LDE1NywwLjYpOyBhbmltYXRpb246IHB1bHNlIDEuNnMgaW5maW5pdGU7CiAgICB9CiAgICBAa2V5ZnJhbWVzIHB1bHNlIHsKICAgICAgMCUgeyBib3gtc2hhZG93OiAwIDAgMCAwIHJnYmEoMjU1LDEwNywxNTcsMC41NSk7IH0KICAgICAgNzAlIHsgYm94LXNoYWRvdzogMCAwIDAgOHB4IHJnYmEoMjU1LDEwNywxNTcsMCk7IH0KICAgICAgMTAwJSB7IGJveC1zaGFkb3c6IDAgMCAwIDAgcmdiYSgyNTUsMTA3LDE1NywwKTsgfQogICAgfQogICAgaDEgewogICAgICBmb250LXNpemU6IGNsYW1wKDEuM3JlbSwgNXZ3LCAxLjZyZW0pOyBmb250LXdlaWdodDogODAwOyBsaW5lLWhlaWdodDogMS4zOwogICAgICBsZXR0ZXItc3BhY2luZzogLTAuMDJlbTsKICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDEyMGRlZywgI2M5MTg0YSAwJSwgI2ZmNmI5ZCA0MCUsICNmZjhlNTMgMTAwJSk7CiAgICAgIC13ZWJraXQtYmFja2dyb3VuZC1jbGlwOiB0ZXh0OyBiYWNrZ3JvdW5kLWNsaXA6IHRleHQ7IGNvbG9yOiB0cmFuc3BhcmVudDsKICAgICAgbWFyZ2luLWJvdHRvbTogOHB4OwogICAgfQogICAgLnRhZ2xpbmUgewogICAgICBjb2xvcjogdmFyKC0tbXV0ZWQpOyBmb250LXNpemU6IDAuOXJlbTsgZm9udC13ZWlnaHQ6IDUwMDsgbGluZS1oZWlnaHQ6IDEuNTsKICAgICAgbWF4LXdpZHRoOiAzNmNoOyBtYXJnaW46IDAgYXV0bzsKICAgIH0KICAgIC8qIOKAlOKAlCBDYXJkcyDigJTigJQgKi8KICAgIC5zdGVwcyB7IGRpc3BsYXk6IGZsZXg7IGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47IGdhcDogMTRweDsgbWluLWhlaWdodDogMTIwcHg7IH0KICAgIC5jYXJkIHsKICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1nbGFzcyk7CiAgICAgIGJhY2tkcm9wLWZpbHRlcjogYmx1cigxNnB4KSBzYXR1cmF0ZSgxLjIpOwogICAgICAtd2Via2l0LWJhY2tkcm9wLWZpbHRlcjogYmx1cigxNnB4KSBzYXR1cmF0ZSgxLjIpOwogICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1nbGFzcy1ib3JkZXIpOwogICAgICBib3JkZXItcmFkaXVzOiAyMnB4OyBwYWRkaW5nOiAxOHB4IDE2cHggMTZweDsKICAgICAgYm94LXNoYWRvdzogdmFyKC0tc2hhZG93KTsKICAgICAgYW5pbWF0aW9uOiByaXNlIDAuNXMgZWFzZSBib3RoOwogICAgfQogICAgQGtleWZyYW1lcyByaXNlIHsKICAgICAgZnJvbSB7IG9wYWNpdHk6IDA7IHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxNnB4KTsgfQogICAgICB0byB7IG9wYWNpdHk6IDE7IHRyYW5zZm9ybTogdHJhbnNsYXRlWSgwKTsgfQogICAgfQogICAgLmNhcmQtdG9wIHsgZGlzcGxheTogZmxleDsgZ2FwOiAxMnB4OyBhbGlnbi1pdGVtczogZmxleC1zdGFydDsgbWFyZ2luLWJvdHRvbTogMTBweDsgfQogICAgLnN0ZXAgewogICAgICBmbGV4LXNocmluazogMDsgd2lkdGg6IDQycHg7IGhlaWdodDogNDJweDsgYm9yZGVyLXJhZGl1czogMTRweDsKICAgICAgZGlzcGxheTogZ3JpZDsgcGxhY2UtaXRlbXM6IGNlbnRlcjsgZm9udC13ZWlnaHQ6IDgwMDsgZm9udC1zaXplOiAwLjk1cmVtOyBjb2xvcjogI2ZmZjsKICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDE0NWRlZywgI2ZmNmI5ZCwgI2ZmOGU1Myk7CiAgICAgIGJveC1zaGFkb3c6IDAgNnB4IDE2cHggcmdiYSgyNTUsMTA3LDE1NywwLjM1KTsKICAgIH0KICAgIC5lbW9qaSB7IGZvbnQtc2l6ZTogMS4zcmVtOyBsaW5lLWhlaWdodDogMTsgbWFyZ2luLXRvcDogMnB4OyB9CiAgICAuY2FyZCBoMiB7IGZvbnQtc2l6ZTogMS4wMnJlbTsgZm9udC13ZWlnaHQ6IDcwMDsgbGluZS1oZWlnaHQ6IDEuMzU7IG1hcmdpbi1ib3R0b206IDRweDsgY29sb3I6IHZhcigtLWluayk7IH0KICAgIC5ub3RlIHsgZm9udC1zaXplOiAwLjg2cmVtOyBjb2xvcjogdmFyKC0tbXV0ZWQpOyBsaW5lLWhlaWdodDogMS41OyBmb250LXdlaWdodDogNDUwOyB9CiAgICAuc3ViIHsKICAgICAgbWFyZ2luLXRvcDogMTJweDsgcGFkZGluZy10b3A6IDEycHg7CiAgICAgIGJvcmRlci10b3A6IDFweCBkYXNoZWQgcmdiYSgyNTUsMTQzLDE3MSwwLjM1KTsKICAgIH0KICAgIC5zdWItdGl0bGUgewogICAgICBmb250LXNpemU6IDAuOHJlbTsgZm9udC13ZWlnaHQ6IDcwMDsgY29sb3I6ICNjOTE4NGE7CiAgICAgIG1hcmdpbi1ib3R0b206IDRweDsgZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsgZ2FwOiA2cHg7CiAgICB9CiAgICAuY3RhIHsKICAgICAgZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsganVzdGlmeS1jb250ZW50OiBjZW50ZXI7IGdhcDogOHB4OwogICAgICB3aWR0aDogMTAwJTsgbWFyZ2luLXRvcDogMTJweDsgcGFkZGluZzogMTNweCAxNnB4OyBib3JkZXI6IG5vbmU7IGJvcmRlci1yYWRpdXM6IDE0cHg7CiAgICAgIGZvbnQtZmFtaWx5OiBpbmhlcml0OyBmb250LXNpemU6IDAuOTVyZW07IGZvbnQtd2VpZ2h0OiA3MDA7IGNvbG9yOiAjZmZmOwogICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7IGN1cnNvcjogcG9pbnRlcjsKICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDEwNWRlZywgI2ZmNWQ4ZiAwJSwgI2ZmN2E1OSA1MCUsICNmZjlmMWMgMTAwJSk7CiAgICAgIGJhY2tncm91bmQtc2l6ZTogMjAwJSAxMDAlOwogICAgICBib3gtc2hhZG93OiAwIDhweCAyMnB4IHJnYmEoMjU1LDkzLDE0MywwLjQpLCBpbnNldCAwIDFweCAwIHJnYmEoMjU1LDI1NSwyNTUsMC4zNSk7CiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjJzLCBib3gtc2hhZG93IDAuMnMsIGJhY2tncm91bmQtcG9zaXRpb24gMC4zNXM7CiAgICAgIC13ZWJraXQtdGFwLWhpZ2hsaWdodC1jb2xvcjogdHJhbnNwYXJlbnQ7CiAgICB9CiAgICAuY3RhOmhvdmVyLCAuY3RhOmZvY3VzLXZpc2libGUgewogICAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiAxMDAlIDA7IHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtMXB4KTsKICAgICAgYm94LXNoYWRvdzogMCAxMnB4IDI4cHggcmdiYSgyNTUsOTMsMTQzLDAuNSk7IG91dGxpbmU6IG5vbmU7CiAgICB9CiAgICAuY3RhOmFjdGl2ZSB7IHRyYW5zZm9ybTogc2NhbGUoMC45Nyk7IH0KICAgIC5jdGEuc2Vjb25kYXJ5IHsKICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDEwNWRlZywgI2U4NWQ5YSAwJSwgI2Y0OGM2YiAxMDAlKTsKICAgICAgZm9udC1zaXplOiAwLjg4cmVtOyBwYWRkaW5nOiAxMXB4IDE0cHg7IG1hcmdpbi10b3A6IDhweDsKICAgIH0KICAgIC5ub2xpbmsgewogICAgICBtYXJnaW4tdG9wOiAxMHB4OyBkaXNwbGF5OiBpbmxpbmUtZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsgZ2FwOiA2cHg7CiAgICAgIGZvbnQtc2l6ZTogMC43OHJlbTsgZm9udC13ZWlnaHQ6IDYwMDsgY29sb3I6ICNhMDc4ODg7CiAgICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LDI1NSwyNTUsMC41NSk7CiAgICAgIGJvcmRlcjogMXB4IGRhc2hlZCByZ2JhKDE2MCwxMjAsMTM2LDAuMzUpOwogICAgICBwYWRkaW5nOiA3cHggMTFweDsgYm9yZGVyLXJhZGl1czogOTk5cHg7CiAgICB9CiAgICAuZW1wdHktbG9vayB7CiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjsgcGFkZGluZzogNDhweCAyMHB4OwogICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1nbGFzcyk7IGJvcmRlcjogMXB4IGRhc2hlZCByZ2JhKDI1NSwxNDMsMTcxLDAuNSk7CiAgICAgIGJvcmRlci1yYWRpdXM6IDIycHg7IGNvbG9yOiB2YXIoLS1tdXRlZCk7CiAgICB9CiAgICAuZW1wdHktbG9vayAuYmlnIHsgZm9udC1zaXplOiAyLjRyZW07IG1hcmdpbi1ib3R0b206IDEwcHg7IH0KICAgIC5lbXB0eS1sb29rIGgzIHsgY29sb3I6IHZhcigtLWluayk7IGZvbnQtc2l6ZTogMS4wNXJlbTsgbWFyZ2luLWJvdHRvbTogNnB4OyB9CiAgICBmb290ZXIgewogICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7IG1hcmdpbi10b3A6IDI0cHg7IGNvbG9yOiB2YXIoLS1tdXRlZCk7CiAgICAgIGZvbnQtc2l6ZTogMC43OHJlbTsgYW5pbWF0aW9uOiByaXNlIDAuN3MgZWFzZSAwLjM1cyBib3RoOwogICAgfQogICAgZm9vdGVyIC5oZWFydCB7IGNvbG9yOiB2YXIoLS1yb3NlKTsgfQoKICAgIC8qIOKAlOKAlCBCb3R0b20gc2hlZXQgZG9jayDigJTigJQgKi8KICAgIC5zaGVldC1kb2NrIHsKICAgICAgcG9zaXRpb246IGZpeGVkOyBsZWZ0OiAwOyByaWdodDogMDsgYm90dG9tOiAwOyB6LWluZGV4OiA0MDsKICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDE4MGRlZywgcmdiYSgyNTUsMjQwLDI0NSwwLjUpIDAlLCByZ2JhKDI1NSwyMzIsMjIwLDAuOTcpIDMwJSk7CiAgICAgIGJhY2tkcm9wLWZpbHRlcjogYmx1cigxNHB4KTsgLXdlYmtpdC1iYWNrZHJvcC1maWx0ZXI6IGJsdXIoMTRweCk7CiAgICAgIGJvcmRlci10b3A6IDFweCBzb2xpZCByZ2JhKDI1NSwxNDMsMTcxLDAuMzUpOwogICAgICBwYWRkaW5nOiA4cHggMTBweCBjYWxjKDU2cHggKyBlbnYoc2FmZS1hcmVhLWluc2V0LWJvdHRvbSkpOwogICAgICBib3gtc2hhZG93OiAwIC04cHggMjhweCByZ2JhKDI1NSwxMDcsMTU3LDAuMTIpOwogICAgfQogICAgLnNoZWV0LWRvY2sgLnNoZWV0LWJhciB7IG1hcmdpbjogMDsgcGFkZGluZzogMnB4IDJweCAwOyB9CiAgICAuc2hlZXQtZG9jayAuc2hlZXQtdGFiIHsKICAgICAgYm9yZGVyLXJhZGl1czogOHB4IDhweCAwIDA7IHBhZGRpbmc6IDEwcHggMTRweCAxMnB4OwogICAgICBib3JkZXItYm90dG9tOiBub25lOwogICAgfQogICAgLnNoZWV0LWRvY2sgLnNoZWV0LXRhYi5hY3RpdmUgewogICAgICBiYWNrZ3JvdW5kOiAjZmZmOyBib3gtc2hhZG93OiAwIC0ycHggMTJweCByZ2JhKDI1NSwxMDcsMTU3LDAuMTUpOwogICAgfQoKICAgIC8qIOKAlOKAlCBFZGl0IGNocm9tZSDigJTigJQgKi8KICAgIC5lZGl0LWZhYiB7CiAgICAgIHBvc2l0aW9uOiBmaXhlZDsgcmlnaHQ6IDE0cHg7IGJvdHRvbTogY2FsYygxMDhweCArIGVudihzYWZlLWFyZWEtaW5zZXQtYm90dG9tKSk7CiAgICAgIHotaW5kZXg6IDUwOyB3aWR0aDogNDJweDsgaGVpZ2h0OiA0MnB4OyBib3JkZXItcmFkaXVzOiA1MCU7CiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMjU1LDI1NSwyNTUsMC44KTsKICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTUsMjU1LDI1NSwwLjc1KTsKICAgICAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDEwcHgpOwogICAgICBib3gtc2hhZG93OiAwIDhweCAyMnB4IHJnYmEoNjEsNDQsNTgsMC4xNCk7CiAgICAgIGN1cnNvcjogcG9pbnRlcjsgZGlzcGxheTogZ3JpZDsgcGxhY2UtaXRlbXM6IGNlbnRlcjsKICAgICAgZm9udC1zaXplOiAxLjA1cmVtOyBjb2xvcjogdmFyKC0tbXV0ZWQpOwogICAgICBvcGFjaXR5OiAwLjU1OyB0cmFuc2l0aW9uOiBvcGFjaXR5IDAuMnMsIHRyYW5zZm9ybSAwLjJzOwogICAgICAtd2Via2l0LXRhcC1oaWdobGlnaHQtY29sb3I6IHRyYW5zcGFyZW50OwogICAgfQogICAgLmVkaXQtZmFiOmhvdmVyLCAuZWRpdC1mYWI6Zm9jdXMtdmlzaWJsZSB7IG9wYWNpdHk6IDE7IG91dGxpbmU6IG5vbmU7IH0KICAgIGJvZHkuZWRpdGluZyAuZWRpdC1mYWIgeyBkaXNwbGF5OiBub25lOyB9CgogICAgLmVkaXQtYmFubmVyIHsKICAgICAgZGlzcGxheTogbm9uZTsKICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDEwNWRlZywgI2M5MTg0YSwgI2ZmNmI5ZCk7CiAgICAgIGNvbG9yOiAjZmZmOyBib3JkZXItcmFkaXVzOiAxNnB4OyBwYWRkaW5nOiAxMnB4IDE0cHg7CiAgICAgIG1hcmdpbi1ib3R0b206IDE0cHg7IGZvbnQtc2l6ZTogMC44cmVtOyBsaW5lLWhlaWdodDogMS40NTsKICAgICAgYm94LXNoYWRvdzogMCAxMHB4IDI4cHggcmdiYSgyMDEsMjQsNzQsMC4yOCk7CiAgICB9CiAgICBib2R5LmVkaXRpbmcgLmVkaXQtYmFubmVyIHsgZGlzcGxheTogYmxvY2s7IH0KICAgIC5lZGl0LWJhbm5lciBzdHJvbmcgeyBmb250LXdlaWdodDogODAwOyB9CiAgICAuZWRpdC1hY3Rpb25zIHsKICAgICAgZGlzcGxheTogbm9uZTsgZmxleC13cmFwOiB3cmFwOyBnYXA6IDhweDsgbWFyZ2luLXRvcDogMTBweDsKICAgIH0KICAgIGJvZHkuZWRpdGluZyAuZWRpdC1hY3Rpb25zIHsgZGlzcGxheTogZmxleDsgfQogICAgLmVkaXQtYWN0aW9ucyBidXR0b24gewogICAgICBmbGV4OiAxIDEgYXV0bzsgbWluLXdpZHRoOiAxMTBweDsKICAgICAgYm9yZGVyOiBub25lOyBib3JkZXItcmFkaXVzOiAxMnB4OyBwYWRkaW5nOiAxMHB4IDEycHg7CiAgICAgIGZvbnQtZmFtaWx5OiBpbmhlcml0OyBmb250LXNpemU6IDAuOHJlbTsgZm9udC13ZWlnaHQ6IDcwMDsKICAgICAgY3Vyc29yOiBwb2ludGVyOyAtd2Via2l0LXRhcC1oaWdobGlnaHQtY29sb3I6IHRyYW5zcGFyZW50OwogICAgfQogICAgLmJ0bi1leHBvcnQgeyBiYWNrZ3JvdW5kOiAjZmZmOyBjb2xvcjogdmFyKC0tZGFuZ2VyKTsgfQogICAgLmJ0bi1leGl0IHsgYmFja2dyb3VuZDogcmdiYSgyNTUsMjU1LDI1NSwwLjIyKTsgY29sb3I6ICNmZmY7IGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMjU1LDI1NSwyNTUsMC40NSkgIWltcG9ydGFudDsgfQogICAgLmJ0bi1yZXNldCB7IGJhY2tncm91bmQ6IHJnYmEoMCwwLDAsMC4xOCk7IGNvbG9yOiAjZmZmOyB9CgogICAgYm9keS5lZGl0aW5nIC5jYXJkIHsgYm9yZGVyLXN0eWxlOiBzb2xpZDsgYm9yZGVyLWNvbG9yOiByZ2JhKDI1NSwxMDcsMTU3LDAuNDUpOyB9CiAgICAuZWRpdC1maWVsZCB7CiAgICAgIGRpc3BsYXk6IG5vbmU7IHdpZHRoOiAxMDAlOyBtYXJnaW46IDRweCAwIDZweDsKICAgICAgZm9udC1mYW1pbHk6IGluaGVyaXQ7IGZvbnQtc2l6ZTogMC44OHJlbTsgY29sb3I6IHZhcigtLWluayk7CiAgICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LDI1NSwyNTUsMC45Mik7IGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMjU1LDE0MywxNzEsMC41NSk7CiAgICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7IHBhZGRpbmc6IDhweCAxMHB4OyBvdXRsaW5lOiBub25lOwogICAgfQogICAgLmVkaXQtZmllbGQ6Zm9jdXMgeyBib3JkZXItY29sb3I6IHZhcigtLXJvc2UpOyBib3gtc2hhZG93OiAwIDAgMCAzcHggcmdiYSgyNTUsMTA3LDE1NywwLjE4KTsgfQogICAgdGV4dGFyZWEuZWRpdC1maWVsZCB7IG1pbi1oZWlnaHQ6IDY0cHg7IHJlc2l6ZTogdmVydGljYWw7IGxpbmUtaGVpZ2h0OiAxLjQ1OyB9CiAgICBib2R5LmVkaXRpbmcgLmVkaXQtZmllbGQgeyBkaXNwbGF5OiBibG9jazsgfQogICAgYm9keS5lZGl0aW5nIC52aWV3LW9ubHkgeyBkaXNwbGF5OiBub25lICFpbXBvcnRhbnQ7IH0KICAgIC5lZGl0LXJvdyB7IGRpc3BsYXk6IG5vbmU7IGdhcDogOHB4OyBtYXJnaW4tdG9wOiA4cHg7IGZsZXgtd3JhcDogd3JhcDsgfQogICAgYm9keS5lZGl0aW5nIC5lZGl0LXJvdyB7IGRpc3BsYXk6IGZsZXg7IH0KICAgIC5lZGl0LXJvdyBidXR0b24sIC5jYXJkLXRvb2xzIGJ1dHRvbiwgLmxvb2stZWRpdC1iYXIgYnV0dG9uIHsKICAgICAgYm9yZGVyOiBub25lOyBib3JkZXItcmFkaXVzOiAxMHB4OyBwYWRkaW5nOiA4cHggMTJweDsKICAgICAgZm9udC1mYW1pbHk6IGluaGVyaXQ7IGZvbnQtc2l6ZTogMC43NXJlbTsgZm9udC13ZWlnaHQ6IDcwMDsKICAgICAgY3Vyc29yOiBwb2ludGVyOyBiYWNrZ3JvdW5kOiByZ2JhKDI1NSwyNTUsMjU1LDAuODUpOyBjb2xvcjogdmFyKC0tZGFuZ2VyKTsKICAgICAgYm9yZGVyOiAxcHggc29saWQgcmdiYSgyNTUsMTQzLDE3MSwwLjQ1KTsKICAgIH0KICAgIC5jYXJkLXRvb2xzIHsKICAgICAgZGlzcGxheTogbm9uZTsgcG9zaXRpb246IGFic29sdXRlOyB0b3A6IDEwcHg7IHJpZ2h0OiAxMHB4OyBnYXA6IDRweDsKICAgIH0KICAgIGJvZHkuZWRpdGluZyAuY2FyZC10b29scyB7IGRpc3BsYXk6IGZsZXg7IH0KICAgIC5jYXJkLXRvb2xzIGJ1dHRvbiB7IHBhZGRpbmc6IDRweCA4cHg7IGZvbnQtc2l6ZTogMC43cmVtOyB9CiAgICAubG9vay1lZGl0LWJhciB7CiAgICAgIGRpc3BsYXk6IG5vbmU7IGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47IGdhcDogNnB4OwogICAgICBiYWNrZ3JvdW5kOiByZ2JhKDI1NSwyNTUsMjU1LDAuNTUpOyBib3JkZXI6IDFweCBkYXNoZWQgcmdiYSgyNTUsMTQzLDE3MSwwLjUpOwogICAgICBib3JkZXItcmFkaXVzOiAxNnB4OyBwYWRkaW5nOiAxMnB4OyBtYXJnaW4tYm90dG9tOiAxNHB4OwogICAgfQogICAgYm9keS5lZGl0aW5nIC5sb29rLWVkaXQtYmFyIHsgZGlzcGxheTogZmxleDsgfQogICAgLmxvb2stZWRpdC1iYXIgbGFiZWwgewogICAgICBmb250LXNpemU6IDAuN3JlbTsgZm9udC13ZWlnaHQ6IDcwMDsgY29sb3I6IHZhcigtLW11dGVkKTsKICAgICAgbGV0dGVyLXNwYWNpbmc6IDAuMDRlbTsgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsKICAgIH0KICAgIC5hZGQtcHJvZHVjdC1idG4gewogICAgICBkaXNwbGF5OiBub25lOyB3aWR0aDogMTAwJTsgbWFyZ2luLXRvcDogNHB4OyBwYWRkaW5nOiAxNHB4OwogICAgICBib3JkZXItcmFkaXVzOiAxOHB4OyBib3JkZXI6IDJweCBkYXNoZWQgcmdiYSgyNTUsMTA3LDE1NywwLjQ1KTsKICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTUsMjU1LDI1NSwwLjQpOyBjb2xvcjogdmFyKC0tcm9zZSk7CiAgICAgIGZvbnQtZmFtaWx5OiBpbmhlcml0OyBmb250LXNpemU6IDAuOXJlbTsgZm9udC13ZWlnaHQ6IDcwMDsgY3Vyc29yOiBwb2ludGVyOwogICAgfQogICAgYm9keS5lZGl0aW5nIC5hZGQtcHJvZHVjdC1idG4geyBkaXNwbGF5OiBibG9jazsgfQogICAgLnRhYi1lZGl0LWhpbnQgewogICAgICBkaXNwbGF5OiBub25lOyBmb250LXNpemU6IDAuN3JlbTsgY29sb3I6IHZhcigtLW11dGVkKTsKICAgICAgdGV4dC1hbGlnbjogY2VudGVyOyBtYXJnaW46IC00cHggMCAxMHB4OwogICAgfQogICAgYm9keS5lZGl0aW5nIC50YWItZWRpdC1oaW50IHsgZGlzcGxheTogYmxvY2s7IH0KCiAgICAvKiBNb2RhbCAqLwogICAgLm1vZGFsLWJhY2tkcm9wIHsKICAgICAgZGlzcGxheTogbm9uZTsgcG9zaXRpb246IGZpeGVkOyBpbnNldDogMDsgei1pbmRleDogMTAwOwogICAgICBiYWNrZ3JvdW5kOiByZ2JhKDQwLCAyMCwgMzAsIDAuNDUpOyBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNnB4KTsKICAgICAgcGxhY2UtaXRlbXM6IGNlbnRlcjsgcGFkZGluZzogMjBweDsKICAgIH0KICAgIC5tb2RhbC1iYWNrZHJvcC5vcGVuIHsgZGlzcGxheTogZ3JpZDsgfQogICAgLm1vZGFsIHsKICAgICAgd2lkdGg6IG1pbigzNDBweCwgMTAwJSk7IGJhY2tncm91bmQ6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDIwcHg7CiAgICAgIHBhZGRpbmc6IDIycHggMThweDsgYm94LXNoYWRvdzogMCAyNHB4IDYwcHggcmdiYSgwLDAsMCwwLjI1KTsKICAgICAgdGV4dC1hbGlnbjogY2VudGVyOwogICAgfQogICAgLm1vZGFsIGgzIHsgZm9udC1zaXplOiAxLjFyZW07IG1hcmdpbi1ib3R0b206IDZweDsgY29sb3I6IHZhcigtLWluayk7IH0KICAgIC5tb2RhbCBwIHsgZm9udC1zaXplOiAwLjg1cmVtOyBjb2xvcjogdmFyKC0tbXV0ZWQpOyBtYXJnaW4tYm90dG9tOiAxNHB4OyBsaW5lLWhlaWdodDogMS40NTsgfQogICAgLm1vZGFsIGlucHV0IHsKICAgICAgd2lkdGg6IDEwMCU7IHBhZGRpbmc6IDEycHg7IGJvcmRlci1yYWRpdXM6IDEycHg7CiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMjU1LDE0MywxNzEsMC41NSk7IGZvbnQtZmFtaWx5OiBpbmhlcml0OwogICAgICBmb250LXNpemU6IDEuMXJlbTsgdGV4dC1hbGlnbjogY2VudGVyOyBsZXR0ZXItc3BhY2luZzogMC4yZW07CiAgICAgIG1hcmdpbi1ib3R0b206IDEycHg7IG91dGxpbmU6IG5vbmU7CiAgICB9CiAgICAubW9kYWwgaW5wdXQ6Zm9jdXMgeyBib3JkZXItY29sb3I6IHZhcigtLXJvc2UpOyBib3gtc2hhZG93OiAwIDAgMCAzcHggcmdiYSgyNTUsMTA3LDE1NywwLjE4KTsgfQogICAgLm1vZGFsIC5yb3cgeyBkaXNwbGF5OiBmbGV4OyBnYXA6IDhweDsgfQogICAgLm1vZGFsIC5yb3cgYnV0dG9uIHsKICAgICAgZmxleDogMTsgcGFkZGluZzogMTJweDsgYm9yZGVyOiBub25lOyBib3JkZXItcmFkaXVzOiAxMnB4OwogICAgICBmb250LWZhbWlseTogaW5oZXJpdDsgZm9udC13ZWlnaHQ6IDcwMDsgY3Vyc29yOiBwb2ludGVyOwogICAgfQogICAgLm1vZGFsIC5vayB7IGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgxMDVkZWcsICNmZjVkOGYsICNmZjdhNTkpOyBjb2xvcjogI2ZmZjsgfQogICAgLm1vZGFsIC5jYW5jZWwgeyBiYWNrZ3JvdW5kOiAjZjNlNmViOyBjb2xvcjogdmFyKC0tbXV0ZWQpOyB9CiAgICAubW9kYWwgLmVyciB7IGNvbG9yOiB2YXIoLS1kYW5nZXIpOyBmb250LXNpemU6IDAuNzhyZW07IG1pbi1oZWlnaHQ6IDEuMmVtOyBtYXJnaW4tYm90dG9tOiA4cHg7IH0KCiAgICAudG9hc3QgewogICAgICBwb3NpdGlvbjogZml4ZWQ7IGxlZnQ6IDUwJTsgYm90dG9tOiBjYWxjKDEzMHB4ICsgZW52KHNhZmUtYXJlYS1pbnNldC1ib3R0b20pKTsKICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpIHRyYW5zbGF0ZVkoMjBweCk7IHotaW5kZXg6IDkwOwogICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1pbmspOyBjb2xvcjogI2ZmZjsgcGFkZGluZzogMTBweCAxNnB4OyBib3JkZXItcmFkaXVzOiA5OTlweDsKICAgICAgZm9udC1zaXplOiAwLjhyZW07IGZvbnQtd2VpZ2h0OiA2MDA7IG9wYWNpdHk6IDA7IHBvaW50ZXItZXZlbnRzOiBub25lOwogICAgICB0cmFuc2l0aW9uOiBvcGFjaXR5IDAuMjVzLCB0cmFuc2Zvcm0gMC4yNXM7IHdoaXRlLXNwYWNlOiBub3dyYXA7CiAgICAgIG1heC13aWR0aDogOTB2dzsgb3ZlcmZsb3c6IGhpZGRlbjsgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7CiAgICB9CiAgICAudG9hc3Quc2hvdyB7IG9wYWNpdHk6IDE7IHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKSB0cmFuc2xhdGVZKDApOyB9CgogICAgQG1lZGlhIChwcmVmZXJzLXJlZHVjZWQtbW90aW9uOiByZWR1Y2UpIHsKICAgICAgKiwgKjo6YmVmb3JlLCAqOjphZnRlciB7IGFuaW1hdGlvbjogbm9uZSAhaW1wb3J0YW50OyB0cmFuc2l0aW9uOiBub25lICFpbXBvcnRhbnQ7IH0KICAgIH0KICA8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5PgogIDxkaXYgY2xhc3M9IndyYXAiPgogICAgPGRpdiBjbGFzcz0ic2hlZXQtYmFyIiBpZD0idGFic1RvcCIgcm9sZT0idGFibGlzdCIgYXJpYS1sYWJlbD0iVG9uZSBtYWtldXAiPjwvZGl2PgogICAgPHAgY2xhc3M9InRhYi1lZGl0LWhpbnQiPkdp4buvIHRhYiDEkeG7gyDEkeG7lWkgdMOqbiDCtyBuw7p0ICsgdGjDqm0gdG9uZSDCtyDinJUgeG/DoSB0b25lIMSRYW5nIG3hu588L3A+CgogICAgPGRpdiBjbGFzcz0iZWRpdC1iYW5uZXIiIGlkPSJlZGl0QmFubmVyIj4KICAgICAgPHN0cm9uZz5DaOG6vyDEkeG7mSBjaOG7iW5oIHPhu61hPC9zdHJvbmc+IOKAlCBz4butYSB0csOqbiBtw6F5IGFuaCDEkcaw4bujYyBsxrB1IHThuqFtIChsb2NhbFN0b3JhZ2UpLiBLaMOhY2ggdsOgbyBsaW5rIGPDtG5nIGtoYWkgPHN0cm9uZz5raMO0bmc8L3N0cm9uZz4gdGjhuqV5IGLhuqNuIHPhu61hIG7DoHkgY2hvIMSR4bq/biBraGkgYW5oIGLhuqVtIDxzdHJvbmc+WHXhuqV0IGZpbGU8L3N0cm9uZz4gcuG7k2kgZ+G7rWkgZmlsZSBjaG8gZW0gZGVwbG95IGzhuqFpLgogICAgICA8ZGl2IGNsYXNzPSJlZGl0LWFjdGlvbnMiPgogICAgICAgIDxidXR0b24gdHlwZT0iYnV0dG9uIiBjbGFzcz0iYnRuLWV4cG9ydCIgaWQ9ImJ0bkV4cG9ydCI+WHXhuqV0IGZpbGUgSFRNTDwvYnV0dG9uPgogICAgICAgIDxidXR0b24gdHlwZT0iYnV0dG9uIiBjbGFzcz0iYnRuLXJlc2V0IiBpZD0iYnRuUmVzZXQiPlJlc2V0IG3hurdjIMSR4buLbmg8L2J1dHRvbj4KICAgICAgICA8YnV0dG9uIHR5cGU9ImJ1dHRvbiIgY2xhc3M9ImJ0bi1leGl0IiBpZD0iYnRuRXhpdEVkaXQiPlRob8OhdCBz4butYTwvYnV0dG9uPgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgoKICAgIDxkaXYgY2xhc3M9Imxvb2stZWRpdC1iYXIiIGlkPSJsb29rRWRpdEJhciI+CiAgICAgIDxsYWJlbD5Uw6puIHRhYiAoc2hlZXQpPC9sYWJlbD4KICAgICAgPGlucHV0IGNsYXNzPSJlZGl0LWZpZWxkIiBpZD0iZWRpdFRhYk5hbWUiIHBsYWNlaG9sZGVyPSJWRDogTeG7j25nIG5o4bq5IiAvPgogICAgICA8bGFiZWw+RW1vamkgYXZhdGFyPC9sYWJlbD4KICAgICAgPGlucHV0IGNsYXNzPSJlZGl0LWZpZWxkIiBpZD0iZWRpdEVtb2ppIiBwbGFjZWhvbGRlcj0i8J+ShCIgbWF4bGVuZ3RoPSI0IiAvPgogICAgICA8bGFiZWw+VGnDqnUgxJHhu4EgbG9vazwvbGFiZWw+CiAgICAgIDxpbnB1dCBjbGFzcz0iZWRpdC1maWVsZCIgaWQ9ImVkaXRUaXRsZSIgcGxhY2Vob2xkZXI9IlRvbmUgdHJhbmcgxJFp4buDbeKApiIgLz4KICAgICAgPGxhYmVsPk3DtCB04bqjIHBo4bulPC9sYWJlbD4KICAgICAgPHRleHRhcmVhIGNsYXNzPSJlZGl0LWZpZWxkIiBpZD0iZWRpdFN1YnRpdGxlIiBwbGFjZWhvbGRlcj0iTcO0IHThuqMgbmfhuq9u4oCmIj48L3RleHRhcmVhPgogICAgICA8bGFiZWw+RMOybmcgY2jDom4gdHJhbmc8L2xhYmVsPgogICAgICA8aW5wdXQgY2xhc3M9ImVkaXQtZmllbGQiIGlkPSJlZGl0Rm9vdGVyIiBwbGFjZWhvbGRlcj0iTMOgbSB0aGVvIMSRw7puZyB0aOG7qSB04bux4oCmIiAvPgogICAgICA8ZGl2IGNsYXNzPSJlZGl0LXJvdyIgc3R5bGU9ImRpc3BsYXk6ZmxleCI+CiAgICAgICAgPGJ1dHRvbiB0eXBlPSJidXR0b24iIGlkPSJidG5SZW5hbWVUYWIiPsSQ4buVaSB0w6puIHRhYjwvYnV0dG9uPgogICAgICAgIDxidXR0b24gdHlwZT0iYnV0dG9uIiBpZD0iYnRuRGVsZXRlVGFiIj5Yb8OhIHRvbmUgbsOgeTwvYnV0dG9uPgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgoKICAgIDxoZWFkZXIgY2xhc3M9ImhlYWRlciI+CiAgICAgIDxkaXYgY2xhc3M9ImF2YXRhciIgaWQ9Imxvb2tBdmF0YXIiIGFyaWEtaGlkZGVuPSJ0cnVlIj7wn5KEPC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9ImJhZGdlLWxpdmUiPjxzcGFuIGNsYXNzPSJkb3QiPjwvc3Bhbj4gPHNwYW4gaWQ9ImJhZGdlVGV4dCI+U+G6o24gcGjhuqltIHRyb25nIHZpZGVvPC9zcGFuPjwvZGl2PgogICAgICA8aDEgaWQ9Imxvb2tUaXRsZSI+VG9uZSB0cmFuZyDEkWnhu4NtIG3hu49uZyBuaOG6uTwvaDE+CiAgICAgIDxwIGNsYXNzPSJ0YWdsaW5lIiBpZD0ibG9va1N1YnRpdGxlIj5EYW5oIHPDoWNoIMSR4bqneSDEkeG7pyB0aGVvIHRo4bupIHThu7EgbWFrZS11cCDigJQgY2jhuqFtIG7DunQgxJHhu4MgbXVhIHRyw6puIFNob3BlZSDinKg8L3A+CiAgICA8L2hlYWRlcj4KCiAgICA8bWFpbiBjbGFzcz0ic3RlcHMiIGlkPSJzdGVwcyI+PC9tYWluPgogICAgPGJ1dHRvbiB0eXBlPSJidXR0b24iIGNsYXNzPSJhZGQtcHJvZHVjdC1idG4iIGlkPSJidG5BZGRQcm9kdWN0Ij7vvIsgVGjDqm0gc+G6o24gcGjhuqltPC9idXR0b24+CgogICAgPGZvb3Rlcj4KICAgICAgPHAgaWQ9Imxvb2tGb290ZXIiPkzDoG0gdGhlbyDEkcO6bmcgdGjhu6kgdOG7sSB0cm9uZyB2aWRlbyBuaGEg8J+SlTwvcD4KICAgICAgPHAgc3R5bGU9Im1hcmdpbi10b3A6NnB4Ij5Mb29rYm9vayBtYWtldXAgwrcgdOG7q25nIHRvbmUgbeG7mXQgc2hlZXQgPHNwYW4gY2xhc3M9ImhlYXJ0Ij7imaU8L3NwYW4+PC9wPgogICAgPC9mb290ZXI+CiAgPC9kaXY+CgogIDxkaXYgY2xhc3M9InNoZWV0LWRvY2siIGFyaWEtaGlkZGVuPSJmYWxzZSI+CiAgICA8ZGl2IGNsYXNzPSJzaGVldC1iYXIiIGlkPSJ0YWJzQm90dG9tIiByb2xlPSJ0YWJsaXN0IiBhcmlhLWxhYmVsPSJUb25lIG1ha2V1cCAoZMaw4bubaSkiPjwvZGl2PgogIDwvZGl2PgoKICA8YnV0dG9uIHR5cGU9ImJ1dHRvbiIgY2xhc3M9ImVkaXQtZmFiIiBpZD0iZWRpdEZhYiIgdGl0bGU9IkNo4buJbmggc+G7rWEiIGFyaWEtbGFiZWw9IkNo4buJbmggc+G7rWEiPuKcjjwvYnV0dG9uPgoKICA8ZGl2IGNsYXNzPSJtb2RhbC1iYWNrZHJvcCIgaWQ9InBpbk1vZGFsIiByb2xlPSJkaWFsb2ciIGFyaWEtbW9kYWw9InRydWUiIGFyaWEtbGFiZWxsZWRieT0icGluVGl0bGUiPgogICAgPGRpdiBjbGFzcz0ibW9kYWwiPgogICAgICA8aDMgaWQ9InBpblRpdGxlIj5DaOG6vyDEkeG7mSBjaOG7pyBz4bufIGjhu691PC9oMz4KICAgICAgPHA+Tmjhuq1wIG3DoyBQSU4gxJHhu4MgY2jhu4luaCBz4butYSBsb29rYm9vay4gS2jDoWNoIHhlbSB0cmFuZyBz4bq9IGtow7RuZyB0aOG6pXkgbsO6dCBuw6B5IGhv4bqhdCDEkeG7mW5nIG7hur91IHNhaSBtw6MuPC9wPgogICAgICA8aW5wdXQgdHlwZT0icGFzc3dvcmQiIGlkPSJwaW5JbnB1dCIgaW5wdXRtb2RlPSJudW1lcmljIiBtYXhsZW5ndGg9IjgiIHBsYWNlaG9sZGVyPSLigKLigKLigKLigKIiIGF1dG9jb21wbGV0ZT0ib2ZmIiAvPgogICAgICA8ZGl2IGNsYXNzPSJlcnIiIGlkPSJwaW5FcnIiPjwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJyb3ciPgogICAgICAgIDxidXR0b24gdHlwZT0iYnV0dG9uIiBjbGFzcz0iY2FuY2VsIiBpZD0icGluQ2FuY2VsIj5IdeG7tzwvYnV0dG9uPgogICAgICAgIDxidXR0b24gdHlwZT0iYnV0dG9uIiBjbGFzcz0ib2siIGlkPSJwaW5PayI+VsOgbyBz4butYTwvYnV0dG9uPgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogIDwvZGl2PgoKICA8ZGl2IGNsYXNzPSJ0b2FzdCIgaWQ9InRvYXN0Ij48L2Rpdj4KCiAgPHNjcmlwdD4KLypfX0RFRkFVTFRfREFUQV9fKi8KY29uc3QgREVGQVVMVF9EQVRBID0gewogICJwaW4iOiAiMDgwNCIsCiAgImFjdGl2ZUlkIjogImxvb2stbW9uZ25oZSIsCiAgImxvb2tzIjogWwogICAgewogICAgICAiaWQiOiAibG9vay1tb25nbmhlIiwKICAgICAgInRhYk5hbWUiOiAiTeG7j25nIG5o4bq5IiwKICAgICAgImVtb2ppIjogIvCfkoQiLAogICAgICAidGl0bGUiOiAiVG9uZSB0cmFuZyDEkWnhu4NtIG3hu49uZyBuaOG6uSIsCiAgICAgICJzdWJ0aXRsZSI6ICLEkMO6bmcgdGjhu6kgdOG7sSB0cm9uZyB2aWRlbyDigJQgdOG7q25nIGLGsOG7m2MgbeG7mXQsIGNo4bqhbSDEkeG7gyBtdWEgdHLDqm4gU2hvcGVlIOKcqCIsCiAgICAgICJmb290ZXIiOiAiTMOgbSB0aGVvIMSRw7puZyB0aOG7qSB04buxIHRyb25nIHZpZGVvIG5oYSDwn5KVIiwKICAgICAgImJhZGdlIjogIlPhuqNuIHBo4bqpbSB0cm9uZyB2aWRlbyIsCiAgICAgICJwcm9kdWN0cyI6IFsKICAgICAgICB7CiAgICAgICAgICAiaWQiOiAidDEtcDEiLAogICAgICAgICAgImVtb2ppIjogIvCfkqYiLAogICAgICAgICAgIm5hbWUiOiAiZOKAmUFsYmEgRmlyc3QgU3ByYXkgU2VydW0iLAogICAgICAgICAgIm5vdGUiOiAiU2VydW0gZOG6oW5nIHjhu4t0IGtob8OhbmcgY8SDbmcgYsOzbmcgZGEuIFjhu4t0IMSR4bqndSB0acOqbiDEkeG7gyBj4bqlcCDhuqltIG5oYW5oLCBsw6BtIGRhIGPEg25nIHbDoCBiw7NuZyBuaOG6uSB0csaw4bubYyBraGkgbMOqbiBrZW0uIiwKICAgICAgICAgICJsaW5rIjogImh0dHBzOi8vcy5zaG9wZWUudm4vOEtxZkhOR0tKSiIsCiAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIHRyw6puIFNob3BlZSIsCiAgICAgICAgICAic3VicyI6IFtdCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAiaWQiOiAidDEtcDIiLAogICAgICAgICAgImVtb2ppIjogIvCfp7QiLAogICAgICAgICAgIm5hbWUiOiAiS2VtIGzDs3QiLAogICAgICAgICAgIm5vdGUiOiAiRMO5bmcgc2F1IGLGsOG7m2MgeOG7i3QgxJHhu4MgdOG6oW8gbOG7m3AgbuG7gW4gbeG7i24sIGdpw7pwIG1ha2V1cCBiw6FtIHThu5F0IHbDoCB0aOG6qW0gdGjhuqV1IGjGoW4uIiwKICAgICAgICAgICJsaW5rIjogIiIsCiAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIHRyw6puIFNob3BlZSIsCiAgICAgICAgICAic3VicyI6IFtdCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAiaWQiOiAidDEtcDMiLAogICAgICAgICAgImVtb2ppIjogIvCfqp4iLAogICAgICAgICAgIm5hbWUiOiAiQ3VzaGlvbiBDTElPIFtC4bqjbiBuw6JuZyBj4bqlcF0iLAogICAgICAgICAgIm5vdGUiOiAiS2VtIG7hu4FuIGThuqFuZyBjdXNoaW9uLiBQYXQgdOG7qyBnaeG7r2EgbeG6t3QgcmEgbmdvw6BpIMSR4buDIG7hu4FuIHRo4bqldSwgxJHhu4F1IG3DoHUgbmjGsG5nIHbhuqtuIGdp4buvIHRleHR1cmUgZGEgdOG7sSBuaGnDqm4uIiwKICAgICAgICAgICJsaW5rIjogImh0dHBzOi8vcy5zaG9wZWUudm4vNzBMSGd6V3FleiIsCiAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIEN1c2hpb24gQ0xJTyIsCiAgICAgICAgICAic3VicyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0aXRsZSI6ICLinpUgUGF0IGLhurFuZyBiw7RuZyBtw7p0IHRyYW5nIMSRaeG7g20gY+G7p2EgTW9tb+KAmXMgV29ya3Nob3AiLAogICAgICAgICAgICAgICJub3RlIjogIlBhdCBi4bqxbmcgYsO0bmcgbcO6dCB0cmFuZyDEkWnhu4NtIGPhu6dhIE1vbW/igJlzIFdvcmtzaG9wIMSR4buDIG7hu4FuIHRo4bqldSB2w6AgxJHhu4F1LiIsCiAgICAgICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi81cTlLSlR2THR1IiwKICAgICAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIGLDtG5nIG3DunQiCiAgICAgICAgICAgIH0KICAgICAgICAgIF0KICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJpZCI6ICJ0MS1wNCIsCiAgICAgICAgICAiZW1vamkiOiAi4pyoIiwKICAgICAgICAgICJuYW1lIjogIkLhuq90IHPDoW5nIGtlbSBNb21v4oCZcyBXb3Jrc2hvcCIsCiAgICAgICAgICAibm90ZSI6ICJNw6B1IDAwMSAmIDAwMyBoaWdobGlnaHQgZOG6oW5nIGtlbS4gTMOgbSBzw6FuZyBt4bq3dCwgdOG6oW8gxJHhu5kgcGjhurNuZyB2w6AgY2jhu4luaCBjb250b3VyIG3FqWkgc8ahIGLhu5kuIiwKICAgICAgICAgICJsaW5rIjogImh0dHBzOi8vcy5zaG9wZWUudm4vODBEb2s4RGVYeiIsCiAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIGLhuq90IHPDoW5nIE1vbW/igJlzIiwKICAgICAgICAgICJzdWJzIjogW10KICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJpZCI6ICJ0MS1wNSIsCiAgICAgICAgICAiZW1vamkiOiAi8J+MuCIsCiAgICAgICAgICAibmFtZSI6ICJNw6EgaOG7k25nIE1vbW/igJlzIFdvcmtzaG9wIENCMDMiLAogICAgICAgICAgIm5vdGUiOiAiUGF0IHRoZW8gaMOsbmggY2jhu68gVyB0csOqbiBtw6EgxJHhu4MgY8OzIHPhu6ljIHPhu5FuZyBuaOG6uS4gSOG7mXAgdsOgIHB1ZmYgxJHhu4F1IGluIGNo4buvIE1vbW/igJlzIFdvcmtzaG9wLiIsCiAgICAgICAgICAibGluayI6ICJodHRwczovL3Muc2hvcGVlLnZuLzNCOGFHMmQ3ak4iLAogICAgICAgICAgImN0YSI6ICLwn5uSIE11YSBtw6EgaOG7k25nIENCMDMiLAogICAgICAgICAgInN1YnMiOiBbXQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImlkIjogInQxLXA2IiwKICAgICAgICAgICJlbW9qaSI6ICLwn5SSIiwKICAgICAgICAgICJuYW1lIjogIlBo4bqlbiBuw6luIGtob8OhIG7hu4FuIiwKICAgICAgICAgICJub3RlIjogIktob8OhIGzhu5twIG7hu4FuIGzhuqFpIMSR4buDIG1ha2V1cCBi4buBbiBoxqFuIGPhuqMgbmfDoHkuIiwKICAgICAgICAgICJsaW5rIjogIiIsCiAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIHRyw6puIFNob3BlZSIsCiAgICAgICAgICAic3VicyI6IFtdCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAiaWQiOiAidDEtcDciLAogICAgICAgICAgImVtb2ppIjogIvCflorvuI8iLAogICAgICAgICAgIm5hbWUiOiAiTMO0bmcgbcOgeSIsCiAgICAgICAgICAibm90ZSI6ICJC4bqjbmcgUGjhuqVuIFbDuW5nIE3huq90IEx1bmFzb2wgbcOgdSAjMDEgTmF0dXJhbCBCcm93biAoY2jGsGEgY8OzIGxpbmspLiIsCiAgICAgICAgICAibGluayI6ICIiLAogICAgICAgICAgImN0YSI6ICLwn5uSIE11YSB0csOqbiBTaG9wZWUiLAogICAgICAgICAgInN1YnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidGl0bGUiOiAi8J+Rge+4jyBNYXNjYXJhIGzDtG5nIG3DoHkiLAogICAgICAgICAgICAgICJub3RlIjogIiIsCiAgICAgICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi9nUkVCTmpqQjAiLAogICAgICAgICAgICAgICJjdGEiOiAi8J+bkiBNdWEgbWFzY2FyYSBsw7RuZyBtw6B5IgogICAgICAgICAgICB9CiAgICAgICAgICBdCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAiaWQiOiAidDEtcDgiLAogICAgICAgICAgImVtb2ppIjogIvCfkYHvuI8iLAogICAgICAgICAgIm5hbWUiOiAiTWFrZXVwIG3huq90IiwKICAgICAgICAgICJub3RlIjogIkTDuW5nIGx1w7RuIG3DoHUgbcOhIGjhu5NuZyDEkeG7gyDEkcOhbmggbeG6r3QuIE3DoHUgY2jDom4gbWkgJiBi4buNbmcgbeG6r3Q6IGLhuqNuZyBt4bqvdCBDbGlvIChjaMawYSBjw7MgbGluaykuIiwKICAgICAgICAgICJsaW5rIjogIiIsCiAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIHRyw6puIFNob3BlZSIsCiAgICAgICAgICAic3VicyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0aXRsZSI6ICLwn5KrIEvhurlwIG1pIGNvbmcgbMOidSBXT1NBRE8iLAogICAgICAgICAgICAgICJub3RlIjogIiIsCiAgICAgICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi8zVmxQWXdMbkJYIiwKICAgICAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIGvhurlwIG1pIFdPU0FETyIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0aXRsZSI6ICLwn6q2IE1pIGdp4bqjIiwKICAgICAgICAgICAgICAibm90ZSI6ICIiLAogICAgICAgICAgICAgICJsaW5rIjogImh0dHBzOi8vcy5zaG9wZWUudm4vVzduaEp4blpHIiwKICAgICAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIG1pIGdp4bqjIgogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInRpdGxlIjogIvCfjJ8gUGjhuqVuIGLhuq90IHPDoW5nIHThuqFvIGto4buRaSBGbG93ZXIgS25vd3MiLAogICAgICAgICAgICAgICJub3RlIjogIiIsCiAgICAgICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi8xQk5VbXR5OXAxIiwKICAgICAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIEZsb3dlciBLbm93cyIKICAgICAgICAgICAgfQogICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImlkIjogInQxLXA5IiwKICAgICAgICAgICJlbW9qaSI6ICLwn5KLIiwKICAgICAgICAgICJuYW1lIjogIk3DtGkiLAogICAgICAgICAgIm5vdGUiOiAiQ2jDrCBr4bq7IG3DtGkgS2FsZWlkb3MgIzAzICsgc29uIGLDs25nIGtob8OhIG3DoHUgbMOidSB0csO0aSBGbG93ZXIgS25vd3MgbcOgdSAjMDQuIiwKICAgICAgICAgICJsaW5rIjogImh0dHBzOi8vcy5zaG9wZWUudm4vNlZQMThuRW9TWSIsCiAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIGNow6wgS2FsZWlkb3MgIzAzIiwKICAgICAgICAgICJzdWJzIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInRpdGxlIjogIvCfkYQgU29uIGLDs25nIGtob8OhIG3DoHUgbMOidSB0csO0aSBGTE9XRVIgS05PV1MgbcOgdSAjMDQiLAogICAgICAgICAgICAgICJub3RlIjogIlNvbiBiw7NuZyBraG/DoSBtw6B1IGzDonUgdHLDtGkg4oCUIHTDtG5nICMwNCBzw6FuZyBtw7RpLCBiw7NuZyBuaOG6uSBj4bqjIG5nw6B5LiIsCiAgICAgICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi8zZzRyMHpzUHNmIiwKICAgICAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIHNvbiBiw7NuZyAjMDQiCiAgICAgICAgICAgIH0KICAgICAgICAgIF0KICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJpZCI6ICJ0MS1wMTAiLAogICAgICAgICAgImVtb2ppIjogIvCflozvuI8iLAogICAgICAgICAgIm5hbWUiOiAiQ+G7jSBuaMOgIE5oaSBWaSIsCiAgICAgICAgICAibm90ZSI6ICJC4buZIGPhu40gdGluaCBn4buNbiDEkeG7gyB0w6FuIG7hu4FuLCBtw6EgaOG7k25nIHbDoCBi4bqvdCBzw6FuZyBtxrDhu6N0IGjGoW4g4oCUIHRoYW0ga2jhuqNvIMSR4bunIGTDsm5nIGPhu40gTmhpIFZpIHThuqFpIMSRw6J5LiIsCiAgICAgICAgICAibGluayI6ICJodHRwczovL3Muc2hvcGVlLnZuLzFxZEJmcG9YM0giLAogICAgICAgICAgImN0YSI6ICLwn5uSIEtow6FtIHBow6EgYuG7mSBj4buNIE5oaSBWaSIsCiAgICAgICAgICAic3VicyI6IFtdCiAgICAgICAgfQogICAgICBdCiAgICB9LAogICAgewogICAgICAiaWQiOiAibG9vay1kaWxhbSIsCiAgICAgICJ0YWJOYW1lIjogIsSQaSBsw6BtIiwKICAgICAgImVtb2ppIjogIvCfkZwiLAogICAgICAidGl0bGUiOiAiVG9uZSDEkWkgbMOgbSDigJQgZ+G7jW4sIGLhu4FuLCBjaOG7iW4gY2h1IiwKICAgICAgInN1YnRpdGxlIjogIk1ha2V1cCB2xINuIHBow7JuZyBuaOG6uSBuaMOgbmc6IGRhIGThu4t1LCBu4buBbiBt4buLbiwgxJFp4buDbSBuaOG6pW4gdGhhbmgg4oCUIGNo4bqhbSDEkeG7gyBtdWEgdOG7q25nIG3Ds24g4pyoIiwKICAgICAgImZvb3RlciI6ICJUb25lIMSRaSBsw6BtIMK3IHPhuqFjaCBz4bq9IMK3IGLhu4FuIMSR4bq5cCBj4bqjIG5nw6B5IPCfkpUiLAogICAgICAiYmFkZ2UiOiAiTG9vayDEkWkgbMOgbSIsCiAgICAgICJwcm9kdWN0cyI6IFsKICAgICAgICB7CiAgICAgICAgICAiaWQiOiAidDItcDEiLAogICAgICAgICAgImVtb2ppIjogIvCfpZsiLAogICAgICAgICAgIm5hbWUiOiAiU+G7r2EgZMaw4buhbmcgT05HUkVESUVOVFMiLAogICAgICAgICAgIm5vdGUiOiAiU+G7r2EgZMaw4buhbmcgZGEgbMOgbSBk4buLdSwgZMaw4buhbmcg4bqpbSB0xINuZyBjxrDhu51uZywgY2h14bqpbiBi4buLIHRyYW5nIMSRaeG7g20gaG/DoG4gaOG6o28g4oCUIGPDtG5nIHRo4bupYyB0aHXhuqduIGNoYXkuIiwKICAgICAgICAgICJsaW5rIjogImh0dHBzOi8vcy5zaG9wZWUudm4vM3FPSEVQWUVCYiIsCiAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIE9OR1JFRElFTlRTIiwKICAgICAgICAgICJzdWJzIjogW10KICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJpZCI6ICJ0Mi1wMiIsCiAgICAgICAgICAiZW1vamkiOiAi8J+qniIsCiAgICAgICAgICAibmFtZSI6ICJO4buBbiBDbMOpIGRlIFBlYXUgbWluaSIsCiAgICAgICAgICAibm90ZSI6ICJM4bubcCBu4buBbiBDbMOpIGRlIFBlYXUgYuG6o24gbWluaSDigJQgbeG7j25nLCDEkeG7gXUsIGdp4buvIGRhIHPDoW5nIHThu7Egbmhpw6puIGPhuqMgbmfDoHkgbMOgbSB2aeG7h2MuIiwKICAgICAgICAgICJsaW5rIjogImh0dHBzOi8vcy5zaG9wZWUudm4vM2c0cjJOOHg3byIsCiAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIG7hu4FuIENsw6kgZGUgUGVhdSIsCiAgICAgICAgICAic3VicyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0aXRsZSI6ICLwn5aM77iPIEPhu40gZMOgbiBu4buBbiIsCiAgICAgICAgICAgICAgIm5vdGUiOiAiQ+G7jSBkw6BuIG7hu4FuIMSR4buDIHTDoW4gbeG7j25nLCBraMO0bmcgxJHhu4MgbOG6oWkgduG7h3QuIiwKICAgICAgICAgICAgICAibGluayI6ICJodHRwczovL3Muc2hvcGVlLnZuLzRxR29XQXdpOEsiLAogICAgICAgICAgICAgICJjdGEiOiAi8J+bkiBNdWEgY+G7jSBkw6BuIG7hu4FuIgogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInRpdGxlIjogIvCfp70gQsO0bmcgbcO6dCB0w6FuIiwKICAgICAgICAgICAgICAibm90ZSI6ICJCw7RuZyBtw7p0IHTDoW4gbuG7gW4gc8OhdCBkYSwgZmluaXNoIG3hu4tuLiIsCiAgICAgICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi84cG14Qnh2YWg3IiwKICAgICAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIGLDtG5nIG3DunQgdMOhbiIKICAgICAgICAgICAgfQogICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImlkIjogInQyLXAzIiwKICAgICAgICAgICJlbW9qaSI6ICLwn5SSIiwKICAgICAgICAgICJuYW1lIjogIlBo4bqlbiBuw6luIE5BUlMiLAogICAgICAgICAgIm5vdGUiOiAiUGjhuqVuIG7DqW4gTkFSUyBraG/DoSBu4buBbiDigJQgZGEgduG6q24gdGhvw6FuZyBuaMawbmcgbWFrZXVwIGLhu4FuIHN14buRdCBnaeG7nSBsw6BtLiIsCiAgICAgICAgICAibGluayI6ICJodHRwczovL3Muc2hvcGVlLnZuL0JVeXkzYm9WbCIsCiAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIHBo4bqlbiBuw6luIE5BUlMiLAogICAgICAgICAgInN1YnMiOiBbXQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImlkIjogInQyLXA0IiwKICAgICAgICAgICJlbW9qaSI6ICLwn5aK77iPIiwKICAgICAgICAgICJuYW1lIjogIkzDtG5nIG3DoHkgJiBt4bqvdCIsCiAgICAgICAgICAibm90ZSI6ICJLaHVuZyBtw6B5IG5o4bq5IGLhurFuZyBi4bqjbmcgbeG6r3QsIHLhu5NpIG5o4bqlbiBt4bqvdCB0w7RuZyB2xINuIHBow7JuZyBk4buFIG5ow6xuLiIsCiAgICAgICAgICAibGluayI6ICIiLAogICAgICAgICAgImN0YSI6ICLwn5uSIE11YSB0csOqbiBTaG9wZWUiLAogICAgICAgICAgInN1YnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidGl0bGUiOiAi8J+OqCBC4bqjbmcgcGjhuqVuIG3huq90IDEyIMO0IEpvb2N5ZWUiLAogICAgICAgICAgICAgICJub3RlIjogIkTDuW5nIHTDtG5nIG7DonUgdOG7sSBuaGnDqm4gxJHhu4MgdMO0IGtodW5nIGzDtG5nIG3DoHkuIiwKICAgICAgICAgICAgICAibGluayI6ICJodHRwczovL3Muc2hvcGVlLnZuLzJnQ0pyTWtCejciLAogICAgICAgICAgICAgICJjdGEiOiAi8J+bkiBNdWEgSm9vY3llZSAxMiDDtCIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0aXRsZSI6ICLwn5GB77iPIELhuqNuZyBt4bqvdCBDbGlvIG3DoHUgMDQiLAogICAgICAgICAgICAgICJub3RlIjogIk5o4bqlbiBtw60gdsOgIGNow6JuIG1pIHbhu5tpIENsaW8gIzA0LiIsCiAgICAgICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi9BVXZCQnhwanhKIiwKICAgICAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIENsaW8gIzA0IgogICAgICAgICAgICB9CiAgICAgICAgICBdCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAiaWQiOiAidDItcDUiLAogICAgICAgICAgImVtb2ppIjogIvCfqrYiLAogICAgICAgICAgIm5hbWUiOiAiTWkgZ2nhuqMiLAogICAgICAgICAgIm5vdGUiOiAiR+G6r24gbWkgZ2nhuqMgbeG7j25nIMSR4buDIG3huq90IG3hu58gaMahbiDigJQgduG6q24gdOG7sSBuaGnDqm4sIGjhu6NwIGxvb2sgxJFpIGzDoG0uIiwKICAgICAgICAgICJsaW5rIjogImh0dHBzOi8vcy5zaG9wZWUudm4vOTA2TlBZOFlPbiIsCiAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIG1pIGdp4bqjIiwKICAgICAgICAgICJzdWJzIjogW10KICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJpZCI6ICJ0Mi1wNiIsCiAgICAgICAgICAiZW1vamkiOiAi8J+MuCIsCiAgICAgICAgICAibmFtZSI6ICJNw6EgaOG7k25nIE5BUlMgdG9uZSBCZWhhdmUiLAogICAgICAgICAgIm5vdGUiOiAiTcOhIGjhu5NuZyBOQVJTIHTDtG5nIEJlaGF2ZSDigJQgaOG7k25nIMSR4bqldCBuaOG6uSwgc+G7qWMgc+G7kW5nIHbhu6thIMSR4bunIGNobyBtw7RpIHRyxrDhu51uZyB2xINuIHBow7JuZy4iLAogICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi81TEQ1MzdmNjl1IiwKICAgICAgICAgICJjdGEiOiAi8J+bkiBNdWEgTkFSUyBCZWhhdmUiLAogICAgICAgICAgInN1YnMiOiBbXQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImlkIjogInQyLXA3IiwKICAgICAgICAgICJlbW9qaSI6ICLwn5KLIiwKICAgICAgICAgICJuYW1lIjogIlNvbiBEaW50byAjMjE5IiwKICAgICAgICAgICJub3RlIjogIlNvbiBEaW50byBtw6B1ICMyMTkg4oCUIHPhuq9jIG3DtGkgZOG7i3UsIGtow7RuZyBxdcOhIG7hu5VpLCBk4buFIHBo4buRaSBj4bqjIG5nw6B5LiIsCiAgICAgICAgICAibGluayI6ICJodHRwczovL3Muc2hvcGVlLnZuLzRxR29TQU9wdW4iLAogICAgICAgICAgImN0YSI6ICLwn5uSIE11YSBEaW50byAjMjE5IiwKICAgICAgICAgICJzdWJzIjogW10KICAgICAgICB9CiAgICAgIF0KICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJsb29rLWRha2hvIiwKICAgICAgInRhYk5hbWUiOiAiRGEga2jDtCIsCiAgICAgICJlbW9qaSI6ICLwn5KnIiwKICAgICAgInRpdGxlIjogIlRvbmUgbWFrZXVwIGNobyBkYSBraMO0IiwKICAgICAgInN1YnRpdGxlIjogIsav4bubdCBkYSB0csaw4bubYyDigJQgbuG7gW4gY8SDbmcg4oCUIGLhuq90IHPDoW5nIGtlbSDigJQgcGjhuqVuIG3hu49uZy4gR2nhu68gxJHhu5kg4bqpbSwgdHLDoW5oIGLhu5l0IGtow7QgbuG6uyDinKgiLAogICAgICAiZm9vdGVyIjogIkRhIGtow7QgwrcgY8SDbmcgYsOzbmcgwrcga2jDtG5nIGLhu5l0IPCfkpUiLAogICAgICAiYmFkZ2UiOiAiTG9vayBkYSBraMO0IiwKICAgICAgInByb2R1Y3RzIjogWwogICAgICAgIHsKICAgICAgICAgICJpZCI6ICJ0My1wMSIsCiAgICAgICAgICAiZW1vamkiOiAi8J+SpyIsCiAgICAgICAgICAibmFtZSI6ICJD4bqlcCDhuqltIHRyxrDhu5tjIG1ha2V1cCIsCiAgICAgICAgICAibm90ZSI6ICLEkOG6r3AgxrDhu5t0IHLhu5NpIGtob8OhIGLhurFuZyBuxrDhu5tjIHRo4bqnbiDigJQgZGEgxJHhu6cg4bqpbSB0csaw4bubYyBraGkgbMOqbiBu4buBbiwgaOG6oW4gY2jhur8ga2jDtCBu4bq7LiIsCiAgICAgICAgICAibGluayI6ICIiLAogICAgICAgICAgImN0YSI6ICLwn5uSIE11YSB0csOqbiBTaG9wZWUiLAogICAgICAgICAgInN1YnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidGl0bGUiOiAi8J+rpyBCw7RuZyDEkeG6r3AgxrDhu5t0IGNvIGdpw6NuIiwKICAgICAgICAgICAgICAibm90ZSI6ICLEkOG6r3AgxrDhu5t0IGNvIGdpw6NuIMSR4buDIGRhIHXhu5FuZyBuxrDhu5tjIMSR4buBdS4iLAogICAgICAgICAgICAgICJsaW5rIjogImh0dHBzOi8vcy5zaG9wZWUudm4vM0xTMGcwSzA0MiIsCiAgICAgICAgICAgICAgImN0YSI6ICLwn5uSIE11YSBiw7RuZyDEkeG6r3AgxrDhu5t0IgogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInRpdGxlIjogIuKcqCBOxrDhu5tjIHRo4bqnbiBIRlAiLAogICAgICAgICAgICAgICJub3RlIjogIljhu4t0L3Rob2Egbsaw4bubYyB0aOG6p24gSEZQIMSR4buDIGtow7NhIOG6qW0gdHLGsOG7m2MgbuG7gW4uIiwKICAgICAgICAgICAgICAibGluayI6ICJodHRwczovL3Muc2hvcGVlLnZuLzdBZWpGSFJuZVoiLAogICAgICAgICAgICAgICJjdGEiOiAi8J+bkiBNdWEgbsaw4bubYyB0aOG6p24gSEZQIgogICAgICAgICAgICB9CiAgICAgICAgICBdCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAiaWQiOiAidDMtcDIiLAogICAgICAgICAgImVtb2ppIjogIvCfqp4iLAogICAgICAgICAgIm5hbWUiOiAiTuG7gW4gQ2zDqSBkZSBQZWF1IG1pbmkiLAogICAgICAgICAgIm5vdGUiOiAiTuG7gW4gQ2zDqSBkZSBQZWF1IG1pbmkgdHLDqm4gZGEgxJHDoyDhuqltIOKAlCBjxINuZywgxJHhu4F1LCBraMO0bmcgbMOgbSBraMO0IHRow6ptLiIsCiAgICAgICAgICAibGluayI6ICJodHRwczovL3Muc2hvcGVlLnZuLzNnNHIyTjh4N28iLAogICAgICAgICAgImN0YSI6ICLwn5uSIE11YSBu4buBbiBDbMOpIGRlIFBlYXUiLAogICAgICAgICAgInN1YnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidGl0bGUiOiAi8J+WjO+4jyBD4buNIGTDoG4gbuG7gW4iLAogICAgICAgICAgICAgICJub3RlIjogIkPhu40gZMOgbiBu4buBbiB0w6FuIG3hu49uZyB0csOqbiBkYSDhuqltLiIsCiAgICAgICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi80cUdvV0F3aThLIiwKICAgICAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIGPhu40gZMOgbiBu4buBbiIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0aXRsZSI6ICLwn6e9IELDtG5nIG3DunQgdMOhbiIsCiAgICAgICAgICAgICAgIm5vdGUiOiAiQsO0bmcgbcO6dCB0w6FuIHPDoXQgZGEsIGdp4buvIMSR4buZIGLDs25nIG5o4bq5LiIsCiAgICAgICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi84cG14Qnh2YWg3IiwKICAgICAgICAgICAgICAiY3RhIjogIvCfm5IgTXVhIGLDtG5nIG3DunQgdMOhbiIKICAgICAgICAgICAgfQogICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImlkIjogInQzLXAzIiwKICAgICAgICAgICJlbW9qaSI6ICLwn4+U77iPIiwKICAgICAgICAgICJuYW1lIjogIlThuqFvIGto4buRaSBGZW50eSBCZWF1dHkiLAogICAgICAgICAgIm5vdGUiOiAiVOG6oW8ga2jhu5FpIEZlbnR5IEJlYXV0eSDigJQgxJHGsOG7nW5nIG7DqXQgcsO1IG5oxrBuZyB24bqrbiBt4buBbSB0csOqbiBu4buBbiDhuqltLiIsCiAgICAgICAgICAibGluayI6ICJodHRwczovL3Muc2hvcGVlLnZuLzRCMTdmdnZGU1ciLAogICAgICAgICAgImN0YSI6ICLwn5uSIE11YSBGZW50eSBCZWF1dHkiLAogICAgICAgICAgInN1YnMiOiBbXQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImlkIjogInQzLXA0IiwKICAgICAgICAgICJlbW9qaSI6ICLinKgiLAogICAgICAgICAgIm5hbWUiOiAiS2VtIGLhuq90IHPDoW5nIE1vbW/igJlzIFdvcmtzaG9wIiwKICAgICAgICAgICJub3RlIjogIkhpZ2hsaWdodCBk4bqhbmcga2VtIE1vbW/igJlzIFdvcmtzaG9wIOKAlCDDoW5oIHPDoW5nIMaw4bubdCwgaOG7o3AgaOG7o3AgZGEga2jDtCBoxqFuIHBo4bqlbi4iLAogICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi84MERvazhEZVh6IiwKICAgICAgICAgICJjdGEiOiAi8J+bkiBNdWEgYuG6r3Qgc8Ohbmcga2VtIiwKICAgICAgICAgICJzdWJzIjogW10KICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJpZCI6ICJ0My1wNSIsCiAgICAgICAgICAiZW1vamkiOiAi8J+MuCIsCiAgICAgICAgICAibmFtZSI6ICJQaOG6pW4gbcOhIGjhu5NuZyBEYWlzeSBEb2xsIFBLLTAxIiwKICAgICAgICAgICJub3RlIjogIlBo4bqlbiBtw6EgaOG7k25nIERhaXN5IERvbGwgbcOgdSBQSy0wMSDigJQgaOG7k25nIG5o4bq5LCB0w6FuIG3hu49uZyB0csOqbiBnw7IgbcOhLiIsCiAgICAgICAgICAibGluayI6ICJodHRwczovL3Muc2hvcGVlLnZuLzVMRDU3YllYMkwiLAogICAgICAgICAgImN0YSI6ICLwn5uSIE11YSBEYWlzeSBEb2xsIFBLLTAxIiwKICAgICAgICAgICJzdWJzIjogW10KICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJpZCI6ICJ0My1wNiIsCiAgICAgICAgICAiZW1vamkiOiAi8J+UkiIsCiAgICAgICAgICAibmFtZSI6ICJQaOG6pW4gcGjhu6cgQm9iYmkgQnJvd24iLAogICAgICAgICAgIm5vdGUiOiAiUGjhuqVuIHBo4bunIEJvYmJpIEJyb3duIOKAlCBjaOG7iSBwaOG7pyB2w7luZyBj4bqnbiB0aGnhur90LCBnaeG7ryB2w7luZyBi4bqvdCBzw6FuZyB24bqrbiBjxINuZy4iLAogICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi83QWVqRnZZM0w3IiwKICAgICAgICAgICJjdGEiOiAi8J+bkiBNdWEgQm9iYmkgQnJvd24iLAogICAgICAgICAgInN1YnMiOiBbXQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImlkIjogInQzLXA3IiwKICAgICAgICAgICJlbW9qaSI6ICLwn5GB77iPIiwKICAgICAgICAgICJuYW1lIjogIkLhuqNuZyBwaOG6pW4gbeG6r3QiLAogICAgICAgICAgIm5vdGUiOiAiUGjhu5FpIGLhuqNuZyBGbG93ZXIgS25vd3MgduG7m2kgQ2xpbyDigJQgbeG6r3QgY8OzIGNoaeG7gXUgc8OidSBtw6Aga2jDtG5nIGtow7QgY+G7qW5nLiIsCiAgICAgICAgICAibGluayI6ICIiLAogICAgICAgICAgImN0YSI6ICLwn5uSIE11YSB0csOqbiBTaG9wZWUiLAogICAgICAgICAgInN1YnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidGl0bGUiOiAi8J+MnyBC4bqjbmcgbeG6r3QgRkxPV0VSIEtOT1dTIiwKICAgICAgICAgICAgICAibm90ZSI6ICIiLAogICAgICAgICAgICAgICJsaW5rIjogImh0dHBzOi8vcy5zaG9wZWUudm4vOHBteEZEUHUxQSIsCiAgICAgICAgICAgICAgImN0YSI6ICLwn5uSIE11YSBGbG93ZXIgS25vd3MiCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidGl0bGUiOiAi8J+OqCBC4bqjbmcgbeG6r3QgQ2xpbyIsCiAgICAgICAgICAgICAgIm5vdGUiOiAiIiwKICAgICAgICAgICAgICAibGluayI6ICJodHRwczovL3Muc2hvcGVlLnZuL0FVdkJCeHBqeEoiLAogICAgICAgICAgICAgICJjdGEiOiAi8J+bkiBNdWEgQ2xpbyIKICAgICAgICAgICAgfQogICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImlkIjogInQzLXA4IiwKICAgICAgICAgICJlbW9qaSI6ICLwn5CaIiwKICAgICAgICAgICJuYW1lIjogIlNvbiBiw7NuZyB24buPIHPDsiBTaGVsbCBKZXdlbCIsCiAgICAgICAgICAibm90ZSI6ICJTb24gYsOzbmcgduG7jyBzw7IgQlNUIFNoZWxsIEpld2VsIGPhu6dhIEZsb3dlciBLbm93cyDigJQgYsOzbmcgxrDhu5t0LCBsw6BtIG3DtGkgbeG7gW0gdHLDqm4gZGEga2jDtC4iLAogICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi85Zk00RWVFdVgyIiwKICAgICAgICAgICJjdGEiOiAi8J+bkiBNdWEgU2hlbGwgSmV3ZWwiLAogICAgICAgICAgInN1YnMiOiBbXQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImlkIjogInQzLXA5IiwKICAgICAgICAgICJlbW9qaSI6ICLwn6q2IiwKICAgICAgICAgICJuYW1lIjogIk1pIGdp4bqjIiwKICAgICAgICAgICJub3RlIjogIk1pIGdp4bqjIG3hu49uZyDEkeG7gyBt4bqvdCBt4bufIOKAlCBob8OgbiB0aGnhu4duIGxvb2sgZGEga2jDtCBjxINuZyBiw7NuZy4iLAogICAgICAgICAgImxpbmsiOiAiaHR0cHM6Ly9zLnNob3BlZS52bi85MDZOUFk4WU9uIiwKICAgICAgICAgICJjdGEiOiAi8J+bkiBNdWEgbWkgZ2nhuqMiLAogICAgICAgICAgInN1YnMiOiBbXQogICAgICAgIH0KICAgICAgXQogICAgfQogIF0KfTsKLypfX0VORF9ERUZBVUxUX0RBVEFfXyovCgpjb25zdCBTVE9SQUdFX0tFWSA9ICJ3aW4tbG9va2Jvb2stdjEiOwpjb25zdCBQSU5fU0VTU0lPTiA9ICJ3aW4tbG9va2Jvb2stYXV0aGVkIjsKCmNvbnN0IHN0YXRlID0gewogIGRhdGE6IG51bGwsCiAgZWRpdGluZzogZmFsc2UsCiAgbG9uZ1ByZXNzVGltZXI6IG51bGwKfTsKCmZ1bmN0aW9uIHVpZChwcmVmaXgpIHsKICByZXR1cm4gcHJlZml4ICsgIi0iICsgTWF0aC5yYW5kb20oKS50b1N0cmluZygzNikuc2xpY2UoMiwgOSk7Cn0KCmZ1bmN0aW9uIGNsb25lKG9iaikgewogIHJldHVybiBKU09OLnBhcnNlKEpTT04uc3RyaW5naWZ5KG9iaikpOwp9CgpmdW5jdGlvbiBsb2FkRGF0YSgpIHsKICB0cnkgewogICAgY29uc3QgcmF3ID0gbG9jYWxTdG9yYWdlLmdldEl0ZW0oU1RPUkFHRV9LRVkpOwogICAgaWYgKHJhdykgewogICAgICBjb25zdCBwYXJzZWQgPSBKU09OLnBhcnNlKHJhdyk7CiAgICAgIGlmIChwYXJzZWQgJiYgQXJyYXkuaXNBcnJheShwYXJzZWQubG9va3MpICYmIHBhcnNlZC5sb29rcy5sZW5ndGgpIHsKICAgICAgICByZXR1cm4gcGFyc2VkOwogICAgICB9CiAgICB9CiAgfSBjYXRjaCAoZSkge30KICByZXR1cm4gY2xvbmUoREVGQVVMVF9EQVRBKTsKfQoKZnVuY3Rpb24gc2F2ZURhdGEoKSB7CiAgdHJ5IHsKICAgIGxvY2FsU3RvcmFnZS5zZXRJdGVtKFNUT1JBR0VfS0VZLCBKU09OLnN0cmluZ2lmeShzdGF0ZS5kYXRhKSk7CiAgfSBjYXRjaCAoZSkgewogICAgdG9hc3QoIktow7RuZyBsxrB1IMSRxrDhu6NjIGxvY2FsU3RvcmFnZSB0csOqbiB0aGnhur90IGLhu4sgbsOgeSIpOwogIH0KfQoKZnVuY3Rpb24gYWN0aXZlTG9vaygpIHsKICBjb25zdCBkID0gc3RhdGUuZGF0YTsKICBsZXQgbG9vayA9IGQubG9va3MuZmluZChsID0+IGwuaWQgPT09IGQuYWN0aXZlSWQpOwogIGlmICghbG9vaykgewogICAgbG9vayA9IGQubG9va3NbMF07CiAgICBkLmFjdGl2ZUlkID0gbG9vay5pZDsKICB9CiAgcmV0dXJuIGxvb2s7Cn0KCmZ1bmN0aW9uIHRvYXN0KG1zZykgewogIGNvbnN0IGVsID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoInRvYXN0Iik7CiAgZWwudGV4dENvbnRlbnQgPSBtc2c7CiAgZWwuY2xhc3NMaXN0LmFkZCgic2hvdyIpOwogIGNsZWFyVGltZW91dCh0b2FzdC5fdCk7CiAgdG9hc3QuX3QgPSBzZXRUaW1lb3V0KCgpID0+IGVsLmNsYXNzTGlzdC5yZW1vdmUoInNob3ciKSwgMjQwMCk7Cn0KCmZ1bmN0aW9uIGVzY2FwZUh0bWwocykgewogIHJldHVybiBTdHJpbmcocyA9PSBudWxsID8gIiIgOiBzKQogICAgLnJlcGxhY2UoLyYvZywgIiZhbXA7IikKICAgIC5yZXBsYWNlKC88L2csICImbHQ7IikKICAgIC5yZXBsYWNlKC8+L2csICImZ3Q7IikKICAgIC5yZXBsYWNlKC8iL2csICImcXVvdDsiKTsKfQoKZnVuY3Rpb24gcmVuZGVyVGFicygpIHsKICBjb25zdCBsb29rcyA9IHN0YXRlLmRhdGEubG9va3M7CiAgY29uc3QgYWN0aXZlSWQgPSBzdGF0ZS5kYXRhLmFjdGl2ZUlkOwogIGNvbnN0IGh0bWwgPSBsb29rcy5tYXAobCA9PiB7CiAgICBjb25zdCBhY3RpdmUgPSBsLmlkID09PSBhY3RpdmVJZCA/ICIgYWN0aXZlIiA6ICIiOwogICAgcmV0dXJuIGA8YnV0dG9uIHR5cGU9ImJ1dHRvbiIgY2xhc3M9InNoZWV0LXRhYiR7YWN0aXZlfSIgZGF0YS1pZD0iJHtlc2NhcGVIdG1sKGwuaWQpfSIgcm9sZT0idGFiIiBhcmlhLXNlbGVjdGVkPSIke2wuaWQgPT09IGFjdGl2ZUlkfSI+YCArCiAgICAgIGA8c3BhbiBjbGFzcz0idGFiLWVtb2ppIj4ke2VzY2FwZUh0bWwobC5lbW9qaSB8fCAi8J+ShCIpfTwvc3Bhbj4ke2VzY2FwZUh0bWwobC50YWJOYW1lIHx8ICJUb25lIil9PC9idXR0b24+YDsKICB9KS5qb2luKCIiKSArIGA8YnV0dG9uIHR5cGU9ImJ1dHRvbiIgY2xhc3M9InNoZWV0LWFkZCIgaWQ9ImJ0bkFkZFRhYiIgdGl0bGU9IlRow6ptIHRvbmUiPis8L2J1dHRvbj5gOwoKICBbInRhYnNUb3AiLCAidGFic0JvdHRvbSJdLmZvckVhY2goaWQgPT4gewogICAgY29uc3QgYmFyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoaWQpOwogICAgYmFyLmlubmVySFRNTCA9IGh0bWw7CiAgICBiYXIucXVlcnlTZWxlY3RvckFsbCgiLnNoZWV0LXRhYiIpLmZvckVhY2goYnRuID0+IHsKICAgICAgYnRuLmFkZEV2ZW50TGlzdGVuZXIoImNsaWNrIiwgKCkgPT4gewogICAgICAgIHN0YXRlLmRhdGEuYWN0aXZlSWQgPSBidG4uZGF0YXNldC5pZDsKICAgICAgICBzYXZlRGF0YSgpOwogICAgICAgIHJlbmRlcigpOwogICAgICAgIHdpbmRvdy5zY3JvbGxUbyh7IHRvcDogMCwgYmVoYXZpb3I6ICJzbW9vdGgiIH0pOwogICAgICB9KTsKICAgICAgbGV0IHByZXNzVGltZXI7CiAgICAgIGJ0bi5hZGRFdmVudExpc3RlbmVyKCJwb2ludGVyZG93biIsICgpID0+IHsKICAgICAgICBpZiAoIXN0YXRlLmVkaXRpbmcpIHJldHVybjsKICAgICAgICBwcmVzc1RpbWVyID0gc2V0VGltZW91dCgoKSA9PiB7CiAgICAgICAgICBjb25zdCBuYW1lID0gcHJvbXB0KCLEkOG7lWkgdMOqbiB0YWI6IiwgYWN0aXZlTG9vaygpLnRhYk5hbWUpOwogICAgICAgICAgaWYgKG5hbWUgIT0gbnVsbCAmJiBuYW1lLnRyaW0oKSkgewogICAgICAgICAgICBjb25zdCBsb29rID0gc3RhdGUuZGF0YS5sb29rcy5maW5kKGwgPT4gbC5pZCA9PT0gYnRuLmRhdGFzZXQuaWQpOwogICAgICAgICAgICBpZiAobG9vaykgewogICAgICAgICAgICAgIGxvb2sudGFiTmFtZSA9IG5hbWUudHJpbSgpOwogICAgICAgICAgICAgIHNhdmVEYXRhKCk7CiAgICAgICAgICAgICAgcmVuZGVyKCk7CiAgICAgICAgICAgICAgdG9hc3QoIsSQw6MgxJHhu5VpIHTDqm4gdGFiIik7CiAgICAgICAgICAgIH0KICAgICAgICAgIH0KICAgICAgICB9LCA1NTApOwogICAgICB9KTsKICAgICAgYnRuLmFkZEV2ZW50TGlzdGVuZXIoInBvaW50ZXJ1cCIsICgpID0+IGNsZWFyVGltZW91dChwcmVzc1RpbWVyKSk7CiAgICAgIGJ0bi5hZGRFdmVudExpc3RlbmVyKCJwb2ludGVybGVhdmUiLCAoKSA9PiBjbGVhclRpbWVvdXQocHJlc3NUaW1lcikpOwogICAgICBidG4uYWRkRXZlbnRMaXN0ZW5lcigicG9pbnRlcmNhbmNlbCIsICgpID0+IGNsZWFyVGltZW91dChwcmVzc1RpbWVyKSk7CiAgICB9KTsKICAgIGNvbnN0IGFkZCA9IGJhci5xdWVyeVNlbGVjdG9yKCIuc2hlZXQtYWRkIik7CiAgICBpZiAoYWRkKSBhZGQuYWRkRXZlbnRMaXN0ZW5lcigiY2xpY2siLCBhZGRUYWIpOwogIH0pOwp9CgpmdW5jdGlvbiByZW5kZXJQcm9kdWN0cygpIHsKICBjb25zdCBsb29rID0gYWN0aXZlTG9vaygpOwogIGNvbnN0IHJvb3QgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic3RlcHMiKTsKICBpZiAoIWxvb2sucHJvZHVjdHMgfHwgIWxvb2sucHJvZHVjdHMubGVuZ3RoKSB7CiAgICByb290LmlubmVySFRNTCA9IGA8ZGl2IGNsYXNzPSJlbXB0eS1sb29rIj4KICAgICAgPGRpdiBjbGFzcz0iYmlnIj4ke2VzY2FwZUh0bWwobG9vay5lbW9qaSB8fCAi4pyoIil9PC9kaXY+CiAgICAgIDxoMz5TaGVldCB0cuG7kW5nPC9oMz4KICAgICAgPHA+VG9uZSBuw6B5IGNoxrBhIGPDsyBz4bqjbiBwaOG6qW0uJHtzdGF0ZS5lZGl0aW5nID8gIiBC4bqlbSDigJxUaMOqbSBz4bqjbiBwaOG6qW3igJ0gYsOqbiBkxrDhu5tpIMSR4buDIMSRaeG7gW4uIiA6ICIgU+G6r3AgY+G6rXAgbmjhuq10IOKAlCBxdWF5IGzhuqFpIHNhdSBuaMOpLiJ9PC9wPgogICAgPC9kaXY+YDsKICAgIHJldHVybjsKICB9CgogIHJvb3QuaW5uZXJIVE1MID0gbG9vay5wcm9kdWN0cy5tYXAoKHAsIGkpID0+IHsKICAgIGNvbnN0IGxpbmtCdG4gPSBwLmxpbmsKICAgICAgPyBgPGEgY2xhc3M9ImN0YSB2aWV3LW9ubHkiIGhyZWY9IiR7ZXNjYXBlSHRtbChwLmxpbmspfSIgdGFyZ2V0PSJfYmxhbmsiIHJlbD0ibm9vcGVuZXIgbm9yZWZlcnJlciI+JHtlc2NhcGVIdG1sKHAuY3RhIHx8ICLwn5uSIE11YSB0csOqbiBTaG9wZWUiKX08L2E+YAogICAgICA6IGA8c3BhbiBjbGFzcz0ibm9saW5rIHZpZXctb25seSI+4o+zIENoxrBhIGPDsyBsaW5rIFNob3BlZTwvc3Bhbj5gOwoKICAgIGNvbnN0IHN1YnMgPSAocC5zdWJzIHx8IFtdKS5tYXAoKHMsIHNpKSA9PiB7CiAgICAgIGNvbnN0IHN1YkxpbmsgPSBzLmxpbmsKICAgICAgICA/IGA8YSBjbGFzcz0iY3RhIHNlY29uZGFyeSB2aWV3LW9ubHkiIGhyZWY9IiR7ZXNjYXBlSHRtbChzLmxpbmspfSIgdGFyZ2V0PSJfYmxhbmsiIHJlbD0ibm9vcGVuZXIgbm9yZWZlcnJlciI+JHtlc2NhcGVIdG1sKHMuY3RhIHx8ICLwn5uSIE11YSB0csOqbiBTaG9wZWUiKX08L2E+YAogICAgICAgIDogYDxzcGFuIGNsYXNzPSJub2xpbmsgdmlldy1vbmx5Ij7ij7MgQ2jGsGEgY8OzIGxpbmsgU2hvcGVlPC9zcGFuPmA7CiAgICAgIHJldHVybiBgPGRpdiBjbGFzcz0ic3ViIiBkYXRhLXN1Yj0iJHtzaX0iPgogICAgICAgIDxkaXYgY2xhc3M9InN1Yi10aXRsZSB2aWV3LW9ubHkiPiR7ZXNjYXBlSHRtbChzLnRpdGxlIHx8ICIiKX08L2Rpdj4KICAgICAgICAke3Mubm90ZSA/IGA8cCBjbGFzcz0ibm90ZSB2aWV3LW9ubHkiPiR7ZXNjYXBlSHRtbChzLm5vdGUpfTwvcD5gIDogIiJ9CiAgICAgICAgJHtzdWJMaW5rfQogICAgICAgIDxpbnB1dCBjbGFzcz0iZWRpdC1maWVsZCIgZGF0YS1maWVsZD0ic3ViLXRpdGxlIiBkYXRhLXBpPSIke2l9IiBkYXRhLXNpPSIke3NpfSIgdmFsdWU9IiR7ZXNjYXBlSHRtbChzLnRpdGxlIHx8ICIiKX0iIHBsYWNlaG9sZGVyPSJUacOqdSDEkeG7gSBwaOG7pSIgLz4KICAgICAgICA8dGV4dGFyZWEgY2xhc3M9ImVkaXQtZmllbGQiIGRhdGEtZmllbGQ9InN1Yi1ub3RlIiBkYXRhLXBpPSIke2l9IiBkYXRhLXNpPSIke3NpfSIgcGxhY2Vob2xkZXI9Ik3DtCB04bqjIHBo4bulICh0deG7syBjaOG7jW4pIj4ke2VzY2FwZUh0bWwocy5ub3RlIHx8ICIiKX08L3RleHRhcmVhPgogICAgICAgIDxpbnB1dCBjbGFzcz0iZWRpdC1maWVsZCIgZGF0YS1maWVsZD0ic3ViLWxpbmsiIGRhdGEtcGk9IiR7aX0iIGRhdGEtc2k9IiR7c2l9IiB2YWx1ZT0iJHtlc2NhcGVIdG1sKHMubGluayB8fCAiIil9IiBwbGFjZWhvbGRlcj0iTGluayBTaG9wZWUgcGjhu6UiIC8+CiAgICAgICAgPGlucHV0IGNsYXNzPSJlZGl0LWZpZWxkIiBkYXRhLWZpZWxkPSJzdWItY3RhIiBkYXRhLXBpPSIke2l9IiBkYXRhLXNpPSIke3NpfSIgdmFsdWU9IiR7ZXNjYXBlSHRtbChzLmN0YSB8fCAiIil9IiBwbGFjZWhvbGRlcj0iQ2jhu68gbsO6dCBwaOG7pSIgLz4KICAgICAgICA8ZGl2IGNsYXNzPSJlZGl0LXJvdyI+PGJ1dHRvbiB0eXBlPSJidXR0b24iIGRhdGEtYWN0aW9uPSJkZWwtc3ViIiBkYXRhLXBpPSIke2l9IiBkYXRhLXNpPSIke3NpfSI+WG/DoSBt4bulYyBwaOG7pTwvYnV0dG9uPjwvZGl2PgogICAgICA8L2Rpdj5gOwogICAgfSkuam9pbigiIik7CgogICAgcmV0dXJuIGA8YXJ0aWNsZSBjbGFzcz0iY2FyZCIgZGF0YS1waT0iJHtpfSIgc3R5bGU9ImFuaW1hdGlvbi1kZWxheToke01hdGgubWluKGksIDEwKSAqIDAuMDR9cyI+CiAgICAgIDxkaXYgY2xhc3M9ImNhcmQtdG9vbHMiPgogICAgICAgIDxidXR0b24gdHlwZT0iYnV0dG9uIiBkYXRhLWFjdGlvbj0idXAiIGRhdGEtcGk9IiR7aX0iIHRpdGxlPSJMw6puIj7ihpE8L2J1dHRvbj4KICAgICAgICA8YnV0dG9uIHR5cGU9ImJ1dHRvbiIgZGF0YS1hY3Rpb249ImRvd24iIGRhdGEtcGk9IiR7aX0iIHRpdGxlPSJYdeG7kW5nIj7ihpM8L2J1dHRvbj4KICAgICAgICA8YnV0dG9uIHR5cGU9ImJ1dHRvbiIgZGF0YS1hY3Rpb249ImRlbCIgZGF0YS1waT0iJHtpfSIgdGl0bGU9Ilhvw6EiPuKclTwvYnV0dG9uPgogICAgICA8L2Rpdj4KICAgICAgPGRpdiBjbGFzcz0iY2FyZC10b3AiPgogICAgICAgIDxkaXYgY2xhc3M9InN0ZXAiPiR7aSArIDF9PC9kaXY+CiAgICAgICAgPGRpdiBzdHlsZT0iZmxleDoxO21pbi13aWR0aDowIj4KICAgICAgICAgIDxkaXYgY2xhc3M9ImVtb2ppIHZpZXctb25seSI+JHtlc2NhcGVIdG1sKHAuZW1vamkgfHwgIiIpfTwvZGl2PgogICAgICAgICAgPGgyIGNsYXNzPSJ2aWV3LW9ubHkiPiR7ZXNjYXBlSHRtbChwLm5hbWUgfHwgIiIpfTwvaDI+CiAgICAgICAgICA8cCBjbGFzcz0ibm90ZSB2aWV3LW9ubHkiPiR7ZXNjYXBlSHRtbChwLm5vdGUgfHwgIiIpfTwvcD4KICAgICAgICAgIDxpbnB1dCBjbGFzcz0iZWRpdC1maWVsZCIgZGF0YS1maWVsZD0iZW1vamkiIGRhdGEtcGk9IiR7aX0iIHZhbHVlPSIke2VzY2FwZUh0bWwocC5lbW9qaSB8fCAiIil9IiBwbGFjZWhvbGRlcj0iRW1vamkiIG1heGxlbmd0aD0iNCIgLz4KICAgICAgICAgIDxpbnB1dCBjbGFzcz0iZWRpdC1maWVsZCIgZGF0YS1maWVsZD0ibmFtZSIgZGF0YS1waT0iJHtpfSIgdmFsdWU9IiR7ZXNjYXBlSHRtbChwLm5hbWUgfHwgIiIpfSIgcGxhY2Vob2xkZXI9IlTDqm4gc+G6o24gcGjhuqltIC8gYsaw4bubYyIgLz4KICAgICAgICAgIDx0ZXh0YXJlYSBjbGFzcz0iZWRpdC1maWVsZCIgZGF0YS1maWVsZD0ibm90ZSIgZGF0YS1waT0iJHtpfSIgcGxhY2Vob2xkZXI9Ik3DtCB04bqjIj4ke2VzY2FwZUh0bWwocC5ub3RlIHx8ICIiKX08L3RleHRhcmVhPgogICAgICAgICAgPGlucHV0IGNsYXNzPSJlZGl0LWZpZWxkIiBkYXRhLWZpZWxkPSJsaW5rIiBkYXRhLXBpPSIke2l9IiB2YWx1ZT0iJHtlc2NhcGVIdG1sKHAubGluayB8fCAiIil9IiBwbGFjZWhvbGRlcj0iTGluayBTaG9wZWUgKMSR4buDIHRy4buRbmcgPSBjaMawYSBjw7MpIiAvPgogICAgICAgICAgPGlucHV0IGNsYXNzPSJlZGl0LWZpZWxkIiBkYXRhLWZpZWxkPSJjdGEiIGRhdGEtcGk9IiR7aX0iIHZhbHVlPSIke2VzY2FwZUh0bWwocC5jdGEgfHwgIiIpfSIgcGxhY2Vob2xkZXI9IkNo4buvIHRyw6puIG7DunQiIC8+CiAgICAgICAgPC9kaXY+CiAgICAgIDwvZGl2PgogICAgICAke2xpbmtCdG59CiAgICAgICR7c3Vic30KICAgICAgPGRpdiBjbGFzcz0iZWRpdC1yb3ciPjxidXR0b24gdHlwZT0iYnV0dG9uIiBkYXRhLWFjdGlvbj0iYWRkLXN1YiIgZGF0YS1waT0iJHtpfSI+77yLIFRow6ptIG3hu6VjIHBo4bulIChzdWIpPC9idXR0b24+PC9kaXY+CiAgICA8L2FydGljbGU+YDsKICB9KS5qb2luKCIiKTsKCiAgcm9vdC5xdWVyeVNlbGVjdG9yQWxsKCIuZWRpdC1maWVsZCIpLmZvckVhY2goaW5wID0+IHsKICAgIGlucC5hZGRFdmVudExpc3RlbmVyKCJjaGFuZ2UiLCBvbkZpZWxkQ2hhbmdlKTsKICAgIGlucC5hZGRFdmVudExpc3RlbmVyKCJibHVyIiwgb25GaWVsZENoYW5nZSk7CiAgfSk7CiAgcm9vdC5xdWVyeVNlbGVjdG9yQWxsKCJbZGF0YS1hY3Rpb25dIikuZm9yRWFjaChidG4gPT4gewogICAgYnRuLmFkZEV2ZW50TGlzdGVuZXIoImNsaWNrIiwgb25DYXJkQWN0aW9uKTsKICB9KTsKfQoKZnVuY3Rpb24gb25GaWVsZENoYW5nZShlKSB7CiAgY29uc3QgZWwgPSBlLnRhcmdldDsKICBjb25zdCBwaSA9ICtlbC5kYXRhc2V0LnBpOwogIGNvbnN0IGxvb2sgPSBhY3RpdmVMb29rKCk7CiAgY29uc3QgcCA9IGxvb2sucHJvZHVjdHNbcGldOwogIGlmICghcCkgcmV0dXJuOwogIGNvbnN0IGZpZWxkID0gZWwuZGF0YXNldC5maWVsZDsKICBpZiAoZmllbGQuc3RhcnRzV2l0aCgic3ViLSIpKSB7CiAgICBjb25zdCBzaSA9ICtlbC5kYXRhc2V0LnNpOwogICAgaWYgKCFwLnN1YnNbc2ldKSByZXR1cm47CiAgICBjb25zdCBrZXkgPSBmaWVsZC5zbGljZSg0KTsKICAgIHAuc3Vic1tzaV1ba2V5XSA9IGVsLnZhbHVlOwogIH0gZWxzZSB7CiAgICBwW2ZpZWxkXSA9IGVsLnZhbHVlOwogIH0KICBzYXZlRGF0YSgpOwp9CgpmdW5jdGlvbiBvbkNhcmRBY3Rpb24oZSkgewogIGNvbnN0IGJ0biA9IGUuY3VycmVudFRhcmdldDsKICBjb25zdCBhY3Rpb24gPSBidG4uZGF0YXNldC5hY3Rpb247CiAgY29uc3QgcGkgPSArYnRuLmRhdGFzZXQucGk7CiAgY29uc3QgbG9vayA9IGFjdGl2ZUxvb2soKTsKICBpZiAoIWxvb2sucHJvZHVjdHMpIGxvb2sucHJvZHVjdHMgPSBbXTsKCiAgaWYgKGFjdGlvbiA9PT0gImRlbCIpIHsKICAgIGlmICghY29uZmlybSgiWG/DoSBz4bqjbiBwaOG6qW0gbsOgeT8iKSkgcmV0dXJuOwogICAgbG9vay5wcm9kdWN0cy5zcGxpY2UocGksIDEpOwogIH0gZWxzZSBpZiAoYWN0aW9uID09PSAidXAiICYmIHBpID4gMCkgewogICAgY29uc3QgdCA9IGxvb2sucHJvZHVjdHNbcGkgLSAxXTsKICAgIGxvb2sucHJvZHVjdHNbcGkgLSAxXSA9IGxvb2sucHJvZHVjdHNbcGldOwogICAgbG9vay5wcm9kdWN0c1twaV0gPSB0OwogIH0gZWxzZSBpZiAoYWN0aW9uID09PSAiZG93biIgJiYgcGkgPCBsb29rLnByb2R1Y3RzLmxlbmd0aCAtIDEpIHsKICAgIGNvbnN0IHQgPSBsb29rLnByb2R1Y3RzW3BpICsgMV07CiAgICBsb29rLnByb2R1Y3RzW3BpICsgMV0gPSBsb29rLnByb2R1Y3RzW3BpXTsKICAgIGxvb2sucHJvZHVjdHNbcGldID0gdDsKICB9IGVsc2UgaWYgKGFjdGlvbiA9PT0gImFkZC1zdWIiKSB7CiAgICBpZiAoIWxvb2sucHJvZHVjdHNbcGldLnN1YnMpIGxvb2sucHJvZHVjdHNbcGldLnN1YnMgPSBbXTsKICAgIGxvb2sucHJvZHVjdHNbcGldLnN1YnMucHVzaCh7IHRpdGxlOiAi4p6VIE3hu6VjIHBo4bulIG3hu5tpIiwgbm90ZTogIiIsIGxpbms6ICIiLCBjdGE6ICLwn5uSIE11YSB0csOqbiBTaG9wZWUiIH0pOwogIH0gZWxzZSBpZiAoYWN0aW9uID09PSAiZGVsLXN1YiIpIHsKICAgIGNvbnN0IHNpID0gK2J0bi5kYXRhc2V0LnNpOwogICAgbG9vay5wcm9kdWN0c1twaV0uc3Vicy5zcGxpY2Uoc2ksIDEpOwogIH0KICBzYXZlRGF0YSgpOwogIHJlbmRlcigpOwp9CgpmdW5jdGlvbiBzeW5jTG9va0VkaXRCYXIoKSB7CiAgY29uc3QgbG9vayA9IGFjdGl2ZUxvb2soKTsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiZWRpdFRhYk5hbWUiKS52YWx1ZSA9IGxvb2sudGFiTmFtZSB8fCAiIjsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiZWRpdEVtb2ppIikudmFsdWUgPSBsb29rLmVtb2ppIHx8ICIiOwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJlZGl0VGl0bGUiKS52YWx1ZSA9IGxvb2sudGl0bGUgfHwgIiI7CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImVkaXRTdWJ0aXRsZSIpLnZhbHVlID0gbG9vay5zdWJ0aXRsZSB8fCAiIjsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiZWRpdEZvb3RlciIpLnZhbHVlID0gbG9vay5mb290ZXIgfHwgIiI7Cn0KCmZ1bmN0aW9uIGFwcGx5TG9va0VkaXRCYXIoKSB7CiAgY29uc3QgbG9vayA9IGFjdGl2ZUxvb2soKTsKICBsb29rLnRhYk5hbWUgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiZWRpdFRhYk5hbWUiKS52YWx1ZS50cmltKCkgfHwgbG9vay50YWJOYW1lOwogIGxvb2suZW1vamkgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiZWRpdEVtb2ppIikudmFsdWUudHJpbSgpIHx8IGxvb2suZW1vamk7CiAgbG9vay50aXRsZSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJlZGl0VGl0bGUiKS52YWx1ZS50cmltKCkgfHwgbG9vay50aXRsZTsKICBsb29rLnN1YnRpdGxlID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImVkaXRTdWJ0aXRsZSIpLnZhbHVlOwogIGxvb2suZm9vdGVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImVkaXRGb290ZXIiKS52YWx1ZTsKICBzYXZlRGF0YSgpOwogIHJlbmRlcigpOwogIHRvYXN0KCLEkMOjIGPhuq1wIG5o4bqtdCBsb29rIik7Cn0KCmZ1bmN0aW9uIHJlbmRlckhlYWRlcigpIHsKICBjb25zdCBsb29rID0gYWN0aXZlTG9vaygpOwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJsb29rQXZhdGFyIikudGV4dENvbnRlbnQgPSBsb29rLmVtb2ppIHx8ICLwn5KEIjsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgibG9va1RpdGxlIikudGV4dENvbnRlbnQgPSBsb29rLnRpdGxlIHx8ICIiOwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJsb29rU3VidGl0bGUiKS50ZXh0Q29udGVudCA9IGxvb2suc3VidGl0bGUgfHwgIiI7CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImxvb2tGb290ZXIiKS50ZXh0Q29udGVudCA9IGxvb2suZm9vdGVyIHx8ICIiOwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJiYWRnZVRleHQiKS50ZXh0Q29udGVudCA9IGxvb2suYmFkZ2UgfHwgIlPhuqNuIHBo4bqpbSB0cm9uZyB2aWRlbyI7CiAgZG9jdW1lbnQudGl0bGUgPSAobG9vay50aXRsZSB8fCAiTG9va2Jvb2siKSArICIgwrcgU+G6o24gcGjhuqltIHRyb25nIHZpZGVvIjsKfQoKZnVuY3Rpb24gcmVuZGVyKCkgewogIHJlbmRlclRhYnMoKTsKICByZW5kZXJIZWFkZXIoKTsKICByZW5kZXJQcm9kdWN0cygpOwogIGlmIChzdGF0ZS5lZGl0aW5nKSBzeW5jTG9va0VkaXRCYXIoKTsKICBkb2N1bWVudC5ib2R5LmNsYXNzTGlzdC50b2dnbGUoImVkaXRpbmciLCBzdGF0ZS5lZGl0aW5nKTsKfQoKZnVuY3Rpb24gYWRkVGFiKCkgewogIGNvbnN0IG4gPSBzdGF0ZS5kYXRhLmxvb2tzLmxlbmd0aCArIDE7CiAgY29uc3QgbG9vayA9IHsKICAgIGlkOiB1aWQoImxvb2siKSwKICAgIHRhYk5hbWU6ICJUb25lICIgKyBuLAogICAgZW1vamk6ICLwn5KWIiwKICAgIHRpdGxlOiAiVG9uZSBt4bubaSDigJQgxJHhurd0IHTDqm4gdOG6oWkgxJHDonkiLAogICAgc3VidGl0bGU6ICLEkGnhu4FuIHPhuqNuIHBo4bqpbSBjaG8gbG9vayBuw6B5LiIsCiAgICBmb290ZXI6ICJT4bqvcCByYSBt4bqvdCDwn5KVIiwKICAgIGJhZGdlOiAiU2hlZXQgbeG7m2kiLAogICAgcHJvZHVjdHM6IFtdCiAgfTsKICBzdGF0ZS5kYXRhLmxvb2tzLnB1c2gobG9vayk7CiAgc3RhdGUuZGF0YS5hY3RpdmVJZCA9IGxvb2suaWQ7CiAgc2F2ZURhdGEoKTsKICByZW5kZXIoKTsKICB0b2FzdCgixJDDoyB0aMOqbSB0b25lIG3hu5tpIik7Cn0KCmZ1bmN0aW9uIGFkZFByb2R1Y3QoKSB7CiAgY29uc3QgbG9vayA9IGFjdGl2ZUxvb2soKTsKICBpZiAoIWxvb2sucHJvZHVjdHMpIGxvb2sucHJvZHVjdHMgPSBbXTsKICBsb29rLnByb2R1Y3RzLnB1c2goewogICAgaWQ6IHVpZCgicCIpLAogICAgZW1vamk6ICLinKgiLAogICAgbmFtZTogIlPhuqNuIHBo4bqpbSBt4bubaSIsCiAgICBub3RlOiAiTcO0IHThuqMgbmfhuq9uIGNobyBixrDhu5tjIG7DoHkuIiwKICAgIGxpbms6ICIiLAogICAgY3RhOiAi8J+bkiBNdWEgdHLDqm4gU2hvcGVlIiwKICAgIHN1YnM6IFtdCiAgfSk7CiAgc2F2ZURhdGEoKTsKICByZW5kZXIoKTsKICB0b2FzdCgixJDDoyB0aMOqbSBz4bqjbiBwaOG6qW0iKTsKfQoKZnVuY3Rpb24gb3BlblBpbk1vZGFsKCkgewogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJwaW5Nb2RhbCIpLmNsYXNzTGlzdC5hZGQoIm9wZW4iKTsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgicGluRXJyIikudGV4dENvbnRlbnQgPSAiIjsKICBjb25zdCBpbnAgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgicGluSW5wdXQiKTsKICBpbnAudmFsdWUgPSAiIjsKICBzZXRUaW1lb3V0KCgpID0+IGlucC5mb2N1cygpLCA1MCk7Cn0KCmZ1bmN0aW9uIGNsb3NlUGluTW9kYWwoKSB7CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoInBpbk1vZGFsIikuY2xhc3NMaXN0LnJlbW92ZSgib3BlbiIpOwp9CgpmdW5jdGlvbiB0cnlFbnRlckVkaXQoKSB7CiAgaWYgKHNlc3Npb25TdG9yYWdlLmdldEl0ZW0oUElOX1NFU1NJT04pID09PSAiMSIpIHsKICAgIHN0YXRlLmVkaXRpbmcgPSB0cnVlOwogICAgcmVuZGVyKCk7CiAgICB0b2FzdCgixJDDoyB2w6BvIGNo4bq/IMSR4buZIGNo4buJbmggc+G7rWEiKTsKICAgIHJldHVybjsKICB9CiAgb3BlblBpbk1vZGFsKCk7Cn0KCmZ1bmN0aW9uIGNoZWNrUGluKCkgewogIGNvbnN0IHZhbCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJwaW5JbnB1dCIpLnZhbHVlLnRyaW0oKTsKICBjb25zdCBleHBlY3RlZCA9IChzdGF0ZS5kYXRhLnBpbiB8fCBERUZBVUxUX0RBVEEucGluIHx8ICIwODA0Iik7CiAgaWYgKHZhbCA9PT0gZXhwZWN0ZWQpIHsKICAgIHNlc3Npb25TdG9yYWdlLnNldEl0ZW0oUElOX1NFU1NJT04sICIxIik7CiAgICBjbG9zZVBpbk1vZGFsKCk7CiAgICBzdGF0ZS5lZGl0aW5nID0gdHJ1ZTsKICAgIHJlbmRlcigpOwogICAgdG9hc3QoIsSQw6MgdsOgbyBjaOG6vyDEkeG7mSBjaOG7iW5oIHPhu61hIik7CiAgfSBlbHNlIHsKICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJwaW5FcnIiKS50ZXh0Q29udGVudCA9ICJTYWkgUElOIOKAlCB0aOG7rSBs4bqhaSBuaMOpIjsKICB9Cn0KCmZ1bmN0aW9uIGV4aXRFZGl0KCkgewogIGFwcGx5TG9va0VkaXRCYXJRdWlldCgpOwogIHN0YXRlLmVkaXRpbmcgPSBmYWxzZTsKICByZW5kZXIoKTsKICB0b2FzdCgixJDDoyB0aG/DoXQgY2jhu4luaCBz4butYSIpOwp9CgpmdW5jdGlvbiBhcHBseUxvb2tFZGl0QmFyUXVpZXQoKSB7CiAgaWYgKCFzdGF0ZS5lZGl0aW5nKSByZXR1cm47CiAgY29uc3QgbG9vayA9IGFjdGl2ZUxvb2soKTsKICBjb25zdCB0YWIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiZWRpdFRhYk5hbWUiKS52YWx1ZS50cmltKCk7CiAgY29uc3QgZW1vamkgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiZWRpdEVtb2ppIikudmFsdWUudHJpbSgpOwogIGNvbnN0IHRpdGxlID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImVkaXRUaXRsZSIpLnZhbHVlLnRyaW0oKTsKICBjb25zdCBzdWJ0aXRsZSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJlZGl0U3VidGl0bGUiKS52YWx1ZTsKICBjb25zdCBmb290ZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiZWRpdEZvb3RlciIpLnZhbHVlOwogIGlmICh0YWIpIGxvb2sudGFiTmFtZSA9IHRhYjsKICBpZiAoZW1vamkpIGxvb2suZW1vamkgPSBlbW9qaTsKICBpZiAodGl0bGUpIGxvb2sudGl0bGUgPSB0aXRsZTsKICBsb29rLnN1YnRpdGxlID0gc3VidGl0bGU7CiAgbG9vay5mb290ZXIgPSBmb290ZXI7CiAgc2F2ZURhdGEoKTsKfQoKZnVuY3Rpb24gcmVzZXREYXRhKCkgewogIGlmICghY29uZmlybSgiWG/DoSB0b8OgbiBi4buZIGNo4buJbmggc+G7rWEgdHLDqm4gbcOheSBuw6B5IHbDoCB24buBIGLhuqNuIGfhu5FjPyIpKSByZXR1cm47CiAgbG9jYWxTdG9yYWdlLnJlbW92ZUl0ZW0oU1RPUkFHRV9LRVkpOwogIHN0YXRlLmRhdGEgPSBjbG9uZShERUZBVUxUX0RBVEEpOwogIHJlbmRlcigpOwogIHRvYXN0KCLEkMOjIHJlc2V0IHbhu4EgbeG6t2MgxJHhu4tuaCIpOwp9CgpmdW5jdGlvbiBkZWxldGVBY3RpdmVUYWIoKSB7CiAgaWYgKHN0YXRlLmRhdGEubG9va3MubGVuZ3RoIDw9IDEpIHsKICAgIHRvYXN0KCJQaOG6o2kgZ2nhu68gw610IG5o4bqldCAxIHRvbmUiKTsKICAgIHJldHVybjsKICB9CiAgY29uc3QgbG9vayA9IGFjdGl2ZUxvb2soKTsKICBpZiAoIWNvbmZpcm0oJ1hvw6EgdG9uZSAiJyArIGxvb2sudGFiTmFtZSArICciPycpKSByZXR1cm47CiAgc3RhdGUuZGF0YS5sb29rcyA9IHN0YXRlLmRhdGEubG9va3MuZmlsdGVyKGwgPT4gbC5pZCAhPT0gbG9vay5pZCk7CiAgc3RhdGUuZGF0YS5hY3RpdmVJZCA9IHN0YXRlLmRhdGEubG9va3NbMF0uaWQ7CiAgc2F2ZURhdGEoKTsKICByZW5kZXIoKTsKICB0b2FzdCgixJDDoyB4b8OhIHRvbmUiKTsKfQoKYXN5bmMgZnVuY3Rpb24gZXhwb3J0SHRtbCgpIHsKICBhcHBseUxvb2tFZGl0QmFyUXVpZXQoKTsKICAvLyBGbHVzaCBjdXJyZW50IGZpZWxkIHZhbHVlcyBmcm9tIG9wZW4gaW5wdXRzCiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgiI3N0ZXBzIC5lZGl0LWZpZWxkIikuZm9yRWFjaChlbCA9PiB7CiAgICBlbC5kaXNwYXRjaEV2ZW50KG5ldyBFdmVudCgiY2hhbmdlIikpOwogIH0pOwoKICBsZXQgc3JjID0gbnVsbDsKICBpZiAod2luZG93Ll9fRU1CRURERURfU09VUkNFX18pIHsKICAgIHRyeSB7CiAgICAgIHNyYyA9IGRlY29kZVVSSUNvbXBvbmVudChlc2NhcGUoYXRvYih3aW5kb3cuX19FTUJFRERFRF9TT1VSQ0VfXykpKTsKICAgIH0gY2F0Y2ggKGUpIHsKICAgICAgdHJ5IHsgc3JjID0gYXRvYih3aW5kb3cuX19FTUJFRERFRF9TT1VSQ0VfXyk7IH0gY2F0Y2ggKGUyKSB7IHNyYyA9IG51bGw7IH0KICAgIH0KICB9CiAgaWYgKCFzcmMpIHsKICAgIHRyeSB7CiAgICAgIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKGxvY2F0aW9uLmhyZWYsIHsgY2FjaGU6ICJuby1zdG9yZSIgfSk7CiAgICAgIGlmIChyZXMub2spIHNyYyA9IGF3YWl0IHJlcy50ZXh0KCk7CiAgICB9IGNhdGNoIChlKSB7fQogIH0KICBpZiAoIXNyYykgewogICAgdG9hc3QoIktow7RuZyBs4bqleSDEkcaw4bujYyBtw6Mgbmd14buTbiDigJQgbeG7nyBxdWEgbGluayBzaGlwLnBhZ2UgcuG7k2kgeHXhuqV0Iik7CiAgICBhbGVydCgiS2jDtG5nIHh14bqldCDEkcaw4bujYyB04burIGNo4bq/IMSR4buZIGZpbGU6Ly8uXG5cbkPDoWNoIGzDoG06IG3hu58gxJHDum5nIGxpbmsgc2hpcC5wYWdlIHRyw6puIMSRaeG7h24gdGhv4bqhaS9tw6F5IHTDrW5oIOKGkiB2w6BvIENo4buJbmggc+G7rWEg4oaSIFh14bqldCBmaWxlIEhUTUwuXG5Ib+G6t2MgYuG6pW0gT0sgxJHhu4Mgc2FvIGNow6lwIEpTT04gZGF0YSAoZ+G7rWkgZW0gZGVwbG95KS4iKTsKICAgIHRyeSB7CiAgICAgIGF3YWl0IG5hdmlnYXRvci5jbGlwYm9hcmQud3JpdGVUZXh0KEpTT04uc3RyaW5naWZ5KHN0YXRlLmRhdGEsIG51bGwsIDIpKTsKICAgICAgdG9hc3QoIsSQw6MgY29weSBKU09OIHbDoG8gY2xpcGJvYXJkIik7CiAgICB9IGNhdGNoIChlKSB7CiAgICAgIHByb21wdCgiQ29weSBKU09OIG7DoHkgZ+G7rWkgZW06IiwgSlNPTi5zdHJpbmdpZnkoc3RhdGUuZGF0YSkpOwogICAgfQogICAgcmV0dXJuOwogIH0KCiAgY29uc3QgZGF0YUJsb2NrID0gIi8qX19ERUZBVUxUX0RBVEFfXyovXG5jb25zdCBERUZBVUxUX0RBVEEgPSAiICsKICAgIEpTT04uc3RyaW5naWZ5KHN0YXRlLmRhdGEsIG51bGwsIDIpICsgIjtcbi8qX19FTkRfREVGQVVMVF9EQVRBX18qLyI7CiAgY29uc3QgcmVwbGFjZWQgPSBzcmMucmVwbGFjZSgKICAgIC9cL1wqX19ERUZBVUxUX0RBVEFfX1wqXC9bXHNcU10qP1wvXCpfX0VORF9ERUZBVUxUX0RBVEFfX1wqXC8vLAogICAgZGF0YUJsb2NrCiAgKTsKICAvLyBSZWZyZXNoIGVtYmVkZGVkIHNvdXJjZSBzbyBuZXh0IGV4cG9ydCBmcm9tIGRvd25sb2FkZWQgZmlsZSBhbHNvIHdvcmtzCiAgbGV0IG91dCA9IHJlcGxhY2VkOwogIHRyeSB7CiAgICBjb25zdCBiNjQgPSBidG9hKHVuZXNjYXBlKGVuY29kZVVSSUNvbXBvbmVudChyZXBsYWNlZC5yZXBsYWNlKAogICAgICAvd2luZG93XC5fX0VNQkVEREVEX1NPVVJDRV9fXHMqPVxzKiJbXiJdKiI7LywKICAgICAgIndpbmRvdy5fX0VNQkVEREVEX1NPVVJDRV9fPVwiXCI7IgogICAgKSkpKTsKICAgIC8vIEF2b2lkIGNpcmN1bGFyIGh1Z2UgZW1iZWQgb24gZXZlcnkgZXhwb3J0IOKAlCBrZWVwIHByZXZpb3VzIGVtYmVkIG9yIHNraXAKICAgIC8vIFJlLWVtYmVkIHRoZSB2ZXJzaW9uIFdJVEhPVVQgdXBkYXRpbmcgZW1iZWQgcmVjdXJzaXZlbHk6IHN0cmlwIGVtYmVkIGZpcnN0CiAgICBjb25zdCBzdHJpcHBlZCA9IHJlcGxhY2VkLnJlcGxhY2UoL3dpbmRvd1wuX19FTUJFRERFRF9TT1VSQ0VfX1xzKj1ccyoiW14iXSoiOy8sICJ3aW5kb3cuX19FTUJFRERFRF9TT1VSQ0VfXz1cIlwiOyIpOwogICAgY29uc3QgYjY0ZmluYWwgPSBidG9hKHVuZXNjYXBlKGVuY29kZVVSSUNvbXBvbmVudChzdHJpcHBlZCkpKTsKICAgIG91dCA9IHN0cmlwcGVkLnJlcGxhY2UoCiAgICAgIC93aW5kb3dcLl9fRU1CRURERURfU09VUkNFX19ccyo9XHMqIlteIl0qIjsvLAogICAgICAid2luZG93Ll9fRU1CRURERURfU09VUkNFX189XCIiICsgYjY0ZmluYWwgKyAiXCI7IgogICAgKTsKICB9IGNhdGNoIChlKSB7CiAgICBvdXQgPSByZXBsYWNlZDsKICB9CgogIGNvbnN0IGJsb2IgPSBuZXcgQmxvYihbb3V0XSwgeyB0eXBlOiAidGV4dC9odG1sO2NoYXJzZXQ9dXRmLTgiIH0pOwogIGNvbnN0IGEgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCJhIik7CiAgYS5ocmVmID0gVVJMLmNyZWF0ZU9iamVjdFVSTChibG9iKTsKICBhLmRvd25sb2FkID0gImluZGV4Lmh0bWwiOwogIGRvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoYSk7CiAgYS5jbGljaygpOwogIHNldFRpbWVvdXQoKCkgPT4gVVJMLnJldm9rZU9iamVjdFVSTChhLmhyZWYpLCAyMDAwKTsKICBhLnJlbW92ZSgpOwogIHRvYXN0KCLEkMOjIHThuqNpIGluZGV4Lmh0bWwg4oCUIGfhu61pIGVtIMSR4buDIGzDqm4gbGluayBt4bubaSIpOwp9CgovLyBXaXJlIFVJCmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJlZGl0RmFiIikuYWRkRXZlbnRMaXN0ZW5lcigiY2xpY2siLCB0cnlFbnRlckVkaXQpOwpkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgicGluT2siKS5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsIGNoZWNrUGluKTsKZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoInBpbkNhbmNlbCIpLmFkZEV2ZW50TGlzdGVuZXIoImNsaWNrIiwgY2xvc2VQaW5Nb2RhbCk7CmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJwaW5JbnB1dCIpLmFkZEV2ZW50TGlzdGVuZXIoImtleWRvd24iLCBlID0+IHsKICBpZiAoZS5rZXkgPT09ICJFbnRlciIpIGNoZWNrUGluKCk7Cn0pOwpkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiYnRuRXhpdEVkaXQiKS5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsIGV4aXRFZGl0KTsKZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImJ0bkV4cG9ydCIpLmFkZEV2ZW50TGlzdGVuZXIoImNsaWNrIiwgZXhwb3J0SHRtbCk7CmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJidG5SZXNldCIpLmFkZEV2ZW50TGlzdGVuZXIoImNsaWNrIiwgcmVzZXREYXRhKTsKZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImJ0bkFkZFByb2R1Y3QiKS5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsIGFkZFByb2R1Y3QpOwpkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiYnRuUmVuYW1lVGFiIikuYWRkRXZlbnRMaXN0ZW5lcigiY2xpY2siLCBhcHBseUxvb2tFZGl0QmFyKTsKZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImJ0bkRlbGV0ZVRhYiIpLmFkZEV2ZW50TGlzdGVuZXIoImNsaWNrIiwgZGVsZXRlQWN0aXZlVGFiKTsKClsiZWRpdFRhYk5hbWUiLCJlZGl0RW1vamkiLCJlZGl0VGl0bGUiLCJlZGl0U3VidGl0bGUiLCJlZGl0Rm9vdGVyIl0uZm9yRWFjaChpZCA9PiB7CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoaWQpLmFkZEV2ZW50TGlzdGVuZXIoImNoYW5nZSIsICgpID0+IHsKICAgIGFwcGx5TG9va0VkaXRCYXJRdWlldCgpOwogICAgcmVuZGVySGVhZGVyKCk7CiAgICByZW5kZXJUYWJzKCk7CiAgfSk7Cn0pOwoKc3RhdGUuZGF0YSA9IGxvYWREYXRhKCk7CnJlbmRlcigpOwoKd2luZG93Ll9fRU1CRURERURfU09VUkNFX189IiI7CiAgPC9zY3JpcHQ+CjwvYm9keT4KPC9odG1sPgo=";
+  </script>
+</body>
+</html>
